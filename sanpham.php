@@ -175,7 +175,7 @@
                 <p class="return__text"> Bảo hành trọn đời </p>
               </div>
               <div class="delivery">
-                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return" onclick = "hi()"/>
+                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return"/>
                 <p class="return__text"> Miễn phí giao hàng toàn quốc </p>
               </div>
             </div>
