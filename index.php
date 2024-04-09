@@ -106,12 +106,8 @@
                       </div>
                       <div class="prod-list__item__info--price-fb">
                         <div class="prod-list__item--price">
-                          <span class="prod-list__item__info--price">
-                            <?php echo $row["gia_giam"]; ?>
-                          </span>
-                          <span class="prod-list__item__info--price-sales">
-                            <?php echo $row["gia_goc"]; ?>
-                          </span>
+                          <?php echo '<span class="prod-list__item__info--price">' .number_format($row['gia_giam'], 0, ',', '.'). ' VNĐ </span>'; ?>
+                          <?php echo '<span class="prod-list__item__info--price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ </span>'; ?>
                         </div>
                         <div class="prod-list__item__info--star-icon">
                           <img
@@ -208,12 +204,8 @@
                       </div>
                       <div class="prod-list__item__info--price-fb">
                         <div class="prod-list__item--price">
-                          <span class="prod-list__item__info--price">
-                            <?php echo $row["gia_giam"]; ?>
-                          </span>
-                          <span class="prod-list__item__info--price-sales">
-                            <?php echo $row["gia_goc"]; ?>
-                          </span>
+                          <?php echo '<span class="prod-list__item__info--price">' .number_format($row['gia_giam'], 0, ',', '.'). ' VNĐ </span>'; ?>
+                          <?php echo '<span class="prod-list__item__info--price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ </span>'; ?>
                         </div>
                         <div class="prod-list__item__info--star-icon">
                           <img
