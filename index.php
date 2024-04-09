@@ -127,6 +127,7 @@
                 </section>
             <?php
             }
+            giaiPhongBoNho($link,$result);
           ?>
           </div>
         <!-- Button xem thêm -->
@@ -228,6 +229,7 @@
                 </section>
             <?php
             }
+            giaiPhongBoNho($link,$result);
           ?>
         </div>
         <!-- Button xem thêm -->
@@ -290,12 +292,31 @@
       <div class="container">
         <div class="news">
           <p class="news-content">Đăng ký bản tin của LUXE để cập nhật thông tin mới nhất về chương trình giảm giá và sản phẩm!</p>
-          <form class="news-register">
+          <form class="news-register" method="POST">
             <input type="text" name="dangky" id="dangky" placeholder="Nhập Email của bạn" class="text-reg">
-            <button class="btn register">
-              Đăng ký
-            </button>
+            <input type="submit" value="Đăng ký" class="btn register">
           </form>
+          <!-- Bắt PT POST khi đăng ký email -->
+          <?php
+            $link = null;
+            taoKetNoi($link);
+            if(isset($_POST["dangky"])){
+              $_email_dang_ky = $_POST["dangky"];
+              //Tạo câu lệnh SQL thêm vào bảng sản phẩm
+              $sql_dangky = "INSERT INTO tbl_email_bantin (email_dang_ky) values ('$_email_dang_ky')";
+              //Kiểm tra biến có dữ liệu hay không
+              if($_email_dang_ky != ""){
+                $rs_dangky = chayTruyVanKhongTraVeDL($link, $sql_dangky);
+                // Kiểm tra insert
+                if($rs_dangky){
+                  echo "<script>alert('Đăng ký thành công');</script>";
+                }else{
+                  echo "<script>alert('Đăng ký thất bại');</script>";
+                }
+                giaiPhongBoNho($link,$rs_dangky);
+              }
+            }
+          ?>
         </div>
       </div>
     </section>
