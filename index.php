@@ -59,259 +59,76 @@
       <div class="container">
         <h2>Ưu đãi tháng 4</h2>
         <div class="prod-list__grid">
-          <!-- Dòng 1 -->
-          <!-- SP 1 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/3H0-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> SALES!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Nhẫn NDINO 3H0</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Nhẫn</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      1.400.000 VNĐ
+          <!-- Hiển thị sản phẩm -->
+          <?php
+            $link = null;
+            taoKetNoi($link); 
+            //Kết nối và lấy dữ liệu từ CSDL
+            $result = chayTruyVanTraVeDL($link,"SELECT * FROM tbl_sanpham AS sp, tbl_danhmuc AS dm WHERE gia_giam IS NOT NULL AND sp.ma_danh_muc = dm.ma_danh_muc ORDER BY RAND() LIMIT 4");
+            // Xử lý dữ liệu trả về
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <section class="prod-list__item">
+                  <div class="prod-list__item__image">
+                    <a href="">
+                      <img
+                        class="prod-list__item__img1"
+                        loading="lazy"
+                        src="./img/<?php echo $row["hinh_anh_1"]; ?>"
+                      />
+                    </a>
+                    <span class="product-sale-tag">
+                      <span> SALES!</span>
                     </span>
-                    <span class="prod-list__item__info--price-sales">
-                      2.000.000 VNĐ
-                    </span>
+                    <!-- Hover heart and cart -->
+                    <div class="button-heart-cart-hover">
+                      <a href="">
+                        <img
+                          src="./icon/index-heart.svg"
+                          class="prod-list__item__image--heart-hover"
+                        />
+                      </a>
+                      <a href="">
+                        <img
+                          src="./icon/index-cart.svg"
+                          class="prod-list__item__image--cart-hover"
+                        />
+                      </a>
+                    </div>
                   </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
+                  <div class="prod-list__item__inner">
+                    <div class="prod-list__item__inner--child">
+                      <div class="prod-list__item__info">
+                        <div class="prod-list__item__info--title">
+                          <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                        </div>
+                        <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?></div>
+                      </div>
+                      <div class="prod-list__item__info--price-fb">
+                        <div class="prod-list__item--price">
+                          <span class="prod-list__item__info--price">
+                            <?php echo $row["gia_giam"]; ?>
+                          </span>
+                          <span class="prod-list__item__info--price-sales">
+                            <?php echo $row["gia_goc"]; ?>
+                          </span>
+                        </div>
+                        <div class="prod-list__item__info--star-icon">
+                          <img
+                            class="info--star-icon"
+                            loading="lazy"
+                            src="./icon/index-star.svg"
+                          />
+                          <div class="prod-list__item__info--fb">4.3</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 2 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/8D1-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> SALES!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Nhẫn NDINO 8D1</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Nhẫn</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      1.470.000 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      2.100.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 3 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/5N3-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> SALES!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-
-
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Nhẫn NDINO 5N3</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Nhẫn</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      2.415.000 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      3.450.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 4 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/2N5-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> SALES!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Nhẫn NDINO 2N5</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Nhẫn</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      3.150.000 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      4.500.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+                </section>
+            <?php
+            }
+          ?>
+          </div>
         <!-- Button xem thêm -->
         <a href="./danhmuc.html" class="btn home-product">Xem thêm</a>
       </div>
@@ -343,258 +160,75 @@
       <div class="container">
         <h2 class="best-seller">Sản phẩm bán chạy</h2>
         <div class="prod-list__grid">
-          <!-- Dòng 1 -->
-          <!-- SP 1 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/AND 01-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> HOT!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Dây chuyền LUXEMAND 01</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Dây chuyền</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      1.533.000 VNĐ
+          <!-- Hiển thị sản phẩm -->
+          <?php
+            $link = null;
+            taoKetNoi($link); 
+            //Kết nối và lấy dữ liệu từ CSDL
+            $result = chayTruyVanTraVeDL($link,"SELECT * FROM tbl_sanpham AS sp, tbl_danhmuc AS dm WHERE gia_giam IS NOT NULL AND sp.ma_danh_muc = dm.ma_danh_muc ORDER BY RAND() LIMIT 4");
+            // Xử lý dữ liệu trả về
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <section class="prod-list__item">
+                  <div class="prod-list__item__image">
+                    <a href="">
+                      <img
+                        class="prod-list__item__img1"
+                        loading="lazy"
+                        src="./img/<?php echo $row["hinh_anh_1"]; ?>"
+                      />
+                    </a>
+                    <span class="product-sale-tag">
+                      <span> HOT!</span>
                     </span>
-                    <span class="prod-list__item__info--price-sales">
-                      2.190.000 VNĐ
-                    </span>
+                    <!-- Hover heart and cart -->
+                    <div class="button-heart-cart-hover">
+                      <a href="">
+                        <img
+                          src="./icon/index-heart.svg"
+                          class="prod-list__item__image--heart-hover"
+                        />
+                      </a>
+                      <a href="">
+                        <img
+                          src="./icon/index-cart.svg"
+                          class="prod-list__item__image--cart-hover"
+                        />
+                      </a>
+                    </div>
                   </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
+                  <div class="prod-list__item__inner">
+                    <div class="prod-list__item__inner--child">
+                      <div class="prod-list__item__info">
+                        <div class="prod-list__item__info--title">
+                          <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                        </div>
+                        <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?></div>
+                      </div>
+                      <div class="prod-list__item__info--price-fb">
+                        <div class="prod-list__item--price">
+                          <span class="prod-list__item__info--price">
+                            <?php echo $row["gia_giam"]; ?>
+                          </span>
+                          <span class="prod-list__item__info--price-sales">
+                            <?php echo $row["gia_goc"]; ?>
+                          </span>
+                        </div>
+                        <div class="prod-list__item__info--star-icon">
+                          <img
+                            class="info--star-icon"
+                            loading="lazy"
+                            src="./icon/index-star.svg"
+                          />
+                          <div class="prod-list__item__info--fb">4.3</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 2 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/BCD 666-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> HOT!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Bông tai DTBCD 666</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Bông tai</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      3.493.000 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      4.990.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 3 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/TP 134-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> HOT!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-
-
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Vòng tay LBTP 134</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Vòng tay</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      6.300.000 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      9.000.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- SP 4 -->
-          <section class="prod-list__item">
-            <div class="prod-list__item__image">
-              <a href="">
-                <img
-                  class="prod-list__item__img1"
-                  loading="lazy"
-                  alt=""
-                  src="./img/BCD 789-1.webp"
-                />
-              </a>
-              <span class="product-sale-tag">
-                <span> HOT!</span>
-              </span>
-              <!-- Hover heart and cart -->
-              <div class="button-heart-cart-hover">
-                <a href="">
-                  <img
-                    src="./icon/index-heart.svg"
-                    alt=""
-                    class="prod-list__item__image--heart-hover"
-                  />
-                </a>
-                <a href="">
-                  <img
-                    src="./icon/index-cart.svg"
-                    alt=""
-                    class="prod-list__item__image--cart-hover"
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="prod-list__item__inner">
-              <div class="prod-list__item__inner--child">
-                <div class="prod-list__item__info">
-                  <div class="prod-list__item__info--title">
-                    <a href="./sanpham.html">Bông tai DTBCD 789</a>
-                  </div>
-                  <div class="prod-list__item__info--masp">Nhẫn</div>
-                </div>
-                <div class="prod-list__item__info--price-fb">
-                  <div class="prod-list__item--price">
-                    <span class="prod-list__item__info--price">
-                      4.899.300 VNĐ
-                    </span>
-                    <span class="prod-list__item__info--price-sales">
-                      6.999.000 VNĐ
-                    </span>
-                  </div>
-                  <div class="prod-list__item__info--star-icon">
-                    <img
-                      class="info--star-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./icon/index-star.svg"
-                    />
-                    <div class="prod-list__item__info--fb">4.3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+                </section>
+            <?php
+            }
+          ?>
         </div>
         <!-- Button xem thêm -->
         <a href="./danhmuc.html" class="btn home-product">Xem thêm</a>
