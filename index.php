@@ -31,15 +31,15 @@
       <div class="hero-slider">
           <!-- Slide 1 -->
           <div class="hero-slide--1">
-            <a href="./danhmuc.php?id=1"><img src="./img/index-slider1.png" alt=""/></a>
+            <a href="./danhmuc.php?iddm=1"><img src="./img/index-slider1.png" alt=""/></a>
           </div>
           <!-- Slide 2 -->
           <div class="hero-slide--2">
-            <a href="./danhmuc.php?id=1"><img src="./img/index-Slider2.png" alt=""/></a>
+            <a href="./danhmuc.php?iddm=1"><img src="./img/index-Slider2.png" alt=""/></a>
           </div>
           <!-- Slide 3 -->
           <div class="hero-slide--3">
-            <a href="./danhmuc.php?id=1"><img src="./img/index-Slider3.png" alt="" onload="loadImage()" /></a>
+            <a href="./danhmuc.php?iddm=1"><img src="./img/index-Slider3.png" alt="" onload="loadImage()" /></a>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@
           ?>
           </div>
         <!-- Button xem thêm -->
-        <a href="./danhmuc.php?id=1" class="btn home-product">Xem thêm</a>
+        <a href="./danhmuc.php?iddm=1" class="btn home-product">Xem thêm</a>
       </div>
     </section>
     <div class="line"></div>
@@ -152,7 +152,7 @@
         </div>
       </div>
       <!-- Button Khám phá bộ sưu tập -->
-      <a href="./danhmuc.php?id=1" class="btn home-col">Khám phá bộ sưu tập</a>
+      <a href="./danhmuc.php?iddm=1" class="btn home-col">Khám phá bộ sưu tập</a>
     </section>
     <div class="line"></div>
     <!-- List products best-seller-->
@@ -231,7 +231,7 @@
           ?>
         </div>
         <!-- Button xem thêm -->
-        <a href="./danhmuc.php?id=1" class="btn home-product">Xem thêm</a>
+        <a href="./danhmuc.php?iddm=1" class="btn home-product">Xem thêm</a>
       </div>
     </section>
     <div class="line"></div>
@@ -291,7 +291,7 @@
         <div class="news">
           <p class="news-content">Đăng ký bản tin của LUXE để cập nhật thông tin mới nhất về chương trình giảm giá và sản phẩm!</p>
           <form class="news-register">
-            <input type="text" name="dangKy" id="dangKy" placeholder="Nhập Email của bạn" class="text-reg">
+            <input type="text" name="dangky" id="dangky" placeholder="Nhập Email của bạn" class="text-reg">
             <button class="btn register">
               Đăng ký
             </button>

@@ -117,7 +117,7 @@
             // Xử lý dữ liệu trả về
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<li>";
-                echo "<a href='./danhmuc.php?id=".$row['ma_danh_muc']."'>";
+                echo "<a href='./danhmuc.php?iddm=".$row['ma_danh_muc']."'>";
                 echo "<img src='./img/".$row['hinh_anh_danh_muc']."'>";            
                 echo $row['ten_danh_muc'];
                 echo "</a>";
