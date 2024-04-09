@@ -15,9 +15,10 @@
     />
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/sanpham.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <!-- Scripts -->
-    <script src="./js/sanpham.js"></script>
+    <script src="./js/scripts.js"></script>
   </head>
 <body>
   <?php
@@ -175,26 +176,27 @@
                 <p class="return__text"> Bảo hành trọn đời </p>
               </div>
               <div class="delivery">
-                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return"/>
+                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return" onclick = "hi()"/>
                 <p class="return__text"> Miễn phí giao hàng toàn quốc </p>
               </div>
             </div>
           </div>
           <div class="size">
+            <p id="selected-option"></p>
             <p style="color: var(--product-detail-text-color-dark);" onclick="document.getElementById('form-size').submit();">Size: </p>
             <form id="form-size" action="" method = "POST">
             <input type="hidden" name="formType" value="size-form">
-            <div class="size-dropdown">
-              <div class="selected-size" onclick="toggleSizeList()">Size</div>
-              <select id="sizeSelect" name="size">
-                <option value="">Chọn size</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-              </select>
-              <div class="size-list" id="sizeList">
-                <div class="size-list-item" onclick="setSize('S')">S</div>
-                <div class="size-list-item" onclick="setSize('M')">M</div>
-              </div>
+            <?php
+              $query_size = "SELECT ten_bien_the FROM tbl_bienthe WHERE ma_san_pham = 1";
+              $result_size = mysqli_query($link, $query_size);
+            ?> 
+            <select class="size-dropdown" id="select-size" name="size" >
+            <?php
+              while ($row_size = $result_size->fetch_assoc()) {
+                echo "<option value='" . $row_size["ten_bien_the"] . "'>" . $row_size["ten_bien_the"] . "</option>";
+            }
+            ?>
+            </select>
               <?php 
                 if (isset($_POST['formType'])) {
                   if ($_POST['formType'] == 'size-form') {
@@ -225,25 +227,6 @@
                     }
                 }         
               ?>
-              <script>
-                function toggleSizeList() {
-                  var sizeList = document.getElementById("sizeList");
-                  sizeList.style.display = sizeList.style.display === "none" ? "block" : "none";
-                }
-
-                function setSize(size) {
-                  var sizeSelect = document.getElementById("sizeSelect");
-                  sizeSelect.value = size;
-                  displaySelectedSize(size);
-                  toggleSizeList();
-                }
-
-                function displaySelectedSize(size) {
-                  var selectedSizeElement = document.querySelector(".selected-size");
-                  selectedSizeElement.textContent = size !== "" ? size : "Chọn size";
-                }    
-              </script>
-            </div>
             </form>            
           </div>
           <!-- Decrease or Increase quantity -->
