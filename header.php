@@ -8,24 +8,24 @@
           </button>
           <!-- Logo -->
           <a href="./" class="logo-nav">
-            <img src="./icon/Logo.svg" alt="Luxe" />
+            <img src="./icon/index-Logo.svg" alt="Luxe" />
             <h1 class="logo-title">Luxe</h1>
           </a>
           <!-- Search button -->
           <div class="top-act-group mobile">
             <button class="top-act-btn">
-              <img src="./icon/search.svg" name="search-btn" class="searchBtn" onclick="search()"/>
+              <img src="./icon/index-search.svg" name="search-btn" class="searchBtn" onclick="search()"/>
             </button>
           </div> 
           <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
           <!-- Navigation -->
           <nav class="navbar">
             <ul id="PC_nav">
-              <li><a href="./index.html">TRANG CHỦ</a></li>
+              <li><a href="./index.php">TRANG CHỦ</a></li>
               <li><a href="#!" onclick="megaFunction()">SẢN PHẨM</a></li>
-              <li><a href="./gioithieu.html">VỀ CHÚNG TÔI</a></li>
-              <li><a href="./hotro.html">HỖ TRỢ</a></li>
-              <li><a href="./lienhe.html">LIÊN HỆ</a></li>
+              <li><a href="./gioithieu.php">VỀ CHÚNG TÔI</a></li>
+              <li><a href="./hotro.php">HỖ TRỢ</a></li>
+              <li><a href="./lienhe.php">LIÊN HỆ</a></li>
             </ul>
           </nav>
 
@@ -34,26 +34,26 @@
           <div class="top-act">
             <div class="top-act-group">
               <button class="top-act-btn">
-                <img src="./icon/search.svg" name="search-btn" class="searchBtn" onclick="search()"/>
+                <img src="./icon/index-search.svg" name="search-btn" class="searchBtn" onclick="search()"/>
               </button>
             </div>
             <div class="top-act-group">
               <button class="top-act-btn">
-                <a href="./yeuthich.html"><img src="./icon/heart.svg" alt="" /></a>
+                <a href="./yeuthich.php"><img src="./icon/index-heart.svg" alt="" /></a>
                 <span class="top-act-title"> 03 </span>
               </button>
               <div class="top-act-separate"></div>
               <button class="top-act-btn">
-                <a href="./giohang.html"><img src="./icon/cart.svg" alt="" /></a>
+                <a href="./giohang.php"><img src="./icon/index-cart.svg" alt="" /></a>
                 <span class="top-act-title"> 03 </span>
               </button>
               <div class="top-act-separate"></div>
               <button class="top-act-btn user">
-                <a href="#"><img src="./icon/user.svg" alt="" /></a>
+                <a href="#"><img src="./icon/index-user.svg" alt="" /></a>
               </button>
               <div class="top-act-separate"></div>
               <button class="top-act-btn mode" onclick='darkFunction()'>
-                <img src="./icon/mode.svg" alt="" />
+                <img src="./icon/index-mode.svg" alt="" />
               </button>
             </div>
           </div>
@@ -90,18 +90,18 @@
         <!-- Action -->
         <div class="top-act">
             <button class="top-act-btn">
-              <img src="./icon/heart.svg" alt="" />
+              <img src="./icon/index-heart.svg" alt="" />
               <span class="top-act-title"> 03 </span>
             </button>
             <button class="top-act-btn">
-              <img src="./icon/cart.svg" alt="" />
+              <img src="./icon/index-cart.svg" alt="" />
               <span class="top-act-title"> 03 </span>
             </button>
             <button class="top-act-btn">
-              <img src="./icon/user.svg" alt="" />
+              <img src="./icon/index-user.svg" alt="" />
             </button>
             <button class="top-act-btn mode" onclick="darkFunction()">
-              <img src="./icon/mode.svg" alt="" />
+              <img src="./icon/index-mode.svg" alt="" />
             </button>
         </div>
       </div>
@@ -109,29 +109,20 @@
     <!-- Mega menu cho danh mục sản phẩm -->
     <div class="mega-menu">
       <ul>
-        <li>
-          <a href="./danhmuc.html">
-            <img src="./img/nhan.webp" alt="Hình 1">
-            Nhẫn
-          </a>
-        </li>
-        <li>
-          <a href="./danhmuc.html">
-            <img src="./img/day-chuyen.webp" alt="Hình 2">
-            Dây chuyền
-          </a>
-        </li>
-        <li>
-          <a href="./danhmuc.html">
-            <img src="./img/lac-tay.webp" alt="Hình 3">
-            Vòng tay
-          </a>
-        </li>
-        <li>
-          <a href="./danhmuc.html">
-            <img src="./img/bong-tai.jpg" alt="Hình 4">
-            Bông tai
-          </a>
-        </li>
+        <?php
+            $link = null;
+            taoKetNoi($link); 
+            //Kết nối và lấy dữ liệu từ CSDL
+            $result = chayTruyVanTraVeDL($link,"SELECT * FROM tbl_danhmuc");
+            // Xử lý dữ liệu trả về
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<li>";
+                echo "<a href='./danhmuc.php?id=".$row['ma_danh_muc']."'>";
+                echo "<img src='./img/".$row['hinh_anh_danh_muc']."'>";            
+                echo $row['ten_danh_muc'];
+                echo "</a>";
+                echo "</li>";
+            }
+        ?>
       </ul>
     </div>

@@ -139,7 +139,7 @@ a {
 .top-bar .top-act-btn {
   display: flex;
   align-items: center;
-  padding: 13px;
+  padding: 10px;
   border: none;
   background: var(--second-color);
   border-radius: 8px;
@@ -222,6 +222,7 @@ a {
   list-style: none; /* Bỏ dấu chấm đầu dòng */
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 
 .mega-menu ul li {

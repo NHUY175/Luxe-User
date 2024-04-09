@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Chỉnh biểu tượng web -->
-    <link href="./icon/Logo.svg" rel="shortcut icon" />
+    <link href="./icon/index-Logo.svg" rel="shortcut icon" />
     <title>Luxe - Trang sức cao cấp</title>
     <!-- GG Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -78,14 +78,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -114,7 +114,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -140,14 +140,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -177,7 +177,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -203,14 +203,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -241,7 +241,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -267,14 +267,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -303,7 +303,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -362,14 +362,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -398,7 +398,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -424,14 +424,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -461,7 +461,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -487,14 +487,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -525,7 +525,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -551,14 +551,14 @@
               <div class="button-heart-cart-hover">
                 <a href="">
                   <img
-                    src="./icon/heart.svg"
+                    src="./icon/index-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
                   />
                 </a>
                 <a href="">
                   <img
-                    src="./icon/cart.svg"
+                    src="./icon/index-cart.svg"
                     alt=""
                     class="prod-list__item__image--cart-hover"
                   />
@@ -587,7 +587,7 @@
                       class="info--star-icon"
                       loading="lazy"
                       alt=""
-                      src="./icon/star.svg"
+                      src="./icon/index-star.svg"
                     />
                     <div class="prod-list__item__info--fb">4.3</div>
                   </div>
@@ -626,7 +626,7 @@
           <div class="home-review">
             <div class="review-content">
               <img src="./img/index-avatar-2.jpg" alt="" class="review-avt">
-              <img src="./icon/review.svg" alt="" class="review-icon">
+              <img src="./icon/index-review.svg" alt="" class="review-icon">
               <p class="review-script">
                 "Tôi đã mua đôi hoa tai kim cương từ Luxe làm quà tặng cho vợ và cô ấy rất thích. Thiết kế Luxe tinh tế và thanh lịch, chất lượng kim cương cũng rất tốt, sáng bóng và lấp lánh. Đây là món quà hoàn hảo cho những dịp đặc biệt."
               </p>
@@ -636,7 +636,7 @@
           <div class="home-review">
             <div class="review-content">
               <img src="./img/index-avatar-3.jpg" alt="" class="review-avt" onload="loadReview()">
-              <img src="./icon/review.svg" alt="" class="review-icon">
+              <img src="./icon/index-review.svg" alt="" class="review-icon">
               <p class="review-script">
                 "Chất liệu cao cấp và chế tác tinh xảo từ Luxe khiến tôi cảm thấy vô cùng sang trọng và đẳng cấp. Dịch vụ khách hàng của Luxe cũng rất chuyên nghiệp và chu đáo. Tôi thực sự hài lòng với sản phẩm này và highly recommend cho mọi người!"
               </p>
@@ -673,7 +673,7 @@
           <div class="footer-column">
             <!-- Logo -->
             <a href="./" class="logo-foot">
-              <img src="./icon/Logo.svg" alt="Luxe" />
+              <img src="./icon/index-Logo.svg" alt="Luxe" />
               <h1 class="logo-title">Luxe</h1>
             </a>
             <!-- Download app -->
@@ -754,9 +754,9 @@
     <div class="footer-copyright">
         <div class="container">
           <div class="payment-method">
-            <img src="./icon/paypal.svg" alt="">
-            <img src="./icon/visa.svg" alt="">
-            <img src="./icon/master-card.svg" alt="">
+            <img src="./icon/footer-paypal.svg" alt="">
+            <img src="./icon/footer-visa.svg" alt="">
+            <img src="./icon/footer-master-card.svg" alt="">
           </div>
           <p class="footer__copyright-text">
             Copyright © 2023 UIHUT All Rights Reserved
