@@ -97,7 +97,7 @@
           <div class="product-card">
             <div class="product-image-wrapper">
               <figure class="product-image">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cef3639431bb38de9a1b69a05850f7b43811d66155b323c58eafb83c3b78c233?apiKey=7d95cecb2a0d4898b6712f9b139bd5f6&" alt="Product image" />
+                <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
               <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
               <p class="product-DM">NLF 415</p>
@@ -117,7 +117,7 @@
           <div class="product-card">
             <div class="product-image-wrapper">
               <figure class="product-image">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cef3639431bb38de9a1b69a05850f7b43811d66155b323c58eafb83c3b78c233?apiKey=7d95cecb2a0d4898b6712f9b139bd5f6&" alt="Product image" />
+                <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
               <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
               <p class="product-DM">NLF 415</p>
@@ -137,7 +137,7 @@
           <div class="product-card">
             <div class="product-image-wrapper">
               <figure class="product-image">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cef3639431bb38de9a1b69a05850f7b43811d66155b323c58eafb83c3b78c233?apiKey=7d95cecb2a0d4898b6712f9b139bd5f6&" alt="Product image" />
+                <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
               <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
               <p class="product-DM">NLF 415</p>
@@ -157,7 +157,7 @@
           <div class="product-card">
             <div class="product-image-wrapper">
               <figure class="product-image">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cef3639431bb38de9a1b69a05850f7b43811d66155b323c58eafb83c3b78c233?apiKey=7d95cecb2a0d4898b6712f9b139bd5f6&" alt="Product image" />
+                <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
               <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
               <p class="product-DM">NLF 415</p>
