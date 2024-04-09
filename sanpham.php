@@ -15,77 +15,22 @@
     />
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/sanpham.css" />
     <!-- Scripts -->
-    <script src="./js/scripts.js"></script>
+    <script src="./js/sanpham.js"></script>
   </head>
 <body>
   <?php
     require_once "db_module.php";
   ?>
-    <!-- PC Header -->
-    <header class="fixed-header">
-      <div class="container">
-        <div class="top-bar">
-          <!-- Mobile menu -->
-          <button class="hamburger-menu" onclick="burgerFunction()">
-            <img src="./icon/sanpham-burger.svg" alt="" />
-          </button>
-          <script src="./js/scripts.js"></script>
-          <!-- Logo -->
-          <a href="./" class="logo-nav">
-            <img src="./icon/sanpham-logo.svg" alt="Luxe" />
-            <h1 class="logo-title">Luxe</h1>
-          </a>
-          <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
-          <!-- Navigation -->
-          <nav class="navbar">
-            <ul>
-              <li><a href="#!">Trang chủ</a></li>
-              <li><a href="#!">Sản phẩm</a></li>
-              <li><a href="#!">Về chúng tôi</a></li>
-              <li><a href="#!">Hỗ trợ</a></li>
-              <li><a href="#!">Liên hệ</a></li>
-            </ul>
-          </nav>
-
-          <!-- Action -->
-          <div class="top-act">
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-search.svg" alt="" />
-              </button>
-            </div>
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-heart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-cart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-user.svg" alt="" />
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn" onclick="darkFunction()">
-                <img src="./icon/sanpham-moon.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <div class="cross-bar"></div>
     <?php
-    $product =mysqli_query($link, "SELECT sp.*, dm.ten_danh_muc
-                                   FROM tbl_sanpham sp
-                                   JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                   WHERE sp.ma_san_pham = 1");
+    $link = null;
+    taoKetNoi($link); 
+    $product = chayTruyVanTraVeDL($link,"SELECT sp.*, dm.ten_danh_muc
+                                 FROM tbl_sanpham sp
+                                 JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                 WHERE sp.ma_san_pham = " .$_GET['id']);
     $row = mysqli_fetch_assoc($product);
     ?>
     <!-- Product detail -->
@@ -128,7 +73,7 @@
               $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
                         FROM tbl_sanpham sp
                         LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
-                        WHERE sp.ma_san_pham = 1";
+                        WHERE sp.ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row_star = mysqli_fetch_assoc($result);
             ?>
@@ -187,7 +132,7 @@
             <form id="form-size" action="" method = "POST">
             <input type="hidden" name="formType" value="size-form">
             <?php
-              $query_size = "SELECT ten_bien_the FROM tbl_bienthe WHERE ma_san_pham = 1";
+              $query_size = "SELECT ten_bien_the FROM tbl_bienthe WHERE ma_san_pham = " .$_GET['id'];
               $result_size = mysqli_query($link, $query_size);
             ?> 
             <select class="size-dropdown" id="select-size" name="size" >
@@ -207,7 +152,7 @@
                         $query = "SELECT * 
                                   FROM tbl_sanpham sp 
                                   INNER JOIN tbl_bienthe bt ON sp.ma_san_pham = bt.ma_san_pham 
-                                  WHERE ten_bien_the = '".$size."' AND sp.ma_san_pham = 1";
+                                  WHERE ten_bien_the = '".$size."' AND sp.ma_san_pham = " .$_GET['id'];
                         $result = mysqli_query($link, $query);
                         $rows = mysqli_fetch_assoc($result);
                       }
@@ -220,7 +165,7 @@
                             $reviewTitle = $_POST['reviewTitle'];
                             $reviewDetails = $_POST['reviewDetails'];
                             
-                            $sql = "INSERT INTO tbl_review (so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES ('$reviewStar', '$reviewTitle', '$reviewDetails', 1)";
+                            $sql = "INSERT INTO tbl_review (so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES ('$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
                             $abc = mysqli_query($link, $sql);
                         }
                       }
@@ -339,7 +284,7 @@
       $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
                 FROM tbl_sanpham sp
                 LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
-                WHERE sp.ma_san_pham = 1";
+                WHERE sp.ma_san_pham = " .$_GET['id'];
       $result = mysqli_query($link, $query);
       $rows = mysqli_fetch_assoc($result);
     ?>
@@ -359,10 +304,14 @@
             <?php
               $query = "SELECT COUNT(ma_review) AS total_5_star
                                FROM tbl_review
-                               WHERE  so_sao = 5 AND ma_san_pham = 1";
+                               WHERE  so_sao = 5 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_5_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_5_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity1" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_5_star']; ?></p>
@@ -372,10 +321,14 @@
             <?php
               $query = "SELECT COUNT(ma_review) AS total_4_star
                                FROM tbl_review
-                               WHERE  so_sao = 4 AND ma_san_pham = 1";
+                               WHERE  so_sao = 4 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_4_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_4_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity2" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_4_star']; ?></p>
@@ -385,10 +338,14 @@
             <?php
               $query = "SELECT COUNT(ma_review) AS total_3_star
                                FROM tbl_review
-                               WHERE  so_sao = 3 AND ma_san_pham = 1";
+                               WHERE  so_sao = 3 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_3_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_3_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity3" style="width: <?php echo $percentage; ?>%;"></div></div>  
             <p class="star-quality"> <?php echo $row['total_3_star']; ?></p>
@@ -398,10 +355,14 @@
             <?php
               $query = "SELECT COUNT(ma_review) AS total_2_star
                                FROM tbl_review
-                               WHERE  so_sao = 2 AND ma_san_pham = 1";
+                               WHERE  so_sao = 2 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_2_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_2_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity4" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_2_star']; ?></p>
@@ -411,10 +372,14 @@
             <?php
               $query = "SELECT COUNT(ma_review) AS total_1_star
                                FROM tbl_review
-                               WHERE  so_sao = 1 AND ma_san_pham = 1";
+                               WHERE  so_sao = 1 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_1_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_1_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity5" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_1_star']; ?></p>
@@ -456,8 +421,7 @@
             $query_reviews = "SELECT tbl_khachhang.ho_ten, tbl_review.so_sao, tbl_review.tieu_de_review, tbl_review.noi_dung 
                               FROM tbl_review 
                               INNER JOIN tbl_khachhang ON tbl_review.ma_khach_hang = tbl_khachhang.ma_khach_hang 
-                              WHERE tbl_review.ma_san_pham = 1
-                              LIMIT 3";
+                              WHERE tbl_review.ma_san_pham = " .$_GET['id']. " LIMIT 3";
 
             $result_reviews = mysqli_query($link, $query_reviews);
 
@@ -491,8 +455,7 @@
             $query_reviews = "SELECT tbl_khachhang.ho_ten, tbl_review.so_sao, tbl_review.tieu_de_review, tbl_review.noi_dung 
                               FROM tbl_review 
                               INNER JOIN tbl_khachhang ON tbl_review.ma_khach_hang = tbl_khachhang.ma_khach_hang 
-                              WHERE tbl_review.ma_san_pham = 1
-                              LIMIT 3 OFFSET 3";
+                              WHERE tbl_review.ma_san_pham = " .$_GET['id']. " LIMIT 3 OFFSET 3";
 
             $result_reviews = mysqli_query($link, $query_reviews);
 
@@ -554,14 +517,15 @@
                                    FROM tbl_sanpham sp
                                    INNER JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                   WHERE sp.ma_danh_muc = (SELECT ma_danh_muc FROM tbl_sanpham WHERE ma_san_pham = 1)
-                                   AND sp.ma_san_pham <> 1
+                                   WHERE sp.ma_danh_muc = (SELECT ma_danh_muc FROM tbl_sanpham WHERE ma_san_pham = " .$_GET['id']. " )
+                                   AND sp.ma_san_pham <> ".$_GET['id']. " 
                                    GROUP BY sp.ma_san_pham
                                    LIMIT 4";
         $result_similar_products = mysqli_query($link, $query_similar_products);
 
         // Hiển thị danh sách sản phẩm tương tự
         while ($row_product = mysqli_fetch_assoc($result_similar_products)){
+            $ma_san_pham = $row_product["ma_san_pham"];
             $product_name = $row_product["ten_san_pham"];
             $product_image = $row_product["hinh_anh_1"];
             $product_price = $row_product["gia_giam"];
@@ -581,7 +545,7 @@
               </button>
             </div>
             <h3 class="product-card__title">
-              <a href="./product-detail.html"><?php echo $product_name; ?></a>
+              <a href='./sanpham.php?id=<?php echo $ma_san_pham; ?>'><?php echo $product_name; ?></a>
             </h3>
             <p class="product-card__collection"><?php echo $product_category; ?></p>
             <div class="product-card__row">
@@ -609,8 +573,8 @@
                                     FROM tbl_sanpham sp
                                     INNER JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                     LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                    WHERE sp.ma_danh_muc = (SELECT ma_danh_muc FROM tbl_sanpham WHERE ma_san_pham = 1)
-                                    AND sp.ma_san_pham <> 1
+                                    WHERE sp.ma_danh_muc = (SELECT ma_danh_muc FROM tbl_sanpham WHERE ma_san_pham = " .$_GET['id']. " )
+                                    AND sp.ma_san_pham <> " .$_GET['id']. " 
                                     GROUP BY sp.ma_san_pham
                                     LIMIT 20 OFFSET 3";
           $result_similar_products = mysqli_query($link, $query_similar_products);
@@ -635,7 +599,7 @@
                 </button>
               </div>
               <h3 class="product-card__title1">
-                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+                <a href='./sanpham.php?id=<?php echo $ma_san_pham; ?>'><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection1"><?php echo $product_category; ?></p>
               <div class="product-card__row1">
