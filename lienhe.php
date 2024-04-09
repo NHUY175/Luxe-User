@@ -20,102 +20,11 @@
     <script src="./js/hotro.js"></script>
   </head>
   <body>
-    <!-- PC Header -->
-    <header class="fixed-header">
-      <div class="container">
-        <div class="top-bar">
-          <!-- Mobile menu -->
-          <button class="hamburger-menu" onclick="burgerFunction()">
-            <img src="./icon/index-burger.svg" alt="" />
-          </button>
-          <script src="./js/hotro.js"></script>
-          <!-- Logo -->
-          <a href="./" class="logo-nav">
-            <img src="./icon/Logo.svg" alt="Luxe" />
-            <h1 class="logo-title">Luxe</h1>
-          </a>
-          <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
-          <!-- Navigation -->
-          <nav class="navbar">
-            <ul>
-              <li><a href="#!">TRANG CHỦ</a></li>
-              <li><a href="#!">SẢN PHẨM</a></li>
-              <li><a href="#!">VỀ CHÚNG TÔI</a></li>
-              <li><a href="#!">HỖ TRỢ</a></li>
-              <li><a href="#!">LIÊN HỆ</a></li>
-            </ul>
-          </nav>
-          <!-- Action -->
-          <div class="top-act">
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/search.svg" alt="" />
-              </button>
-            </div>
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/heart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/cart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/user.svg" alt="" />
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn mode" onclick="darkFunction()">
-                <img src="./icon/mode.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- Mobile Header -->
-    <header class="mobile-header">
-      <div class="menu-overlay" onclick="burgerFunction()"></div>
-      <!-- Menu-content -->
-      <div class="menu-drawer">
-        <button class="navbar-close" onclick="burgerFunction()">
-          <img src="./icon/arrow-left.svg" alt="" />
-        </button>
-        <hr>
-        <nav class="navbar-mobile">
-          <ul>
-            <li><a href="#!">TRANG CHỦ</a></li>
-            <li><a href="#!">SẢN PHẨM</a></li>
-            <li><a href="#!">VỀ CHÚNG TÔI</a></li>
-            <li><a href="#!">HỖ TRỢ</a></li>
-            <li><a href="#!">LIÊN HỆ</a></li>
-          </ul>
-        </nav>
-        <hr>
-        <!-- Action -->
-        <div class="top-act">
-            <button class="top-act-btn">
-              <img src="./icon/search.svg" alt="" />
-            </button>
-            <button class="top-act-btn">
-              <img src="./icon/heart.svg" alt="" />
-              <span class="top-act-title"> 03 </span>
-            </button>
-            <button class="top-act-btn">
-              <img src="./icon/cart.svg" alt="" />
-              <span class="top-act-title"> 03 </span>
-            </button>
-            <button class="top-act-btn">
-              <img src="./icon/user.svg" alt="" />
-            </button>
-            <button class="top-act-btn mode" onclick="darkFunction()">
-              <img src="./icon/mode.svg" alt="" />
-            </button>
-        </div>
-      </div>
-    </header>
+    <!--  Header -->
+    <?php
+      require_once "db_module.php";
+      include "header.php"
+    ?>
     <!-- Slider Section -->
     <!--Thông tin liên hệ-->
     <div class="contact-container">
@@ -149,118 +58,52 @@
       <!--Form liên hệ-->
       <div class="contact-form">
         <div class="contact-form-content">
-          <form class="contact-form-wrapper">
+          <<form class="contact-form-wrapper" method="post">
             <p class="contact-form-description">Vui Lòng Nhập Thông Tin Và Nội Dung Cần Hỏi Đáp. Chúng Tôi Sẽ Liên Lạc Với Bạn Sớm Nhất Có Thể !</p>
             <label for="name" class="contact-form-label">Họ và Tên*</label>
-            <input type="text" id="name" class="contact-form-input" />
+            <input type="text" id="name" name="name" class="contact-form-input" />
             <label for="phone" class="contact-form-label-phone">Số điện thoại*</label>
-            <input type="tel" id="phone" class="contact-form-input-phone" />
+            <input type="tel" id="phone" name="phone" class="contact-form-input-phone" />
             <label for="email" class="contact-form-label-email">Email*</label>
-            <input type="email" id="email" class="contact-form-input-email" />
+            <input type="email" id="email" name="email" class="contact-form-input-email" />
             <label for="address" class="contact-form-label-address">Địa chỉ*</label>
-            <input type="text" id="address" class="contact-form-input-address" />
+            <input type="text" id="address" name="address" class="contact-form-input-address" />
             <label for="message" class="contact-form-label-message">Nội dung cần hỏi đáp*</label>
-            <textarea id="message" class="contact-form-textarea"></textarea>
-            <button type="submit" class="contact-form-submit">Gửi</button>
+            <textarea id="message" name="message" class="contact-form-textarea"></textarea>
+            <button type="submit" name="submit" class="contact-form-submit">Gửi</button>
           </form>
+          <!-- Bắt PT POST khi đăng ký liên hệ -->
+          <?php
+            $link = null;
+            taoKetNoi($link);
+            if(isset($_POST["submit"])){
+              $_ho_ten = $_POST["name"];
+              $_so_dien_thoai = $_POST["phone"];
+              $_email = $_POST["email"];
+              $_dia_chi = $_POST["address"];
+              $_noi_dung_thac_mac = $_POST["message"];
+            //Tạo câu lệnh SQL thêm vào bảng tbl_lienhe
+            $sql_dangky = "INSERT INTO tbl_lienhe (ho_ten, so_dien_thoai, email, dia_chi, noi_dung_thac_mac) VALUES ('$_ho_ten', '$_so_dien_thoai', '$_email', '$_dia_chi', '$_noi_dung_thac_mac')";
+            //Kiểm tra biến có dữ liệu hay không
+            if($_ho_ten !== "" && $_so_dien_thoai !== "" && $_email !== "" && $_dia_chi !== "" && $_noi_dung_thac_mac !== ""){
+              $rs_dangky = chayTruyVanKhongTraVeDL($link, $sql_dangky);
+              // Kiểm tra insert
+              if($rs_dangky){
+                  echo "<script>alert('Gửi thành công');</script>";
+              } else {
+                  echo "<script>alert('Gửi thất bại');</script>";
+              }
+              giaiPhongBoNho($link,$rs_dangky);
+            }          
+            }
+            giaiPhongBoNho($link,$result);
+          ?>
         </div>
       </div>
     </div>
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-row">
-        <div class="container">
-          <div class="footer-column">
-            <!-- Logo -->
-            <a href="./" class="logo-foot">
-              <img src="./icon/Logo.svg" alt="Luxe" />
-              <h1 class="logo-title">Luxe</h1>
-            </a>
-            <!-- Download app -->
-            <div class="download-container">
-              <p class="download-title">
-                Tải ngay Luxe app
-              </p>
-              <div class="download-method">
-                <a href="https://play.google.com/store/apps" class="ch-store">
-                <img src="./icon/ch-play.svg" alt="" />
-              </a>
-              <a href="https://www.apple.com/vn/app-store" class="app-store">
-                <img src="./icon/app-store.svg" alt="" />
-              </a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Danh mục</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Trang chủ
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Sản phẩm
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link"> Về chúng tôi </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Hỗ trợ
-                    </a>
-                </li>
-                <li class="footer__item">
-                  <a href="#!" class="footer__link">
-                    Liên hệ
-                  </a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Thông tin liên hệ</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                  279 Nguyễn Tri Phương, Phường 5, Quận 10, TP.HCM
-                </li>
-                <li class="footer__item">
-                  (+84) 046 990 809
-                </li>
-                <li class="footer__item">
-                  info@example.com
-                </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Theo dõi</h3>
-            <div class="footer__social">
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/index-facebook.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/index-insta.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/index-twitter.svg" alt="">
-                </a>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-          <div class="payment-method">
-            <img src="./icon/paypal.svg" alt="">
-            <img src="./icon/visa.svg" alt="">
-            <img src="./icon/master-card.svg" alt="">
-          </div>
-          <p class="footer__copyright-text">
-            Copyright © 2023 UIHUT All Rights Reserved
-          </p>
-        </div>
-    </div>
-    </footer>
+    <?php
+      include "footer.php";
+    ?>
   </body>
 </html>
