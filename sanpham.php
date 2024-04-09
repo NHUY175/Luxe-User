@@ -84,8 +84,10 @@
             <?php
               if ($row['gia_giam'] != 0){
                 echo '<span class="product-inf__price">' .number_format($row['gia_giam'], 0, ',', '.'). ' VNĐ </span>';
-              }         
-              echo '<span class="product-inf__price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ</span>';
+                echo '<span class="product-inf__price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ</span>';
+              } else{
+              echo '<span class="product-inf__price">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ</span>';
+              }
             ?>
           </div>
           <p class="product-inf__text">
