@@ -140,8 +140,12 @@
             <select class="size-dropdown" id="select-size" name="size" >
             <?php
               while ($row_size = $result_size->fetch_assoc()) {
-                echo "<option value='" . $row_size["ten_bien_the"] . "'>" . $row_size["ten_bien_the"] . "</option>";
-            }
+                echo "<option value='" . $row_size["ten_bien_the"] . "'";
+                if(isset($_POST['size']) && $_POST['size'] === $row_size["ten_bien_the"]) {
+                  echo " selected";
+                }
+                echo ">" . $row_size["ten_bien_the"] . "</option>";
+              }
             ?>
             </select>
               <?php 
