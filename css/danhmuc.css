@@ -75,6 +75,9 @@ a:visited {
   color: inherit; /* Sử dụng màu mặc định của phần tử cha */
 }
 
+a:active {
+  color: inherit; /* Màu chữ sẽ được thừa kế từ phần tử cha khi di chuột qua hoặc click vào liên kết */
+}
 .container {
   max-width: calc(100% - 50px);
   margin-left: auto;
@@ -645,7 +648,7 @@ input:checked + label::before {
   width: 1434px; */
 }
 .prod-list__item {
-  width: 295px;
+  width: 300px;
   height: fit-content;
   display: flex;
   border-radius: 18px;
@@ -747,7 +750,7 @@ input:checked + label::before {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  height: 67px;
+  max-height: 67px;
 }
 .prod-list__item__info--title,
 .prod-list__item__info--masp {
@@ -756,18 +759,21 @@ input:checked + label::before {
   font-weight: 650;
   font-size: 16px;
 }
-.prod-list__item__info--title {
+/* .prod-list__item__info--title {
+  color: var(--text-color-2);
+} */
+.prod-list__item__info--title a {
   color: var(--text-color-2);
 }
 .prod-list__item__info--masp {
   margin-right: -9px;
-  font-weight: 650;
+  font-weight: 600;
   color: #939090;
 }
 .prod-list__item__info--price-fb {
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
+  font-size: 14px;
   color: #fa8541;
   align-items: center;
   text-align: left;
@@ -781,14 +787,14 @@ input:checked + label::before {
   font-weight: 600;
 }
 .prod-list__item__info--price {
-  font-size: 18px;
-  margin-right: 7px;
-  font-weight: 640;
+  font-size: 15.5px;
+  margin-right: 3px;
+  font-weight: 680;
 }
 .prod-list__item__info--price-sales {
   text-decoration: line-through;
   font-weight: 550;
-  font-size: 16px;
+  font-size: 13.5px;
   color: var(--text-color-1);
 }
 /* star-icon */
@@ -1408,7 +1414,7 @@ input:checked + label::before {
   }
 
   .prod-list__item {
-    width: 280px;
+    width: 300px;
   }
   /* ================PHẦN GỢI Ý SẢN PHẨM========= */
   .Suggest-for-you--text {
