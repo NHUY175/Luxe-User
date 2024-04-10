@@ -31,7 +31,7 @@
           <button class="hamburger-menu" onclick="burgerFunction()">
             <img src="./icon/sanpham-burger.svg" alt="" />
           </button>
-          <script src="./js/scripts.js"></script>
+          <script src="./js/sanpham.js"></script>
           <!-- Logo -->
           <a href="./" class="logo-nav">
             <img src="./icon/sanpham-logo.svg" alt="Luxe" />
@@ -341,8 +341,8 @@
                 // Gán giá trị giatri vào trường input hidden trong form
                 document.getElementById("giatri").value = giatri;
 
-                window.location.assign('giohang.php?opt=view_gh');
-                
+                // Gửi form
+                document.getElementById("form-insert").submit();
               }
             </script> 
           </div>
@@ -351,7 +351,7 @@
     </div>
 
     <!-- Chi tiết sản phẩm -->
-    <p class="product-text" onclick = "hi()"> Chi tiết sản phẩm</p>
+    <p class="product-text"> Chi tiết sản phẩm</p>
     <div class="product-description">
       <p class="text-ring">Nhẫn</p>
       <div class="product-des">
@@ -595,14 +595,14 @@
           ?>
 
           <div class="customer1">
-            <img src="./icon/sanpham-logo.svg" alt="" class="ava-img1" />
-            <p class="review-tittle1"> <?php echo $ho_ten;?> </p>
+            <img src="./icon/sanpham-logo.svg" alt="" class="ava-img" />
+            <p class="review-tittle"> <?php echo $ho_ten;?> </p>
             <div class="product-inf__star">
               <p style="color: var(--text-color-dark);"> <?php echo $so_sao;?> </p>
               <img src="./icon/sanpham-star.svg" alt="" />
             </div>
-            <p class="review-tittle1"> <?php echo $tieu_de_review;?> </p>
-            <p class="review-detail1"> <?php echo $noi_dung;?> </p>
+            <p class="review-tittle"> <?php echo $tieu_de_review;?> </p>
+            <p class="review-detail"> <?php echo $noi_dung;?> </p>
           </div>    
           <?php
             }
@@ -639,7 +639,7 @@
 
     <!-- Sản phẩm tương tự -->
     <div class="container">
-      <p class="product-inf__title__1">SẢN PHẨM TƯƠNG TỰ, THAM KHẢO NGAY!</p>
+      <p class="product-inf__title__1">Sản phẩm tương tự</p>
       <div class="product-home">
         <?php
 
@@ -670,11 +670,25 @@
               <a href="./product-detail.html">
                 <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
               </a>
-              <button class="like-btn">
-                <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" />
-              </button>
+              <!-- Hover tim và thêm vào giỏ hàng -->
+              <div class="button-heart-cart-hover">
+                <a href="">
+                  <img
+                    src="./icon/sanpham-heart.svg"
+                    alt=""
+                    class="prod-list__item__image--heart-hover"
+                  />
+                </a>
+                <a href="">
+                  <img
+                    src="./icon/sanpham-cart.svg"
+                    alt=""
+                    class="prod-list__item__image--cart-hover"
+                  />
+                </a>
+              </div>
             </div>
-            <div class = "prod-list__item__inner">
+            <div class="prod-list__item__inner">
               <h3 class="product-card__title">
                 <a href="./product-detail.html"><?php echo $product_name; ?></a>
               </h3>
@@ -688,8 +702,8 @@
                       echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
                     }
                 ?>
-                  <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
-                  <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+                <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+                <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
               </div>
             </div>
           </div>
@@ -699,7 +713,7 @@
         ?>
       </div>
       <!-- Hiển thị sản phẩm tương tự khi ấn button xem thêm -->
-      <div class="product-home">
+      <div class="product-home1">
         <?php
           // Truy vấn danh sách sản phẩm tương tự
           $query_similar_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
@@ -721,30 +735,43 @@
               $product_category = $row_product["ten_danh_muc"];
               $avg_rating = $row_product["avg_rating"];
               ?>
-              <div class="product-item1">
-              <div class="product-card1">
-              <div class="product-card__img-wrap1">
+              <div class="product-item">
+              <div class="product-card">
+              <div class="product-card__img-wrap">
                 <a href="./product-detail.html">
-                  <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb1" />'; ?>
+                  <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
                 </a>
-                <button class="like-btn">
-                  <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon1" />
-                </button>
+                <div class="button-heart-cart-hover">
+                  <a href="">
+                    <img
+                      src="./icon/sanpham-heart.svg"
+                      alt=""
+                      class="prod-list__item__image--heart-hover"
+                    />
+                  </a>
+                  <a href="">
+                    <img
+                      src="./icon/sanpham-cart.svg"
+                      alt=""
+                      class="prod-list__item__image--cart-hover"
+                    />
+                  </a>
+                </div>
               </div>
-              <h3 class="product-card__title1">
+              <h3 class="product-card__title">
                 <a href="./product-detail.html"><?php echo $product_name; ?></a>
               </h3>
-              <p class="product-card__collection1"><?php echo $product_category; ?></p>
+              <p class="product-card__collection"><?php echo $product_category; ?></p>
               <div class="product-card__row1">
               <?php
                 if ($product_price != 0){
-                    echo '<span class="product-card__price1">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
-                    echo '<span class="product-card__price-sales1">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                    echo '<span class="product-card__price">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
+                    echo '<span class="product-card__price-sales">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
                   } else {
-                    echo '<span class="product-card__price1">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                    echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
                   }
               ?>
-                <img src="./icon/sanpham-star.svg" alt="" class="product-card__star1" />
+                <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
                 <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
               </div>
             </div>
