@@ -19,9 +19,6 @@
     <script src="./js/header.js"></script>
   </head>
   <body>
-  <?php
-      require_once "db_module.php";
-    ?>
     <header class="header">
       <!--Logo-left-->
       <a href="index.html">
@@ -180,6 +177,7 @@
           </form>
           <!-- Bắt PT POST khi đăng ký -->
           <?php
+            require_once "db_module.php";
             $link = null;
             taoKetNoi($link);
             if(isset($_POST["submit"])){
@@ -190,10 +188,10 @@
               $_email = $_POST["email"];
               $_dia_chi = $_POST["diachi"];
               $_mat_khau = $_POST["password"];
-            //Tạo câu lệnh SQL thêm vào bảng tbl_lienhe
+            //Tạo câu lệnh SQL thêm vào bảng tbl_khachhang
             $sql_dangky = "INSERT INTO tbl_khachhang (ho_ten, gioi_tinh, ngay_sinh, email, so_dien_thoai,  dia_chi, mat_khau) VALUES ('$_ho_ten','$_gioi_tinh', '$_ngay_sinh', '$_email', '$_so_dien_thoai',  '$_dia_chi', '$_mat_khau')";
             //Kiểm tra biến có dữ liệu hay không
-            if($_ho_ten !== "" && $_so_dien_thoai !== "" && $_email !== "" && $_dia_chi !== "" && $_mat_khau !== "" && $_ngay_sinh !== "" && $_gioi_tinh !== ""){
+            if($_ho_ten !== ""){
               $rs_dangky = chayTruyVanKhongTraVeDL($link, $sql_dangky);
               // Kiểm tra insert
               if($rs_dangky){
@@ -204,7 +202,6 @@
               giaiPhongBoNho($link,$rs_dangky);
               }          
             }
-            giaiPhongBoNho($link,$result);
           ?>
         </div>
       </div>
