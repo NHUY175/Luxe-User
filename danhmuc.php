@@ -367,30 +367,36 @@
     <!--------------- Tổng hợp các sản phẩm-------------->
     <div class="prod-list">
         <div class="prod-list__grid">
+            <!-- Hiển thị sản phẩm -->
             <?php
             $link = null;
             taoKetNoi($link);
-            //Kết nối và lấy dữ liệu từ CSDL
-            $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_sanpham AS sp, tbl_danhmuc AS dm AND sp.ma_danh_muc = dm.ma_danh_muc ORDER BY RAND() LIMIT 4");
+            // Kết nối và lấy dữ liệu từ CSDL
+            $result = chayTruyVanTraVeDL($link, "SELECT sp.ten_san_pham, sp.gia_goc, sp.gia_giam, sp.hinh_anh_1, dm.ten_danh_muc FROM tbl_sanpham AS sp, tbl_danhmuc AS dm WHERE gia_giam IS NOT NULL AND sp.ma_danh_muc = dm.ma_danh_muc ORDER BY RAND() LIMIT 12");
             // Xử lý dữ liệu trả về
+            $count = 0; // Biến đếm số sản phẩm đã hiển thị
             while ($row = mysqli_fetch_assoc($result)) {
+                if ($count % 4 == 0) {
+                    echo '<div class="row">'; // Bắt đầu một dòng mới sau mỗi 4 sản phẩm
+                }
                 ?>
                 <section class="prod-list__item">
                     <div class="prod-list__item__image">
                         <a href="">
-                            <img class="prod-list__item__img1" loading="lazy"
+                            <img class="prod-list__item__img1" loading="lazy" alt=""
                                 src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
                         </a>
                         <span class="product-sale-tag">
-                            <span> SALES!</span>
+                            <span> NEW!</span>
                         </span>
                         <!-- Hover heart and cart -->
                         <div class="button-heart-cart-hover">
+                            <!-- <div class="button-heart"> -->
                             <a href="">
-                                <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
+                                <img src="./icon/heart.svg" alt="" class="prod-list__item__image--heart-hover" />
                             </a>
                             <a href="">
-                                <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
+                                <img src="./icon/cart.svg" alt="" class="prod-list__item__image--cart-hover" />
                             </a>
                         </div>
                     </div>
@@ -398,18 +404,21 @@
                         <div class="prod-list__item__inner--child">
                             <div class="prod-list__item__info">
                                 <div class="prod-list__item__info--title">
-                                    <a
-                                        href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                                    <a href=""><?php echo $row["ten_san_pham"]; ?></a>
                                 </div>
                                 <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?></div>
                             </div>
                             <div class="prod-list__item__info--price-fb">
                                 <div class="prod-list__item--price">
-                                    <?php echo '<span class="prod-list__item__info--price">' . number_format($row['gia_giam'], 0, ',', '.') . ' VNĐ </span>'; ?>
-                                    <?php echo '<span class="prod-list__item__info--price-sales">' . number_format($row['gia_goc'], 0, ',', '.') . ' VNĐ </span>'; ?>
+                                    <span
+                                        class="prod-list__item__info--price"><?php echo number_format($row['gia_giam'], 0, ',', '.'); ?>
+                                        VNĐ</span>
+                                    <span
+                                        class="prod-list__item__info--price-sales"><?php echo number_format($row['gia_goc'], 0, ',', '.'); ?>
+                                        VNĐ</span>
                                 </div>
                                 <div class="prod-list__item__info--star-icon">
-                                    <img class="info--star-icon" loading="lazy" src="./icon/index-star.svg" />
+                                    <img class="info--star-icon" loading="lazy" alt="" src="./icon/star.svg" />
                                     <div class="prod-list__item__info--fb">4.3</div>
                                 </div>
                             </div>
@@ -417,9 +426,14 @@
                     </div>
                 </section>
                 <?php
+                $count++;
+                if ($count % 4 == 0) {
+                    echo '</div>'; // Kết thúc dòng sau khi đã hiển thị 4 sản phẩm
+                }
             }
             giaiPhongBoNho($link, $result);
             ?>
+
 
         </div>
     </div>
