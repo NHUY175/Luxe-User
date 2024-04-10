@@ -348,6 +348,11 @@ label{
   cursor: pointer;
 }
 .btn.them{
+  font-family: Quicksand, sans-serif;
+  border: none; /* Xóa viền ngoài */
+  outline: none; /* Xóa viền bôi đen khi focus */
+
+  text-decoration: none; /* Xóa gạch chân của phần tử <a> */
   position: absolute;
   width: 30%;
   right: 6%;
