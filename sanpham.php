@@ -702,8 +702,10 @@
                       echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
                     }
                 ?>
-                <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
-                <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+                <div class="prod-list__item__info--star-icon">
+                  <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+                  <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+                </div>
               </div>
             </div>
           </div>
@@ -735,7 +737,7 @@
               $product_category = $row_product["ten_danh_muc"];
               $avg_rating = $row_product["avg_rating"];
               ?>
-              <div class="product-item">
+              <div class="product-item1">
               <div class="product-card">
               <div class="product-card__img-wrap">
                 <a href="./product-detail.html">
@@ -762,7 +764,7 @@
                 <a href="./product-detail.html"><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection"><?php echo $product_category; ?></p>
-              <div class="product-card__row1">
+              <div class="product-card__row">
               <?php
                 if ($product_price != 0){
                     echo '<span class="product-card__price">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
@@ -771,8 +773,10 @@
                     echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
                   }
               ?>
-                <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
-                <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+                <div class="prod-list__item__info--star-icon">
+                  <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+                  <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+                </div>
               </div>
             </div>
           </div>
