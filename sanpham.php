@@ -195,7 +195,7 @@
               </script>
               <script src="./js/scripts.js"></script>
             <!-- Button THÊM VÀO GIỎ HÀNG -->
-            <a href="" class="btn them" id="giohang" onclick = "Themgiohang()">THÊM VÀO GIỎ HÀNG</a>   
+            <a href="" class="btn them" id="giohang" onclick = "Themgiohang()">THÊM VÀO GIỎ HÀNG</a>  
             <script>
               var finalCount = 0;
               var size = '<?php echo $size; ?>';
