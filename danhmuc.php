@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="css/footer.css" />
 
     <!-- Scripts -->
-    <script src="./js/header.js"></script>
     <script src="./js/danhmuc.js"></script>
 </head>
 
@@ -790,7 +789,7 @@
     </section>
     <!-- Footer -->
     <?php
-    include "footer.php";
+        include "footer.php";
     ?>
 </body>
 

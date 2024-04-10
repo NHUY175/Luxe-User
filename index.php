@@ -70,7 +70,7 @@
                 ?>
                 <section class="prod-list__item">
                   <div class="prod-list__item__image">
-                    <a href="">
+                    <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
                       <img
                         class="prod-list__item__img1"
                         loading="lazy"
@@ -168,7 +168,7 @@
                 ?>
                 <section class="prod-list__item">
                   <div class="prod-list__item__image">
-                    <a href="">
+                    <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
                       <img
                         class="prod-list__item__img1"
                         loading="lazy"
