@@ -347,13 +347,12 @@ label {
   align-items: center;
 }
 .size-dropdown {
-  width: 25px;
-  height: 20px;
+  width: 35px;
+  height: 30px;
   margin-left: 20px;
   align-items: center;
   position: relative;
   display: inline-block;
-  font-family: Arial, sans-serif;
 }
 .size-quantity,
 .selected-size {
@@ -365,7 +364,6 @@ label {
 
 .size-dropdown {
   display: inline-block;
-  padding: 10px 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
