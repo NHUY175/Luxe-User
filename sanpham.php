@@ -416,7 +416,11 @@
                         WHERE  so_sao = 5 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_5_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_5_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity1" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_5_star']; ?></p>
@@ -431,7 +435,11 @@
                                WHERE  so_sao = 4 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_4_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_4_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity2" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_4_star']; ?></p>
@@ -446,7 +454,11 @@
                                WHERE  so_sao = 3 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_3_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_3_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity3" style="width: <?php echo $percentage; ?>%;"></div></div>  
             <p class="star-quality"> <?php echo $row['total_3_star']; ?></p>
@@ -461,7 +473,11 @@
                                WHERE  so_sao = 2 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_2_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_2_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity4" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_2_star']; ?></p>
@@ -476,7 +492,11 @@
                                WHERE  so_sao = 1 AND ma_san_pham = " .$_GET['id'];
               $result = mysqli_query($link, $query);
               $row = mysqli_fetch_assoc($result);
-              $percentage = ($row['total_1_star'] / $rows['total_reviews']) * 100;
+              if ($rows['total_reviews'] == 0)
+              { 
+                $percentage = 0;
+              } else {
+              $percentage = ($row['total_1_star'] / $rows['total_reviews']) * 100; }
             ?>
             <div class="cross-bar__star"><div class="cross-quantity5" style="width: <?php echo $percentage; ?>%;"></div></div>
             <p class="star-quality"> <?php echo $row['total_1_star']; ?></p>
@@ -654,21 +674,23 @@
                 <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" />
               </button>
             </div>
-            <h3 class="product-card__title">
-              <a href="./product-detail.html"><?php echo $product_name; ?></a>
-            </h3>
-            <p class="product-card__collection"><?php echo $product_category; ?></p>
-            <div class="product-card__row">
-            <?php
-              if ($product_price != 0){
-                  echo '<span class="product-card__price">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
-                  echo '<span class="product-card__price-sales">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
-                } else {
-                  echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
-                }
-            ?>
-              <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
-              <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+            <div class = "prod-list__item__inner">
+              <h3 class="product-card__title">
+                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+              </h3>
+              <p class="product-card__collection"><?php echo $product_category; ?></p>
+              <div class="product-card__row">
+                <?php
+                  if ($product_price != 0){
+                      echo '<span class="product-card__price">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
+                      echo '<span class="product-card__price-sales">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                    } else {
+                      echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                    }
+                ?>
+                  <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+                  <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+              </div>
             </div>
           </div>
         </div>
