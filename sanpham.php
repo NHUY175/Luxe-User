@@ -341,8 +341,8 @@
                 // Gán giá trị giatri vào trường input hidden trong form
                 document.getElementById("giatri").value = giatri;
 
-                // Gửi form
-                document.getElementById("form-insert").submit();
+                window.location.assign('giohang.php?opt=view_gh');
+                
               }
             </script> 
           </div>
@@ -351,7 +351,7 @@
     </div>
 
     <!-- Chi tiết sản phẩm -->
-    <p class="product-text"> Chi tiết sản phẩm</p>
+    <p class="product-text" onclick = "hi()"> Chi tiết sản phẩm</p>
     <div class="product-description">
       <p class="text-ring">Nhẫn</p>
       <div class="product-des">
