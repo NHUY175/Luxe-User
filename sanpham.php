@@ -234,6 +234,13 @@
                                   WHERE ten_bien_the = '".$size."' AND sp.ma_san_pham = " .$_GET['id'];
                         $result = chayTruyVanTraVeDL($link, $query);
                         $rows = mysqli_fetch_assoc($result);
+
+                        $query_soluong = "SELECT gh.so_luong, b.so_luong - COALESCE(gh.so_luong, 0) AS so_luong_last
+                                          FROM tbl_bienthe AS b
+                                          LEFT JOIN tbl_chitiet_giohang AS gh ON gh.ma_bien_the = b.ma_bien_the
+                                          WHERE b.ten_bien_the = '".$size."' AND gh.ma_gio_hang = 2 AND gh.ma_san_pham = " .$_GET['id'];
+                        $result_soluong = chayTruyVanTraVeDL($link, $query_soluong);
+                        $rows_soluong = mysqli_fetch_assoc($result_soluong);
                       }
                   } else if ($_POST['formType'] == 'review-form') {
 
@@ -322,7 +329,8 @@
               var giatri = 0;
               var finalCount = 0;
               var size = '<?php echo $size; ?>';
-              var so_luong = <?php echo $rows['so_luong'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
+              var so_luong = <?php echo $rows_soluong['so_luong_last'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
+              var soluonghienco = <?php echo $rows_soluong['so_luong'] ?>; 
 
                // Function tăng giảm số lượng 
                 function updateCount(action) {
@@ -334,7 +342,7 @@
                     count++;
                   } else {
                     if (action === "increase") {
-                      alert("Bạn đã chọn vượt quá số lượng hiện có!");
+                      alert("Bạn đã chọn vượt quá số lượng tối đa! Số lượng sản phẩm này trong giỏ hàng hiện tại là " + soluonghienco);
                     }
                     return;
                   }
