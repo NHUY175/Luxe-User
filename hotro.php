@@ -16,6 +16,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/hotro.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/hotro.js"></script>
   </head>

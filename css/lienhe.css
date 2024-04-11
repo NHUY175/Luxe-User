@@ -81,110 +81,6 @@
     opacity: 0.8;
   }
   
-  
-  /* ======= Header ====== */
-  .fixed-header {
-    position: relative;
-    background-color: var(--background-color-1);
-    padding: 10px 0px;
-  }
-  
-  
-  /* ======== Navigation ======== */
-  .logo-nav {
-    display: flex;
-    align-items: center;
-    margin-top: -7px;
-  }
-  
-  
-  .logo-nav .logo-title {
-    color: var(--primary-color);
-    margin-left: 14px;
-    color: #ffbe98;
-    font-size: 40px;
-    font-weight: 700;
-  }
-  
-  
-  .top-bar {
-    display: flex;
-    /* Căn giữa theo chiều dọc */
-    align-items: center;
-  }
-  
-  
-  .top-bar ul {
-    display: flex;
-    margin-left: 8.6rem;
-    list-style-type: none;
-  }
-  
-  
-  .top-bar .top-act {
-    display: flex;
-    margin-left: auto;
-    /* Trong flexbox, margin sẽ đẩy phần tử con ra khỏi hưởng được set*/
-    align-items: center;
-  }
-  
-  
-  .navbar ul a {
-    margin-left: 15px;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text-color-1);
-    padding: 8px 10px;
-  }
-  
-  
-  .top-bar .top-act {
-    gap: 30px;
-  }
-  
-  
-  .top-bar .top-act-group {
-    display: flex;
-    align-items: center;
-    min-width: 50px;
-    height: 50px;
-    background: var(--second-color);
-    border-radius: 8px;
-  }
-  
-  
-  .top-bar .top-act-btn {
-    display: flex;
-    align-items: center;
-    padding: 13px;
-    border: none;
-    background: var(--second-color);
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  
-  .navbar .top-act-title {
-    margin-left: 10px;
-    font-family: Quicksand;
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-  
-  
-  .top-bar .top-act-separate {
-    width: 2px;
-    height: 23px;
-    background: #939090;
-  }
-  
-  
-  .navbar ul a:hover {
-    text-decoration: underline;
-    color: var(--primary-color);
-  }
-  
-  
   /* ========= Slider Section ======== */
   /*======= PAGE Liên hệ =========*/
   /*  Thông tin liên hệ  */
@@ -812,20 +708,6 @@
   .menu-drawer .top-act button:hover {
     cursor: pointer;
     opacity: 0.8;
-  }
-
-
- 
-
-
-  /* ========= Footer ====== */
-  .footer-row .container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-
-  .footer-column:not(:first-child) {
-    margin-top: 20px;
   }
 }
 

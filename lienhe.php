@@ -16,6 +16,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/lienhe.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/hotro.js"></script>
   </head>
@@ -58,7 +60,7 @@
       <!--Form liên hệ-->
       <div class="contact-form">
         <div class="contact-form-content">
-          <<form class="contact-form-wrapper" method="post">
+          <form class="contact-form-wrapper" method="post">
             <p class="contact-form-description">Vui Lòng Nhập Thông Tin Và Nội Dung Cần Hỏi Đáp. Chúng Tôi Sẽ Liên Lạc Với Bạn Sớm Nhất Có Thể !</p>
             <label for="name" class="contact-form-label">Họ và Tên*</label>
             <input type="text" id="name" name="name" class="contact-form-input" />

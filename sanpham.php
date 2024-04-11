@@ -126,11 +126,14 @@
           ?>
           <div class="product-inf__star">
             <?php
+              $link = null;
+              taoKetNoi($link);
+
               $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
               FROM tbl_sanpham sp
               LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
               WHERE sp.ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row_star = mysqli_fetch_assoc($result);
             ?>
             <img src="./icon/sanpham-star.svg" alt="" />
@@ -181,7 +184,7 @@
                 <p class="return__text"> Bảo hành trọn đời </p>
               </div>
               <div class="delivery">
-                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return" onclick = "hi()"/>
+                <img src="./icon/sanpham-delivery.svg" alt="" class="img-return"/>
                 <p class="return__text"> Miễn phí giao hàng toàn quốc </p>
               </div>
             </div>
@@ -194,8 +197,11 @@
             <form id="form-size" action="" method = "POST">
             <input type="hidden" name="formType" value="size-form">
             <?php
+              $link = null;
+              taoKetNoi($link);
+
               $query_size = "SELECT ten_bien_the FROM tbl_bienthe WHERE ma_san_pham = " .$_GET['id'];
-              $result_size = mysqli_query($link, $query_size); 
+              $result_size = chayTruyVanTraVeDL($link, $query_size); 
             ?> 
             <select class="size-dropdown" id="select-size" name="size" >
             <?php
@@ -220,12 +226,21 @@
                         // Lấy dữ liệu từ biểu mẫu
                         $size = $_POST['size'];
 
+                        $link = null;
+                        taoKetNoi($link);
                         $query = "SELECT * 
                                   FROM tbl_sanpham sp 
                                   INNER JOIN tbl_bienthe bt ON sp.ma_san_pham = bt.ma_san_pham 
                                   WHERE ten_bien_the = '".$size."' AND sp.ma_san_pham = " .$_GET['id'];
-                        $result = mysqli_query($link, $query);
+                        $result = chayTruyVanTraVeDL($link, $query);
                         $rows = mysqli_fetch_assoc($result);
+
+                        $query_soluong = "SELECT gh.so_luong, b.so_luong - COALESCE(gh.so_luong, 0) AS so_luong_last
+                                          FROM tbl_bienthe AS b
+                                          LEFT JOIN tbl_chitiet_giohang AS gh ON gh.ma_bien_the = b.ma_bien_the
+                                          WHERE b.ten_bien_the = '".$size."' AND gh.ma_gio_hang = 2 AND gh.ma_san_pham = " .$_GET['id'];
+                        $result_soluong = chayTruyVanTraVeDL($link, $query_soluong);
+                        $rows_soluong = mysqli_fetch_assoc($result_soluong);
                       }
                   } else if ($_POST['formType'] == 'review-form') {
 
@@ -237,9 +252,11 @@
                            $reviewStar = $_POST['reviewStar'];
                             $reviewTitle = $_POST['reviewTitle'];
                             $reviewDetails = $_POST['reviewDetails'];
-                            
+
+                            $link = null;
+                            taoKetNoi($link);
                             $sql = "INSERT INTO tbl_review (so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES ('$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
-                            $abc = mysqli_query($link, $sql);
+                            $abc = chayTruyVanTraVeDL($link, $sql);
                         }
                       }
                     } else if ($_POST['formType'] == 'insert-form') {
@@ -253,20 +270,25 @@
                             $ma_bien_the = $_POST['ma_bien_the'];
                             $soluong = $_POST['soluong'];
                             $giatri = $_POST['giatri'];
-                            
+
+                            $link = null;
+                            taoKetNoi($link);
                             $query_test = "SELECT * FROM tbl_chitiet_giohang WHERE ma_gio_hang = 1 AND ma_san_pham = $ma_san_pham";
-                            $result_test = mysqli_query($link, $query_test);
+                            $result_test = chayTruyVanTraVeDL($link, $query_test);
 
                             if (mysqli_num_rows($result_test) > 0) {
 
+                              $link = null;
+                              taoKetNoi($link);
                               // Nếu có bản ghi trong cơ sở dữ liệu, thực hiện câu lệnh UPDATE
                               $query_update = "UPDATE tbl_chitiet_giohang SET so_luong = so_luong + $soluong, gia_tri = gia_tri + $giatri WHERE ma_gio_hang = 1 AND ma_san_pham = $ma_san_pham";
-                              mysqli_query($link, $query_update);
+                              chayTruyVanTraVeDL($link, $query_update);
                             } else {
-
+                              $link = null;
+                              taoKetNoi($link);
                               // Nếu không có bản ghi trong cơ sở dữ liệu, thực hiện câu lệnh INSERT
                               $query_insert = "INSERT INTO tbl_chitiet_giohang (ma_san_pham, so_luong, gia_tri, ma_bien_the, ma_gio_hang) VALUES ('$ma_san_pham', $soluong, $giatri, $ma_san_pham, 1)";
-                              mysqli_query($link, $query_insert);
+                              chayTruyVanTraVeDL($link, $query_insert);
                             }
                         }
                       }
@@ -307,7 +329,8 @@
               var giatri = 0;
               var finalCount = 0;
               var size = '<?php echo $size; ?>';
-              var so_luong = <?php echo $rows['so_luong'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
+              var so_luong = <?php echo $rows_soluong['so_luong_last'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
+              var soluonghienco = <?php echo $rows_soluong['so_luong'] ?>; 
 
                // Function tăng giảm số lượng 
                 function updateCount(action) {
@@ -319,7 +342,7 @@
                     count++;
                   } else {
                     if (action === "increase") {
-                      alert("Bạn đã chọn vượt quá số lượng hiện có!");
+                      alert("Bạn đã chọn vượt quá số lượng tối đa! Số lượng sản phẩm này trong giỏ hàng hiện tại là " + soluonghienco);
                     }
                     return;
                   }
@@ -390,11 +413,13 @@
 
     <!-- Đánh giá -->
     <?php
+      $link = null;
+      taoKetNoi($link);
       $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
                 FROM tbl_sanpham sp
                 LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
                 WHERE sp.ma_san_pham = " .$_GET['id'];
-      $result = mysqli_query($link, $query);
+      $result = chayTruyVanTraVeDL($link, $query);
       $rows = mysqli_fetch_assoc($result);  
     ?>
     <div class="review">
@@ -413,10 +438,13 @@
           <div class="star">
             <p class="star-quality">5 sao</p>
             <?php
+              $link = null;
+              taoKetNoi($link);
+
               $query = "SELECT COUNT(ma_review) AS total_5_star
                         FROM tbl_review
                         WHERE  so_sao = 5 AND ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row = mysqli_fetch_assoc($result);
               if ($rows['total_reviews'] == 0)
               { 
@@ -432,10 +460,13 @@
           <div class="star">
             <p class="star-quality">4 sao</p>
             <?php
+
+              $link = null;
+              taoKetNoi($link);
               $query = "SELECT COUNT(ma_review) AS total_4_star
                                FROM tbl_review
                                WHERE  so_sao = 4 AND ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row = mysqli_fetch_assoc($result);
               if ($rows['total_reviews'] == 0)
               { 
@@ -451,10 +482,12 @@
           <div class="star">
             <p class="star-quality">3 sao</p>
             <?php
+              $link = null;
+              taoKetNoi($link);
               $query = "SELECT COUNT(ma_review) AS total_3_star
                                FROM tbl_review
                                WHERE  so_sao = 3 AND ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row = mysqli_fetch_assoc($result);
               if ($rows['total_reviews'] == 0)
               { 
@@ -470,10 +503,12 @@
           <div class="star">
             <p class="star-quality">2 sao</p>
             <?php
+              $link = null;
+              taoKetNoi($link);
               $query = "SELECT COUNT(ma_review) AS total_2_star
                                FROM tbl_review
                                WHERE  so_sao = 2 AND ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row = mysqli_fetch_assoc($result);
               if ($rows['total_reviews'] == 0)
               { 
@@ -489,10 +524,12 @@
           <div class="star">
             <p class="star-quality">1 sao</p>
             <?php
+              $link = null;
+              taoKetNoi($link);
               $query = "SELECT COUNT(ma_review) AS total_1_star
                                FROM tbl_review
                                WHERE  so_sao = 1 AND ma_san_pham = " .$_GET['id'];
-              $result = mysqli_query($link, $query);
+              $result = chayTruyVanTraVeDL($link, $query);
               $row = mysqli_fetch_assoc($result);
               if ($rows['total_reviews'] == 0)
               { 
@@ -544,6 +581,8 @@
     <div class="container">
         <div class="review-customer">
           <?php
+            $link = null;
+            taoKetNoi($link);
 
             // Truy vấn đánh giá sản phẩm
             $query_reviews = "SELECT tbl_khachhang.ho_ten, tbl_review.so_sao, tbl_review.tieu_de_review, tbl_review.noi_dung 
@@ -551,7 +590,7 @@
                               INNER JOIN tbl_khachhang ON tbl_review.ma_khach_hang = tbl_khachhang.ma_khach_hang 
                               WHERE tbl_review.ma_san_pham = " .$_GET['id']. " LIMIT 3";
 
-            $result_reviews = mysqli_query($link, $query_reviews);
+            $result_reviews = chayTruyVanTraVeDL($link, $query_reviews);
 
             // Hiển thị dữ liệu đánh giá
             while ($row_review = mysqli_fetch_assoc($result_reviews)){
@@ -580,13 +619,15 @@
         <!-- Hiển thị đánh giá khi ấn button xem thêm -->
         <div class="review-customer">
           <?php
+            $link = null;
+            taoKetNoi($link);
             // Truy vấn đánh giá sản phẩm
             $query_reviews = "SELECT tbl_khachhang.ho_ten, tbl_review.so_sao, tbl_review.tieu_de_review, tbl_review.noi_dung 
                               FROM tbl_review 
                               INNER JOIN tbl_khachhang ON tbl_review.ma_khach_hang = tbl_khachhang.ma_khach_hang 
                               WHERE tbl_review.ma_san_pham = " .$_GET['id']. " LIMIT 3 OFFSET 3";
 
-            $result_reviews = mysqli_query($link, $query_reviews);
+            $result_reviews = chayTruyVanTraVeDL($link, $query_reviews);
 
             // Hiển thị dữ liệu đánh giá
             while ($row_review = mysqli_fetch_assoc($result_reviews)){
@@ -644,7 +685,8 @@
       <p class="product-inf__title__1">Sản phẩm tương tự</p>
       <div class="product-home">
         <?php
-
+        $link = null;
+        taoKetNoi($link);
         // Truy vấn danh sách sản phẩm tương tự
         $query_similar_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                    FROM tbl_sanpham sp
@@ -654,7 +696,7 @@
                                    AND sp.ma_san_pham <> ".$_GET['id']. " 
                                    GROUP BY sp.ma_san_pham
                                    LIMIT 4";
-        $result_similar_products = mysqli_query($link, $query_similar_products);
+        $result_similar_products = chayTruyVanTraVeDL($link, $query_similar_products);
 
         // Hiển thị danh sách sản phẩm tương tự
         while ($row_product = mysqli_fetch_assoc($result_similar_products)){
@@ -719,6 +761,8 @@
       <!-- Hiển thị sản phẩm tương tự khi ấn button xem thêm -->
       <div class="product-home1">
         <?php
+          $link = null;
+          taoKetNoi($link);
           // Truy vấn danh sách sản phẩm tương tự
           $query_similar_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                     FROM tbl_sanpham sp
@@ -728,7 +772,7 @@
                                     AND sp.ma_san_pham <> " .$_GET['id']. " 
                                     GROUP BY sp.ma_san_pham
                                     LIMIT 20 OFFSET 3";
-          $result_similar_products = mysqli_query($link, $query_similar_products);
+          $result_similar_products = chayTruyVanTraVeDL($link, $query_similar_products);
 
           // Hiển thị danh sách sản phẩm tương tự
           while ($row_product = mysqli_fetch_assoc($result_similar_products)){
