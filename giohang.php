@@ -201,6 +201,7 @@
       <?php
           }
         ?>
+    </div>
     <!-- Total product-->
     <div class="total-line">
       <div>
@@ -511,6 +512,3 @@
     </footer>
   </body>
 </html>
-
-
-
