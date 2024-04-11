@@ -38,7 +38,7 @@
             </div>
             <div class="faq-answer">
               <p>Để nhận được mã giảm giá từ Luxe, hãy thực hiện các bước sau:</p>
-              <p><strong>1. Trở thành thành viên của Luxe:</strong> Điền thông tin của bạn tại mục "Đăng kí thành viên" ở cuối trang, sau đó nhấn nút "Đăng kí".</p>
+              <p><strong>1. Trở thành thành viên của Luxe:</strong> Điền thông tin của bạn tại mục "Đăng kí thành viên" <a href="dangky.php">tại đây</a>, sau đó nhấn nút "Đăng kí".</p>
               <p><strong>2. Chờ đợi thông báo từ chúng tôi:</strong> Mã giảm giá sẽ được đính kèm tại các sự kiện giảm giá tiếp theo và Luxe sẽ email thông báo đến bạn.</p>
             </div>
         </div>
