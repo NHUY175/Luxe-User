@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vn">
 
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,15 +21,18 @@
     <!-- swiper css -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/danhmuc.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
 
+
     <!-- Scripts -->
     <script src="./js/danhmuc.js"></script>
 </head>
+
 
 <body>
     <!-- Header -->
@@ -46,13 +50,14 @@
                 <ul class="product-wrap--nav-links">
                     <li class="center"><a href="danhmuc.php?iddm=tatca">TẤT CẢ</a></li>
                     <li class="center"><a href="danhmuc.php?iddm=1">NHẪN</a></li>
-                    <li class="center"><a href="danhmuc.php?iddm=2">DÂY CHUYỀN</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=2">D Y CHUYỀN</a></li>
                     <li class="center"><a href="danhmuc.php?iddm=3">VÒNG TAY</a></li>
                     <li class="center"><a href="danhmuc.php?iddm=4">BÔNG TAI</a></li>
                 </ul>
             </div>
             <div class="prod-second-line"></div>
         </div>
+
 
         <!---------------------- BỘ LỌC SẢN PHẨM --------------------------------->
         <article id="article-products">
@@ -122,6 +127,7 @@
                                     </div>
                                 </div>
 
+
                                 <div class="collection-filter-color collection-item">
                                     <div class="sidebar-sort">
                                         <div class="sort_title">
@@ -130,16 +136,17 @@
                                         <ul class="mg-left-0 no-bullets filter-variant filter-color clearfix">
                                             <li class="pd-left-0">
                                                 <label data-filter="Vàng" data-filter1="vang"
-                                                    class="filter-vendor__item custom-filter-input vang-vang">
+                                                    class="filter-vendor__item custom-filter-input vang">
                                                     <input class="" type="checkbox" value="(variant:product=Vàng)"
-                                                        data-value="vang-vang" />
+                                                        data-value="vang" />
                                                     <span>Vàng</span>
                                                 </label>
                                             </li>
 
+
                                             <li class="pd-left-0">
                                                 <label data-filter="Bạc" data-filter1="bac"
-                                                    class="filter-vendor__item custom-filter-input vang-trang">
+                                                    class="filter-vendor__item custom-filter-input bac">
                                                     <input class="" type="checkbox" value="(variant:product=Bạc)"
                                                         data-value="bac" />
                                                     <span>Bạc</span>
@@ -148,6 +155,7 @@
                                         </ul>
                                     </div>
                                 </div>
+
 
                                 <div class="collection-filter-tag2 collection-item">
                                     <div class="sidebar-sort">
@@ -165,6 +173,7 @@
                                                 </label>
                                             </li>
 
+
                                             <li
                                                 class="pd-left-0 grid__item large--one-whole medium--one-whole small--one-whole">
                                                 <label data-filter="Đá Cubic Zirconia" data-filter1="da-cubic-zirconia"
@@ -174,6 +183,7 @@
                                                     <span>Đá Cubic Zirconia</span>
                                                 </label>
                                             </li>
+
 
                                             <li
                                                 class="pd-left-0 grid__item large--one-whole medium--one-whole small--one-whole">
@@ -202,15 +212,20 @@
                                 <span class="filter_chosen price" data-value="7-000-000-10-000-000">7.000.000đ :
                                     10.000.000đ <a><span></span></a></span>
 
-                                <span class="filter_chosen" data-value="vang-vang">Vàng<a><span></span></a></span>
 
-                                <span class="filter_chosen" data-value="vang-trang">Bạc<a><span></span></a></span>
+                                <span class="filter_chosen" data-value="vang">Vàng<a><span></span></a></span>
+
+
+                                <span class="filter_chosen" data-value="bac">Bạc<a><span></span></a></span>
+
 
                                 <span class="filter_chosen" data-value="da-xa-cu">
                                     Đá Xà cừ <a><span></span></a></span>
 
+
                                 <span class="filter_chosen" data-value="da-cubic-zirconia">Đá Cubic Zirconia
                                     <a><span></span></a></span>
+
 
                                 <span class="filter_chosen" data-value="da-Zirconia">Đá Zirconia
                                     <a><span></span></a></span>
@@ -238,6 +253,7 @@
                                     "]"
                                 ).toggleClass("show_tag");
 
+
                                 var check_filter = false;
                                 $(".filter_chosen").each(function () {
                                     if ($(this).hasClass("show_tag")) {
@@ -251,18 +267,22 @@
                                 }
                             });
 
+
                             $(".clear_all a").click(function () {
                                 $(".filter_chosen.show_tag a").trigger("click");
                             });
+
 
                             $(".filter-color label").click(function () {
                                 $(this).toggleClass("active");
                             });
 
+
                             $(".header_filter_chosen .filter_chosen > a").click(
                                 function () {
                                     var $parent = $(this).parent();
                                     //      $(this).parent('.filter_chosen').removeClass('show_tag');
+
 
                                     var val = $parent.attr("data-value");
                                     $(".custom-filter-input[data-filter1=" + val + "]")
@@ -302,6 +322,7 @@
                     if (isset($_GET['iddm'])) {
                         $iddm = $_GET['iddm'];
 
+
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
                         if ($iddm === 'tatca') {
                             // Hiển thị tất cả sản phẩm
@@ -333,11 +354,10 @@
                         ORDER BY RAND()
                         ";
                     }
-                    // Thực hiện truy vấn SQL để lấy sản phẩm
                     $link = null;
                     taoKetNoi($link);
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
-                    // Đếm số lượng sản phẩm được trả về                 
+                    // Đếm số lượng sản phẩm được trả về                
                     $total_products_displayed = mysqli_num_rows($result);
                     giaiPhongBoNho($link, $result);
                     ?>
@@ -348,7 +368,34 @@
                     </div>
                 </div>
                 <!----------- DROPDOWN ------------>
+                <!-- Phần HTML -->
                 <div class="prod-dropdown">
+                    <label class="prod-dropdown--left" onclick="document.getElementById('sapxep-form').submit();">>
+                        <i class="fa-solid fa-arrow-up-wide-short"></i> Sắp xếp:
+                    </label>
+                    <div class="prod-dropdown--right">
+                        <div>
+                            <form id="sapxep-form" action="" method = "POST">
+                                <select name="sap-xep" id="">
+                                    <option value="Mặc định">Mặc định</option>
+                                    <option value="ASC">Giá từ thấp tới cao</option>
+                                    <option value="DESC">Giá từ cao tới thấp</option>
+                                </select>
+                            </form>
+                           
+
+
+                        </div>
+                    </div>
+            </div>
+
+
+                    </div>
+                </div>
+               
+
+
+                <!-- <div class="prod-dropdown">
                     <label class="prod-dropdown--left">
                         <i class="fa-solid fa-arrow-up-wide-short"></i> Sắp xếp:
                     </label>
@@ -360,28 +407,20 @@
                                 <span class="name">Mặc định</span>
                             </label>
 
+
                             <input type="radio" name="drop1" id="id2" class="radio" />
                             <label for="id2">
-                                <span class="name">Mới nhất</span>
-                            </label>
-
-                            <input type="radio" name="drop1" id="id3" class="radio" />
-                            <label for="id3">
-                                <span class="name">Bán chạy nhất</span>
-                            </label>
-
-                            <input type="radio" name="drop1" id="id4" class="radio" />
-                            <label for="id4">
                                 <span class="name">Giá từ thấp tới cao</span>
                             </label>
 
-                            <input type="radio" name="drop1" id="id5" class="radio" />
-                            <label for="id5">
+
+                            <input type="radio" name="drop1" id="id3" class="radio" />
+                            <label for="id3">
                                 <span class="name">Giá từ cao tới thấp</span>
                             </label>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- jvs DROPDOWN -->
             <script>
@@ -399,6 +438,7 @@
                     }
                 };
 
+
                 var rad = document.querySelectorAll(".radio");
                 rad.forEach((item) => {
                     item.addEventListener("change", () => {
@@ -408,177 +448,244 @@
                 });
             </script>
 
+
             <!--------------- Tổng hợp các sản phẩm-------------->
-            <div class="prod-list">
-                <div class="prod-list__grid">
-                    <!-- Hiển thị sản phẩm -->
-                    <?php
-                    // Kiểm tra xem có tham số danh mục được truyền không
-                    if (isset($_GET['iddm'])) {
-                        $iddm = $_GET['iddm'];
+            <div>
+                <div class="prod-list">
+                    <div class="prod-list__grid">
+                        <!-- Hiển thị sản phẩm -->
+                        <?php
+                        // Thực hiện truy vấn SQL để lấy sản phẩm
+                        $link = null;
+                        taoKetNoi($link);
+                        // Kiểm tra xem có tham số danh mục được truyền không
+                        if (isset($_GET['iddm'])) {
+                            $iddm = $_GET['iddm'];
+                       
+                            // Kiểm tra nếu danh mục là "TẤT CẢ"
+                            if ($iddm === 'tatca') {
+                                // Hiển thị tất cả sản phẩm
+                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                        FROM tbl_sanpham sp
+                                                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                        GROUP BY sp.ma_san_pham";
+                       
+                                // Kiểm tra giá trị của mục select
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                    if (isset($_POST['sap-xep'])) {
+                                    // Lấy dữ liệu từ biểu mẫu
+                                    $sapxep = $_POST['sap-xep'];
+   
+                                    if ($sapxep === 'ASC') {
+                                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                    CASE
+                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                        ELSE sp.gia_giam
+                                                                    END AS a
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY a ASC";
+                                    } elseif ($sapxep === 'DESC') {
+                                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                    CASE
+                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                        ELSE sp.gia_giam
+                                                                    END AS a
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY a DESC";
+                                    } elseif ($sapxep === 'Mặc định'){
+                                        $query_list_products .= "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY sp.ma_san_pham ASC";
+                                    }
+                                }
+                            }
+                            } else {
+                                // Hiển thị sản phẩm theo danh mục cụ thể
+                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                        FROM tbl_sanpham sp
+                                                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                        GROUP BY sp.ma_san_pham";
+                       
+                                // Kiểm tra giá trị của mục select
+                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                    if (isset($_POST['sap-xep'])) {
+                                    // Lấy dữ liệu từ biểu mẫu
+                                    $sapxep = $_POST['sap-xep'];
+   
+                                    if ($sapxep === 'ASC') {    
+                                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                    CASE
+                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                        ELSE sp.gia_giam
+                                                                    END AS a
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY a ASC";
+                                    } elseif ($sapxep === 'DESC') {
+                                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                    CASE
+                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                        ELSE sp.gia_giam
+                                                                    END AS a
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY a DESC ";
+                                    } elseif ($sapxep === 'Mặc định'){
+                                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY sp.ma_san_pham ASC";
+                                    }
+                                }
+                            }
+                            }
+                       
 
-                        // Kiểm tra nếu danh mục là "TẤT CẢ"
-                        if ($iddm === 'tatca') {
-                            // Hiển thị tất cả sản phẩm
-                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                            FROM tbl_sanpham sp
-                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            GROUP BY sp.ma_san_pham
-                            ORDER BY RAND()
-                            ";
+
+                        // Đếm số lượng sản phẩm
+                        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery");
+                        if ($result) {
+                            $row = mysqli_fetch_assoc($result);
+                            $so_luong_san_pham = $row["so_luong_san_pham"];
                         } else {
-                            // Hiển thị sản phẩm theo danh mục cụ thể
-                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                            FROM tbl_sanpham sp
-                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                            GROUP BY sp.ma_san_pham
-                            ORDER BY RAND()
-                            ";
+                            // In thông báo lỗi
+                            echo "Lỗi truy vấn MySQL: " . mysqli_error($link);
                         }
-                    } else {
-                        // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
-                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                        FROM tbl_sanpham sp
-                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                        GROUP BY sp.ma_san_pham
-                        ORDER BY RAND()
-                        ";
-                    }
-                    // Thực hiện truy vấn SQL để lấy sản phẩm
-                    $link = null;
-                    taoKetNoi($link);
-                    $result = chayTruyVanTraVeDL($link, $query_list_products);
+                        $so_luong_san_pham = $row["so_luong_san_pham"];
+                        // Xác định trang hiện tại
+                        $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
+                        $productsPerPage = 12;
 
-                    // Đếm số lượng sản phẩm được trả về
-                    $total_products_displayed = mysqli_num_rows($result);
 
-                    // Xử lý dữ liệu trả về
-                    // Hiển thị danh sách sản phẩm
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $product_price = $row["gia_giam"];
-                        $product_sale_price = $row["gia_goc"];
-                        $avg_rating = $row["avg_rating"];
-                        ?>
-                        <section class="prod-list__item">
-                            <div class="prod-list__item__image">
-                                <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
-                                    <img class="prod-list__item__img1" loading="lazy"
-                                        src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
-                                </a>
-                                <span class="product-sale-tag">
-                                    <span> SALES!</span>
-                                </span>
-                                <!-- Hover heart and cart -->
-                                <div class="button-heart-cart-hover">
-                                    <a href="">
-                                        <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
+                        // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
+                        $start = ($trang_hien_tai - 1) * $productsPerPage;
+
+
+                        // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
+                        $query_list_products .= " LIMIT $start, $productsPerPage";
+
+
+                        // Thực hiện truy vấn SQL để lấy sản phẩm
+                        $result = chayTruyVanTraVeDL($link, $query_list_products);
+
+
+                        // Tính số trang
+                        $so_trang = ceil($so_luong_san_pham / $productsPerPage);
+
+
+
+
+                        // Xử lý dữ liệu trả về
+                        // Hiển thị danh sách sản phẩm
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $product_price = $row["gia_giam"];
+                            $product_sale_price = $row["gia_goc"];
+                            $avg_rating = $row["avg_rating"];
+                            ?>
+                            <section class="prod-list__item">
+                                <div class="prod-list__item__image">
+                                    <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
+                                        <img class="prod-list__item__img1" loading="lazy"
+                                            src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
                                     </a>
-                                    <a href="">
-                                        <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="prod-list__item__inner">
-                                <div class="prod-list__item__inner--child">
-                                    <div class="prod-list__item__info">
-                                        <div class="prod-list__item__info--title">
-                                            <a
-                                                href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
-                                        </div>
-                                        <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?></div>
+                                    <!-- Hover heart and cart -->
+                                    <div class="button-heart-cart-hover">
+                                        <a href="">
+                                            <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
+                                        </a>
+                                        <a href="">
+                                            <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
+                                        </a>
                                     </div>
-                                    <div class="prod-list__item__info--price-fb">
-                                        <div class="prod-list__item--price">
-                                            <?php
-                                            if ($product_price != 0) {
-                                                echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
-                                                echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                            } else {
-                                                echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                            }
-                                            ?>
+                                </div>
+                                <div class="prod-list__item__inner">
+                                    <div class="prod-list__item__inner--child">
+                                        <div class="prod-list__item__info">
+                                            <div class="prod-list__item__info--title">
+                                                <a
+                                                    href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                                            </div>
+                                            <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
+                                            </div>
                                         </div>
-                                        <div class="prod-list__item__info--star-icon">
-                                            <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
-                                            <div class="prod-list__item__info--fb">
-                                                <?php echo number_format($avg_rating, 1, '.'); ?>
+                                        <div class="prod-list__item__info--price-fb">
+                                            <div class="prod-list__item--price">
+                                                <?php
+                                                if ($product_price != 0) {
+                                                    echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
+                                                    echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                                } else {
+                                                    echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="prod-list__item__info--star-icon">
+                                                <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
+                                                <div class="prod-list__item__info--fb">
+                                                    <?php echo number_format($avg_rating, 1, '.'); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <?php
-                    }
-                    giaiPhongBoNho($link, $result);
-                    ?>
-                </div>
-            </div>
-            <!---------------------- PAGINATION PHÍA DƯỚI CÁC SẢN PHẨM --------------------------------->
-            <div class="prod-list__pagination">
-                <div class="pagination--container">
-                    <!-- --------- Mũi tên "<<" ------------>
-                    <button class="pagination--container__button" id="pagination_startBtn" disabled>
-                        <i class="fa-solid fa-angles-left"></i>
-                    </button>
-                    <!-- --------- Mũi tên "<" ------------>
-                    <button class="pagination--container__button prevNext" id="pagination_prev" disabled>
-                        <i class="fa-solid fa-angle-left"></i>
-                    </button>
-                    <!-- ---------Các số trang------------>
-                    <div class="prod-list__pagination--numbers">
-                        <a href="#" class="link active">1</a>
-                        <a href="#" class="link">2</a>
-                        <a href="#" class="link">3</a>
-                        <a href="#" class="link">4</a>
-                        <!-- <a href="#" class="link">5</a> -->
-                    </div>
-                    <!-- --------- Mũi tên ">" ------------>
-                    <button class="pagination--container__button prevNext" id="pagination_next">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </button>
-                    <!-- --------- Mũi tên ">>" ------------>
-                    <button class="pagination--container__button" id="pagination_endBtn">
-                        <i class="fa-solid fa-angles-right"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- //pagination sản phẩm -->
-            <script>
-                const productsPerPage = 12; // Số lượng sản phẩm trên mỗi trang
-                const totalProducts = <?php echo $total_products_displayed; ?>; // Tổng số lượng sản phẩm
-                const totalPages = Math.ceil(totalProducts / productsPerPage); // Tính tổng số trang
-
-                // Ẩn hoặc hiển thị nút phân trang dựa trên số trang thực tế
-                const updatePagination = () => {
-                    const paginationNumbers = document.querySelectorAll(".prod-list__pagination--numbers .link");
-
-                    paginationNumbers.forEach((number, index) => {
-                        if (index < totalPages) {
-                            number.style.display = "inline-block"; // Hiển thị số trang
-                        } else {
-                            number.style.display = "none"; // Ẩn số trang không cần thiết
+                            </section>
+                            <?php
                         }
-                    });
-                };
+                    }
+                        giaiPhongBoNho($link, $result);
+                        ?>
+                    </div>
+                </div>
 
-                updatePagination(); // Cập nhật hiển thị nút phân trang ban đầu
 
-                // Đặt trạng thái ban đầu cho các nút phân trang
-                document.getElementById('pagination_startBtn').disabled = true; // Nút "Bắt đầu" sẽ bị vô hiệu hóa ban đầu
-                document.getElementById('pagination_prev').disabled = true; // Nút "Trước" sẽ bị vô hiệu hóa ban đầu
-                if (totalPages <= 1) { // Nếu chỉ có 1 trang hoặc ít hơn, ẩn các nút phân trang
-                    document.getElementById('pagination_next').disabled = true; // Nút "Sau" sẽ bị vô hiệu hóa
-                    document.getElementById('pagination_endBtn').disabled = true; // Nút "Kết thúc" sẽ bị vô hiệu hóa
-                }
-            </script>
-
-            <div class="prod-third-line"></div>
+                <!---------------------- PAGINATION PHÍA DƯỚI CÁC SẢN PHẨM --------------------------------->
+                <!-- Phân trang -->
+                <div class="prod-list__pagination">
+                    <div class="list-number"> <?php $trang_truoc = 0;
+                    $trang_sau = 0;
+                    $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
+                    if ($trang_hien_tai == 1) {
+                        $trang_truoc = 1;
+                    } else
+                        ($trang_truoc = $trang_hien_tai - 1);
+                    if ($trang_hien_tai == $so_trang) {
+                        $trang_sau = $so_trang;
+                    } else
+                        ($trang_sau = $trang_hien_tai + 1); ?>
+                        <button> <?php echo "<a href='./danhmuc.php?trang=" . $trang_truoc . "'>&lt &lt</a>" ?>
+                        </button>
+                        <?php for ($i = 1; $i <= $so_trang; $i = $i + 1) {
+                            echo "<button><a href='./danhmuc.php?trang=" . $i . "'>$i</a></button>";
+                        } ?>
+                        <button> <?php echo "<a href='./danhmuc.php?trang=" . $trang_sau . "'>&gt &gt</a>" ?>
+                        </button>
+                    </div>
+                </div>
+                <div class="prod-third-line"></div>
         </article>
+
 
         <!------------------ GỢI Ý SẢN PHẨM----------------------->
         <div class="suggest-prod">
@@ -592,6 +699,7 @@
                     $link = null;
                     taoKetNoi($link);
 
+
                     // Kết nối và lấy dữ liệu từ CSDL
                     $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                     FROM tbl_sanpham sp
@@ -600,6 +708,7 @@
                     WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc)
                     GROUP BY sp.ma_san_pham
                     ORDER BY RAND() Limit 12";
+
 
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -616,7 +725,7 @@
                                         src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
                                 </a>
                                 <span class="product-sale-tag">
-                                    <span> SALES!</span>
+                                    <span> HOT!</span>
                                 </span>
                                 <!-- Hover heart and cart -->
                                 <div class="button-heart-cart-hover">
@@ -690,6 +799,7 @@
                     prevEl: ".swiper-button-prev",
                 },
 
+
                 breakpoints: {
                     0: {
                         slidesPerView: 1,
@@ -736,7 +846,7 @@
                             <img class="" src="./img/day-chuyen.webp" />
                         </figure>
                         <div class="listing-tile__content">
-                            <p class="listing-tile__title">DÂY CHUYỀN</p>
+                            <p class="listing-tile__title">D Y CHUYỀN</p>
                         </div>
                     </a>
                 </div>
@@ -797,4 +907,8 @@
     ?>
 </body>
 
+
 </html>
+
+
+

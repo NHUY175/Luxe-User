@@ -196,7 +196,7 @@
 
                             $link = null;
                             taoKetNoi($link);
-                            $sql = "INSERT INTO tbl_review (so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES ('$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
+                            $sql = "INSERT INTO tbl_review (.a_khach_hang, so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES (1,'$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
                             $abc = chayTruyVanTraVeDL($link, $sql);
                         }
                       }
@@ -508,7 +508,12 @@
             </div>
 
             <!-- Nút gửi -->
-            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit">Gửi</button>  
+            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit">Gửi</button> 
+            <script>
+              document.querySelector('.btn.submit').addEventListener('click', function() {
+              alert('Đã gửi thành công!');
+            });
+            </script> 
           </form>  
         </div>
       </div>
@@ -648,7 +653,7 @@
         <div class="product-item">
           <div class="product-card">
             <div class="product-card__img-wrap">
-              <a href="./product-detail.html">
+              <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                 <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
               </a>
               <!-- Hover tim và thêm vào giỏ hàng -->
@@ -671,7 +676,7 @@
             </div>
             <div class="prod-list__item__inner">
               <h3 class="product-card__title">
-                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>"><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection"><?php echo $product_category; ?></p>
               <div class="product-card__row">
@@ -723,7 +728,7 @@
               <div class="product-item1">
               <div class="product-card">
               <div class="product-card__img-wrap">
-                <a href="./product-detail.html">
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                   <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
                 </a>
                 <div class="button-heart-cart-hover">
@@ -744,7 +749,7 @@
                 </div>
               </div>
               <h3 class="product-card__title">
-                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>"><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection"><?php echo $product_category; ?></p>
               <div class="product-card__row">
