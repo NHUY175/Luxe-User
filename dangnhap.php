@@ -26,7 +26,7 @@
         session_start();
 
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
-            $email = $_POST['email'];
+            $username = $_POST['username'];
             $pass = $_POST['pass'];
             $link = null;
             taoKetNoi($link);
@@ -34,19 +34,19 @@
                 die("connection error");
             }
 
-            $sql="select * from tbl_khachhang where email='".$email."' AND mat_khau='".$pass."' ";
+            $sql="select * from tbl_khachhang where ten_dang_nhap='".$username."' AND mat_khau='".$pass."' ";
             $result=mysqli_query($link,$sql);
 
             // Kiểm tra số dòng kết quả trả về
             $num_rows = mysqli_num_rows($result);
             if ($num_rows == 1) 
             {
-                $_SESSION['email']=$email;
+                $_SESSION['username']=$username;
                 echo '<script>alert("Đăng nhập thành công");</script>';
                 header("location:index.php");
                 exit(); // Kết thúc kịch bản sau khi chuyển hướng
             } else {
-                echo '<script>alert("Email hoặc mật khẩu không đúng");</script>';
+                echo '<script>alert("Tên đăng nhập hoặc mật khẩu không đúng");</script>';
             }
             // Giải phóng tài nguyên
             mysqli_close($link);
@@ -63,7 +63,7 @@
     <!--Info-Right-->
     <div class="frame-right">
         <div class="asking">Bạn chưa có tài khoản?</div>
-        <a href="dangky.html">
+        <a href="dangky.php">
           <button class="btn-signup">
             <b class="btn-signup-text">Đăng ký</b>
           </button>
@@ -112,12 +112,12 @@
             <h1 class="signin-title">Đăng nhập</h1>
           <div class="signin-input">
             <!--Email-->
-            <div class="email-container">
+            <div class="username-container">
               <b>
-                <span class="email-text">Email</span>
+                <span class="username-text">Tên đăng nhập</span>
                 <span class="span"> *</span>
               </b>
-              <input class="email-box" name="email" type="email" required/>
+              <input class="username-box" name="username" type="text" required/>
             </div>
             <!--Pass-->
             <div class="password-container">

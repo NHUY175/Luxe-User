@@ -37,12 +37,6 @@
               <div class="account-text">Quản lý tài khoản</div>
           </div>
         </a>
-        <a href="quanlymatkhau.php">
-          <button class="wrapper-1">
-            <img class="pass-manage" src="./icon/QLmatkhau-iconpass.svg"/>
-            <div class="bar-text">Quản lý mật khẩu</div>
-        </button>
-        </a>
         <a href="thongtincanhan.php">
           <button class="wrapper-2">
             <img class="personal-info" src="./icon/QLmatkhau-iconpersonalinfo.svg"/>
@@ -125,6 +119,22 @@
                           <span class="text">Địa chỉ</span>
                       </b>
                       <input type="text"/>
+                  </div>
+                  <!--USERNAME-->
+                  <div class="input-box">
+                      <b>
+                      <span class="text">Tên đăng nhập</span>
+                      <span class="span"> *</span>
+                      </b>
+                      <input type="text" required/>
+                  </div>
+                    <!--PASSWORD-->
+                    <div class="input-box">
+                    <b>
+                      <span class="text">Mật khẩu</span>
+                      <span class="span"> *</span>
+                      </b>
+                      <input type="password" required/>
                   </div>
         <!--signin-right
         <div class="right-bar">

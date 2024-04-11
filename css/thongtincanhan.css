@@ -219,12 +219,12 @@
 }
 
 .side-bar {
-    width: 30%;
-    background-color: #fff5f0;
-    padding: 40px 50px 180px;
-    gap: 70px;
-    display: flex;
-    flex-direction: column;
+  width: 30%;
+  background-color: #fff5f0;
+  padding: 40px 50px 200px;
+  gap: 120px;
+  display: flex;
+  flex-direction: column;
 }
 .side-bar a {
   color: var(--secondary-color-secondary-1); /* Đặt màu chữ cho liên kết */
