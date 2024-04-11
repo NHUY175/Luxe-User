@@ -132,6 +132,11 @@ td {
   max-width: 816px;
   margin: 1% auto;
 }
+h2, h3{
+  font-size: 1.2em;
+  margin: 20px auto;
+  font-weight: bold;
+}
 .thong-tin-hoa-don {
   flex-basis: 50%;
   justify-content: center;
