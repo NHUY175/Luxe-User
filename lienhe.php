@@ -98,7 +98,6 @@
               giaiPhongBoNho($link,$rs_dangky);
             }          
             }
-            giaiPhongBoNho($link,$result);
           ?>
         </div>
       </div>
