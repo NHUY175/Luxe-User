@@ -190,9 +190,9 @@
           <div class="quantity">
             <table>
               <tr>
-                <td class ="dec-ins" onclick="Decrease()">-</td>
+                <td class ="dec-ins">-</td>
                 <td id="count" class="dec-ins count"><?php echo $so_luong; ?></td>
-                <td class ="dec-ins" onclick="Increase()">+</td>
+                <td class ="dec-ins">+</td>
               </tr>
             </table>
           </div>
@@ -259,108 +259,158 @@
       }
     ?>
         <!-- Similar products -->
-        <div class="similar-container">
-          <p class="product-inf__title__1">CÓ THỂ BẠN CŨNG THÍCH</p>
-          <div class="product-home">
-    
-            <!-- Product 1 -->
-            <div class="product-item">
-                <div class="product-card">
-                    <div class="product-card__img-wrap">
-                        <a href="./product-detail.html">
-                            <img src="img/8D1-1.webp" alt="" class="product-card__thumb" />
-                        </a>
-                        <button class="like-btn">
-                            <img src="./icon/heart.svg" alt="" class="like-icon icon" />
-                        </button>
-                    </div>
-                    <h3 class="product-card__title">
-                        <a href="./product-detail.html">Nhẫn NDINO 8D1</a>
-                    </h3>
-                    <p class="product-card__collection">Nhẫn cưới</p>
-                    <div class="product-card__row">
-                      <span class="product-card__price">2.100.000đ</span>
-                      <span class="product-card__price-sales">2.500.000đ</span>
-                      <img src="./icon/star.svg" alt="" class="product-card__star" />
-                      <span class="product-card__score">4.3</span>
-                    </div>
-                </div>
+        <div class="container">
+      <p class="product-inf__title__1">CÓ THỂ BẠN CŨNG THÍCH</p>
+      <div class="product-home">
+        <?php
+        $link = null;
+        taoKetNoi($link);
+        // Truy vấn danh sách sản phẩm tương tự
+        $query_similar_products = "
+                                  SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                  FROM tbl_sanpham sp
+                                  INNER JOIN (
+                                      SELECT ma_danh_muc
+                                      FROM tbl_danhmuc
+                                      ORDER BY RAND()
+                                      LIMIT 1
+                                  ) AS random_dm ON sp.ma_danh_muc = random_dm.ma_danh_muc
+                                  LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                  LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                  GROUP BY sp.ma_san_pham
+                                  LIMIT 4
+                              ";
+        $result_similar_products = chayTruyVanTraVeDL($link, $query_similar_products);
+        // Hiển thị danh sách sản phẩm tương tự
+        while ($row_product = mysqli_fetch_assoc($result_similar_products)){
+            $ma_san_pham = $row_product["ma_san_pham"];
+            $product_name = $row_product["ten_san_pham"];
+            $product_image = $row_product["hinh_anh_1"];
+            $product_price = $row_product["gia_giam"];
+            $product_sale_price = $row_product["gia_goc"];
+            $product_category = $row_product["ten_danh_muc"];
+            $avg_rating = $row_product["avg_rating"];
+            ?>
+
+        <div class="product-item">
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <a href="./product-detail.html">
+                <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
+              </a>
+              <button class="like-btn">
+                <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" />
+              </button>
             </div>
-    
-            <!-- Product 2 -->
-            <div class="product-item">
-              <div class="product-card">
-                  <div class="product-card__img-wrap">
-                      <a href="./product-detail.html">
-                          <img src="img/5N3-1.webp" alt="" class="product-card__thumb" />
-                      </a>
-                      <button class="like-btn">
-                        <img src="./icon/heart.svg" alt="" class="like-icon icon" />
-                      </button>
-                  </div>
-                  <h3 class="product-card__title">
-                      <a href="./product-detail.html">Nhẫn NDINO 5N3</a>
-                  </h3>
-                  <p class="product-card__collection">Nhẫn cưới</p>
-                  <div class="product-card__row">
-                    <span class="product-card__price">3.500.000đ</span>
-                    <span class="product-card__price-sales">4.000.000đ</span>
-                    <img src="./icon/star.svg" alt="" class="product-card__star" />
-                    <span class="product-card__score">4.5</span>
-                  </div>
-              </div>
-            </div>
-    
-              <!-- Product 3 -->
-            <div class="product-item">
-                <div class="product-card">
-                    <div class="product-card__img-wrap">
-                        <a href="./product-detail.html">
-                            <img src="img/2N5-1.webp" alt="" class="product-card__thumb" />
-                        </a>
-                        <button class="like-btn">
-                          <img src="./icon/heart.svg" alt="" class="like-icon icon" />
-                        </button>
-                    </div>
-                    <h3 class="product-card__title">
-                        <a href="./product-detail.html">Nhẫn NDINO 2N5</a>
-                    </h3>
-                    <p class="product-card__collection">Nhẫn cưới</p>
-                    <div class="product-card__row">
-                      <span class="product-card__price">3.100.000đ</span>
-                      <span class="product-card__price-sales">3.690.000đ</span>
-                      <img src="./icon/star.svg" alt="" class="product-card__star" />
-                      <span class="product-card__score">4.9</span>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Product 4 -->
-            <div class="product-item">
-              <div class="product-card">
-                <div class="product-card__img-wrap">
-                    <a href="./product-detail.html">
-                        <img src="img/9K6-1.webp" alt="" class="product-card__thumb" />
-                    </a>
-                    <button class="like-btn">
-                      <img src="./icon/heart.svg" alt="" class="like-icon icon" />
-                    </button>
-                  </div>
-                  <h3 class="product-card__title">
-                      <a href="./product-detail.html">Nhẫn NDINO 9K6</a>
-                  </h3>
-                  <p class="product-card__collection">Nhẫn cưới</p>
-                  <div class="product-card__row">
-                  <span class="product-card__price">5.200.000đ</span>
-                  <span class="product-card__price-sales">6.390.000đ</span>
-                  <img src="./icon/star.svg" alt="" class="product-card__star" />
-                  <span class="product-card__score">4.7</span>
-                </div>
+            <h3 class="product-card__title">
+              <a href='./sanpham.php?id=<?php echo $ma_san_pham; ?>'><?php echo $product_name; ?></a>
+            </h3>
+            <p class="product-card__collection"><?php echo $product_category; ?></p>
+            <div class="product-card__row">
+            <?php
+              if ($product_price != 0){
+                  echo '<span class="product-card__price">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
+                  echo '<span class="product-card__price-sales">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                } else {
+                  echo '<span class="product-card__price">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                }
+            ?>
+              <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+              <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
             </div>
           </div>
         </div>
-        <!-- Button xem thêm -->
-        <a href="#!" class="btn home-product">Xem thêm</a>
+        <?php
+          }
+        ?>
+      </div>
+      <div class="product-home1">
+        <?php
+        $link = null;
+        taoKetNoi($link);
+        // Truy vấn danh sách sản phẩm tương tự
+        $query_similar_products = "
+                                  SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                  FROM tbl_sanpham sp
+                                  INNER JOIN (
+                                      SELECT ma_danh_muc
+                                      FROM tbl_danhmuc
+                                      ORDER BY RAND()
+                                      LIMIT 1
+                                  ) AS random_dm ON sp.ma_danh_muc = random_dm.ma_danh_muc
+                                  LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                  LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                  GROUP BY sp.ma_san_pham
+                                  LIMIT 20 OFFSET 4
+                              ";
+        $result_similar_products = chayTruyVanTraVeDL($link, $query_similar_products);
+        // Hiển thị danh sách sản phẩm tương tự
+        while ($row_product = mysqli_fetch_assoc($result_similar_products)){
+            $ma_san_pham = $row_product["ma_san_pham"];
+            $product_name = $row_product["ten_san_pham"];
+            $product_image = $row_product["hinh_anh_1"];
+            $product_price = $row_product["gia_giam"];
+            $product_sale_price = $row_product["gia_goc"];
+            $product_category = $row_product["ten_danh_muc"];
+            $avg_rating = $row_product["avg_rating"];
+            ?>
+
+        <div class="product-item1">
+          <div class="product-card1">
+            <div class="product-card__img-wrap1">
+              <a href="./product-detail.html">
+                <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
+              </a>
+              <button class="like-btn1">
+                <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" />
+              </button>
+            </div>
+            <h3 class="product-card__title1">
+              <a href='./sanpham.php?id=<?php echo $ma_san_pham; ?>'><?php echo $product_name; ?></a>
+            </h3>
+            <p class="product-card__collection1"><?php echo $product_category; ?></p>
+            <div class="product-card__row1">
+            <?php
+              if ($product_price != 0){
+                  echo '<span class="product-card__price1">' .number_format($product_price, 0, ',', '.'). ' VNĐ </span>';
+                  echo '<span class="product-card__price-sales1">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                } else {
+                  echo '<span class="product-card__price1">' .number_format($product_sale_price, 0, ',', '.'). ' VNĐ </span>';
+                }
+            ?>
+              <img src="./icon/sanpham-star.svg" alt="" class="product-card__star" />
+              <span class="product-card__score1"><?php echo number_format($avg_rating, 1,'.'); ?></span>
+            </div>
+          </div>
+        </div>
+        <?php
+          }
+        ?>
+      </div>
+      <!-- Button xem thêm -->
+        <a href="#!" class="btn home-product">Xem thêm</a> 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Lấy nút "Xem thêm"
+              const toggleButton = document.querySelector('.btn.home-product');
+
+              // Lấy tất cả các sản phẩm
+              const products = document.querySelectorAll('.product-item1');
+              // Thêm sự kiện click cho nút "Xem thêm"
+              toggleButton.addEventListener('click', function() {
+                  products.forEach(product => {
+                      // Kiểm tra trạng thái hiện tại và ẩn/hiện tương ứng
+                      if (product.style.display === 'none' || product.style.display === '') {
+                          product.style.display = 'block'; // Hiện sản phẩm
+                          toggleButton.textContent = 'Thu gọn';
+                      } else {
+                          product.style.display = 'none'; // Ẩn sản phẩm
+                          toggleButton.textContent = 'Xem thêm'; 
+                      }
+                  });
+              });
+            });
+        </script>
     </div>
         <!-- Footer -->
     <footer class="footer">
@@ -461,5 +511,6 @@
     </footer>
   </body>
 </html>
+
 
 
