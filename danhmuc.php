@@ -44,11 +44,11 @@
             <h2 class="container__title-page-product">SẢN PHẨM</h2>
             <div class="container__product-wrap">
                 <ul class="product-wrap--nav-links">
-                    <li class="center"><a href="danhmuc.php?dmsp=tatca">TẤT CẢ</a></li>
-                    <li class="center"><a href="danhmuc.php?dmsp=Nhan">NHẪN</a></li>
-                    <li class="center"><a href="danhmuc.php?dmsp=Day Chuyen">DÂY CHUYỀN</a></li>
-                    <li class="center"><a href="danhmuc.php?dmsp=Vong Tay">VÒNG TAY</a></li>
-                    <li class="center"><a href="danhmuc.php?dmsp=Bong Tai">BÔNG TAI</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=tatca">TẤT CẢ</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=1">NHẪN</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=2">DÂY CHUYỀN</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=3">VÒNG TAY</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=4">BÔNG TAI</a></li>
                 </ul>
             </div>
             <div class="prod-second-line"></div>
@@ -299,11 +299,11 @@
                     <!-- Hiển thị sản phẩm -->
                     <?php
                     // Kiểm tra xem có tham số danh mục được truyền không
-                    if (isset($_GET['dmsp'])) {
-                        $dmsp = $_GET['dmsp'];
+                    if (isset($_GET['iddm'])) {
+                        $iddm = $_GET['iddm'];
 
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
-                        if ($dmsp === 'tatca') {
+                        if ($iddm === 'tatca') {
                             // Hiển thị tất cả sản phẩm
                             $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                             FROM tbl_sanpham sp
@@ -318,7 +318,7 @@
                             FROM tbl_sanpham sp
                             LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                             LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ten_danh_muc LIKE '%$dmsp%')
+                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                             GROUP BY sp.ma_san_pham
                             ORDER BY RAND()
                             ";
@@ -414,11 +414,11 @@
                     <!-- Hiển thị sản phẩm -->
                     <?php
                     // Kiểm tra xem có tham số danh mục được truyền không
-                    if (isset($_GET['dmsp'])) {
-                        $dmsp = $_GET['dmsp'];
+                    if (isset($_GET['iddm'])) {
+                        $iddm = $_GET['iddm'];
 
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
-                        if ($dmsp === 'tatca') {
+                        if ($iddm === 'tatca') {
                             // Hiển thị tất cả sản phẩm
                             $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                             FROM tbl_sanpham sp
@@ -433,7 +433,7 @@
                             FROM tbl_sanpham sp
                             LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                             LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ten_danh_muc LIKE '%$dmsp%')
+                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                             GROUP BY sp.ma_san_pham
                             ORDER BY RAND()
                             ";
