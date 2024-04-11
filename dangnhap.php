@@ -23,7 +23,6 @@
     <!-- Kết nối vào CSDL -->
     <?php
         require_once "db_module.php";
-        session_start();
 
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $username = $_POST['username'];
@@ -36,20 +35,17 @@
 
             $sql="select * from tbl_khachhang where ten_dang_nhap='".$username."' AND mat_khau='".$pass."' ";
             $result=mysqli_query($link,$sql);
-
+            $rows = mysqli_fetch_assoc($result); 
             // Kiểm tra số dòng kết quả trả về
             $num_rows = mysqli_num_rows($result);
             if ($num_rows == 1) 
             {
-                $_SESSION['username']=$username;
-                echo '<script>alert("Đăng nhập thành công");</script>';
-                header("location:index.php");
+              echo '<script>alert("Đăng nhập thành công"); 
+              window.location.href = "thongtincanhan.php?id=' .$rows['ma_khach_hang']. '";</script>';
                 exit(); // Kết thúc kịch bản sau khi chuyển hướng
             } else {
                 echo '<script>alert("Tên đăng nhập hoặc mật khẩu không đúng");</script>';
             }
-            // Giải phóng tài nguyên
-            mysqli_close($link);
         }
     ?>
   <header class="header">
@@ -132,10 +128,8 @@
             </div>
           </div>
           <div class="button">
-            <button name="login" class="button-signin">
-              <a href="./thongtincanhan.php">
+            <button name="login" type ="submit" class="button-signin">
                 <b class="button-signin-text">Đăng nhập</b>
-              </a>
             </button>
         </form>
     </div>

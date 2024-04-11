@@ -53,10 +53,14 @@
         <!--Right-->
         <?php 
         require_once "db_module.php";
-        $link = null;
-        taoKetNoi($link);
+        function view_tt(){
+        if(isset($_GET["id"])){
 
-          $sql = "select * from tbl_khachhang where ma_khach_hang= 1";
+          $ma_khach_hang = $_GET["id"];
+          $link = null;
+          taoKetNoi($link);
+
+          $sql = "select * from tbl_khachhang WHERE ma_khach_hang =".$ma_khach_hang;
           $result = chayTruyVanTraVeDL($link,$sql);
           $row = mysqli_fetch_assoc($result);
         ?>
@@ -155,10 +159,14 @@
                       </b>
                       <input type="password" name="mat_khau" value = "<?php echo $row['mat_khau'] ?>" required/>
                   </div>
+                  <?php 
+                    } 
+                  ?>
               <div class="button">
                 <button class="button-save" type="submit">
                   <b class="button-save-text">Lưu</b>
                 </button>
+              <?php } ?>
             </form>
             <?php 
               $link = null;
@@ -190,12 +198,12 @@
                     $mat_khau = $_POST["mat_khau"];
                 }
 
-                $sql_update = "UPDATE tbl_khachhang SET ho_ten='$ho_ten', gioi_tinh='$gioi_tinh', ngay_sinh='$ngay_sinh', email='$email', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi', ten_dang_nhap='$ten_dang_nhap', mat_khau='$mat_khau' where ma_khach_hang= 1";
+                $sql_update = "UPDATE tbl_khachhang SET ho_ten='$ho_ten', gioi_tinh='$gioi_tinh', ngay_sinh='$ngay_sinh', email='$email', so_dien_thoai='$so_dien_thoai', dia_chi='$dia_chi', ten_dang_nhap='$ten_dang_nhap', mat_khau='$mat_khau' WHERE ma_khach_hang=".$ma_khach_hang;
                 $rs = chayTruyVanKhongTraVeDL($link, $sql_update);
                 echo $rs;
                 if ($rs) {
                   echo "<script>alert('Cập nhật thành công');</script>";
-                  echo "<script>window.location.href = 'thongtincanhan.php';</script>";
+                  echo "<script>window.location.href = 'thongtincanhan.php?opt=view_tt';</script>";
                 } else {
                   echo "<script>alert('Cập nhật thất bại');</script>";
                   echo "<script>window.location.href = 'thongtincanhan.php';</script>";
