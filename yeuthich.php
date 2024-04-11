@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/yeuthich.js"></script>
+    <script src="./js/header.js"></script>
   </head>
   <body>
   <?php

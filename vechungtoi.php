@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- JS -->
     <script src="js/vechungtoi.js"></script>
+    <script src="./js/header.js"></script>
   </head>
   <body>
     <!-- Header -->

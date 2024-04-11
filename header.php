@@ -40,12 +40,12 @@
         <div class="top-act-group">
           <button class="top-act-btn">
             <a href="./yeuthich.php"><img src="./icon/index-heart.svg" alt="" /></a>
-            <span class="top-act-title"> 03 </span>
+            <span class="top-act-title" id="wishlist"> 0 </span>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn">
             <a href="./giohang.php"><img src="./icon/index-cart.svg" alt="" /></a>
-            <span class="top-act-title"> 03 </span>
+            <span class="top-act-title"> 0 </span>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn user">
