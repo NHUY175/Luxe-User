@@ -53,7 +53,6 @@
         <!--Right-->
         <?php 
         require_once "db_module.php";
-        function view_tt(){
         if(isset($_GET["id"])){
 
           $ma_khach_hang = $_GET["id"];
@@ -166,7 +165,6 @@
                 <button class="button-save" type="submit">
                   <b class="button-save-text">Lưu</b>
                 </button>
-              <?php } ?>
             </form>
             <?php 
               $link = null;
