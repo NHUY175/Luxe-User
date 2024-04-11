@@ -215,11 +215,8 @@ a:active {
   transform: translateX(-50%);
 }
 /* Định dạng khi ấn vào */
-.product-wrap--nav-links a:focus {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-.product-wrap--nav-links a:visited {
+.product-wrap--nav-links a:focus,
+.product-wrap--nav-links a:active {
   color: var(--primary-color);
   font-weight: 700;
 }
@@ -836,6 +833,7 @@ input:checked + label::before {
   color: #fff;
   background: #f98542;
 }
+
 .link.active {
   color: #fff;
   background: #f98542;
@@ -848,6 +846,7 @@ input:checked + label::before {
   border: none;
   background-color: var(--background-color-1);
 }
+
 .pagination--container__button i {
   pointer-events: none;
 }
