@@ -169,6 +169,7 @@ h2, h3{
 }
 .hoa-don-cua-ban div b {
   float: right !important;
+  font-weight: bold;
 }
 .phuong-thuc-thanh-toan {
   border-bottom: 1px solid rgb(147, 145, 145);
