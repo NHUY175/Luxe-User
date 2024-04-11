@@ -24,6 +24,7 @@
   <body>
     <!-- Header -->
     <?php
+    require_once "db_module.php";
     include "header.php";
     ?>
     <!--Hóa đơn-->
