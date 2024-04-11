@@ -11,7 +11,7 @@
 
 /* ======= Header ====== */
 .fixed-header {
-  position: relative;
+  position: sticky;
   background-color: var(--index-background-color-1);
   padding: 10px 0px;
   overflow: hidden;
