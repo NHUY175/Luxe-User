@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <!-- Chỉnh biểu tượng web -->
     <link href="./icon/Logo.svg" rel="shortcut icon" />
     <title>Luxe - Trang sức cao cấp</title>
@@ -16,7 +15,7 @@
     <link rel="stylesheet" href="./css/dangky.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- JS -->
-    <script src="./js/header.js"></script>
+    <script src="./js/dangky.js"></script>
   </head>
   <body>
     <header class="header">
@@ -219,9 +218,8 @@
     </main>
     <div class="line2"></div>
     <!-- Footer -->
-    <footer class="footer" id="footer"></footer>
-    <script>
-      load("#footer", "./template/footer.html");
-    </script>
+    <?php
+      include "footer.php";
+    ?>
   </body>
 </html>

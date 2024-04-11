@@ -19,14 +19,12 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/quanlymatkhau.js"></script>
-    <script src="./js/header.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <header id="header"></header>
-    <script>
-      load("#header", "./template/header.html");
-    </script>
+    <?php
+    include "header.php";
+    ?>
     <!-- BODY -->
     <main class="main-inner">
         <!--left-section -->
@@ -213,9 +211,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer" id="footer"></footer>
-    <script>
-      load("#footer", "./template/footer.html");
-    </script>
+    <?php
+    include "footer.php";
+    ?>
 </body>
 </html>

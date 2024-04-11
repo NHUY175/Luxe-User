@@ -16,69 +16,16 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/sanpham.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/sanpham.js"></script>
   </head>
 <body>
   <?php
     require_once "db_module.php";
+    include "header.php"
   ?>
-    <!-- PC Header -->
-    <header class="fixed-header">
-      <div class="container">
-        <div class="top-bar">
-          <!-- Mobile menu -->
-          <button class="hamburger-menu" onclick="burgerFunction()">
-            <img src="./icon/sanpham-burger.svg" alt="" />
-          </button>
-          <script src="./js/sanpham.js"></script>
-          <!-- Logo -->
-          <a href="./" class="logo-nav">
-            <img src="./icon/sanpham-logo.svg" alt="Luxe" />
-            <h1 class="logo-title">Luxe</h1>
-          </a>
-          <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
-          <!-- Navigation -->
-          <nav class="navbar">
-            <ul>
-              <li><a href="#!">Trang chủ</a></li>
-              <li><a href="#!">Sản phẩm</a></li>
-              <li><a href="#!">Về chúng tôi</a></li>
-              <li><a href="#!">Hỗ trợ</a></li>
-              <li><a href="#!">Liên hệ</a></li>
-            </ul>
-          </nav>
-
-          <!-- Action -->
-          <div class="top-act">
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-search.svg" alt="" />
-              </button>
-            </div>
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-heart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <a href="./giohang.php?opt=view_gh"><img src="./icon/sanpham-cart.svg" alt="" /></a>
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-user.svg" alt="" />
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn" onclick="darkFunction()">
-                <img src="./icon/sanpham-moon.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <div class="cross-bar"></div>
     <?php
      $link = null;
@@ -849,103 +796,8 @@
         </script>
     </div>
   <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-row">
-        <div class="container">
-          <div class="footer-column">
-
-            <!-- Logo -->
-            <a href="./" class="logo-foot">
-              <img src="./icon/sanpham-logo.svg" alt="Luxe" />
-              <h1 class="logo-title">Luxe</h1>
-            </a>
-            
-            <!-- Download app -->
-            <div class="download-container">
-              <p class="download-title">
-                Tải ngay Luxe app
-              </p>
-              <div class="download-method">
-                <a href="https://play.google.com/store/apps" class="ch-store">
-                <img src="./icon/sanpham-ggplay.svg" alt="" />
-              </a>
-              <a href="https://www.apple.com/vn/app-store" class="app-store">
-                <img src="./icon/sanpham-appstore.svg" alt="" />
-              </a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Danh mục</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Trang chủ
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Sản phẩm
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link"> Về chúng tôi </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Hỗ trợ
-                    </a>
-                </li>
-                <li class="footer__item">
-                  <a href="#!" class="footer__link">
-                    Liên hệ
-                  </a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Thông tin liên hệ</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                  279 Nguyễn Tri Phương, Phường 5, Quận 10, TP.HCM
-                </li>
-                <li class="footer__item">
-                  (+84) 046 990 809
-                </li>
-                <li class="footer__item">
-                  info@example.com
-                </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Theo dõi</h3>
-            <div class="footer__social">
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-facebook.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-insta.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-twitter.svg" alt="">
-                </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <div class="footer-copyright">
-        <div class="container">
-          <div class="payment-method">
-            <img src="./icon/sanpham-paypal.svg" alt="">
-            <img src="./icon/sanpham-visa.svg" alt="">
-            <img src="./icon/sanpham-master-card.svg" alt="">
-          </div>
-          <p class="footer__copyright-text">
-            Copyright © 2023 UIHUT All Rights Reserved
-          </p>
-        </div>
-    </div>
-    </footer>
+  <?php
+      include "footer.php";
+    ?>
 </body>
 
