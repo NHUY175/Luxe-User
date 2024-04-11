@@ -50,7 +50,7 @@
     ?>
   <header class="header">
     <!--Logo-left-->
-    <a href="index.html">
+    <a href="index.php">
       <div class="logo-left">
         <img class="logo1" alt="" src="./icon/Logo.svg"/>
         <h1 class="logo1-text">Luxe</h1>    
