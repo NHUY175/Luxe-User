@@ -30,7 +30,7 @@
       <!--Info-Right-->
       <div class="frame-right">
         <div class="asking">Bạn đã có tài khoản?</div>
-        <a href="dangnhap.html">
+        <a href="dangnhap.php">
           <button class="btn-signin">
             <b class="btn-signin-text">Đăng nhập</b>
           </button>
