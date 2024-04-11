@@ -128,7 +128,14 @@
             </div>
           </div>
           <div class="button">
+<<<<<<< HEAD
             <button name="login" type ="submit" class="button-signin">
+=======
+            <button name="login" type="submit" class="button-signin">
+              <b class="button-signin-text">Đăng nhập</b>
+            <button name="login" class="button-signin">
+              <a href="./thongtincanhan.php">
+>>>>>>> 71d499892e0cc9782934b239d4e5cc5dadf63bc5
                 <b class="button-signin-text">Đăng nhập</b>
             </button>
         </form>

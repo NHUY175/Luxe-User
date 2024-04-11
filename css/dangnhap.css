@@ -316,7 +316,7 @@
     text-align: left;
   }
   .username-box,
-  .password-box {
+  .password-box { 
     border: 2.5px solid #ffbe98;
     outline: none;
     background-color: var(--background-color-0);
