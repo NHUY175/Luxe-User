@@ -13,7 +13,7 @@ function burgerFunction() {
     element.classList.toggle("dark-mode");
   }
   
-  //Ẩn hiện nội dung câu hỏi FAQ
+  //Ẩn hiện nội dung câu trả lời FAQ
   document.addEventListener('DOMContentLoaded', function() {
     const faqQuestions = document.querySelectorAll('.faq-question');
 
