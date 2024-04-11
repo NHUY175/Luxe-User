@@ -141,7 +141,7 @@ td {
   margin: 50px auto;
   font-family: Quicksand;
 }
-h2, h3{
+.wrapper h2, .wrapper h3{
   font-size: 1.2em;
   margin: 20px auto;
   font-weight: bold;
