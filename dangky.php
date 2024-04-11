@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- JS -->
     <script src="./js/header.js"></script>
+    <script src="./js/dangky.js"></script>
   </head>
   <body>
     <header class="header">

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/footer.css" />
      <!-- JS -->
      <script src="./js/header.js"></script>
+     <script src="./js/dangnhap.js"></script>
 </head>
 <body>
     <!-- Kết nối vào CSDL -->

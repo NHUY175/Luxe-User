@@ -65,20 +65,6 @@
         ?>
         <div class="right-bar">
             <div class="title">Thông tin cá nhân</div>
-            <div class="right1">
-                <div class="upload-container">
-                        <img src="./img/ttcn-default-avatar.jpg" id="profile-pic">
-                        <label for="image-upload"> <b>Tải lên ảnh của bạn</b></label>
-                        <input type="file" id="image-upload" accept=".png, .jpg, .jpeg" />
-                </div>
-                <script>
-                    let profilePic = document.getElementById("profile-pic");
-                    let inputFile = document.getElementById("image-upload");
-                    inputFile.onchange = function(){
-                        profilePic.src = URL.createObjectURL(inputFile.files[0]);
-                    }
-                </script>
-            </div>
             <div class="right2">
             <form action="" method ="POST">
                 <div class="user-details">
