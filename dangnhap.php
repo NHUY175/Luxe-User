@@ -132,7 +132,7 @@
             </div>
           </div>
           <div class="button">
-            <button name="login" class="button-signin">
+            <button name="login" type="submit" class="button-signin">
               <b class="button-signin-text">Đăng nhập</b>
             </button>
         </form>
