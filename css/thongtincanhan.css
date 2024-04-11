@@ -239,7 +239,7 @@ a {
 .side-bar {
   width: 30%;
   background-color: #fff5f0;
-  padding: 40px 50px 200px;
+  padding: 40px 50px 150px;
   gap: 120px;
   display: flex;
   flex-direction: column;
@@ -377,7 +377,7 @@ form .button {
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 30px;
     width: 100%;
     height: 100%;
 }
@@ -452,125 +452,6 @@ form .button {
         width: 0;
     }
 }
-  /* ===== Footer ===== */
-.footer-row {
-    padding: 55px 0;
-    background: #131717;
-  }
-  .footer-row .container {
-    display: grid;
-    grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
-    column-gap: 78px;
-  }
-  .logo-foot {
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
-  }
-  .logo-foot img {
-    transform: scale(2);
-  }
-  .logo-foot .logo-title {
-    color: var(--primary-color);
-    margin-left: 30px;
-    color: #ffbe98;
-    font-size: 76px;
-    font-weight: 700;
-  }
-  .download-title {
-    margin-top: 57px;
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: 700;
-  }
-  .download-method {
-    margin-top: 17px;
-  }
-  .download-method .app-store {
-    margin-left: 18px;
-  }
-  .footer__heading {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 600;
-  }
-  .footer__list {
-    margin-top: 24px;
-  }
-  .footer__item {
-    margin-bottom: 16px;
-    font-size: 1.6rem;
-    color: #cecdd7;
-    line-height: 162.5%;
-  }
-  .footer__link {
-    font-size: 1.6rem;
-    color: #cecdd7;
-  }
-  .footer__link:hover {
-    text-decoration: underline;
-  }
-  .footer__social {
-    padding-top: 24px;
-    display: flex;
-    column-gap: 5px;
-  }
-  .footer__social-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    background-color: #404b4b;
-  }
-  .footer__social-btn img {
-    max-width: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-  .side-bar {
-    width: 100%;
-    padding: 20px 30px;
-    flex-direction: row;
-    gap: 100px;
-  }
-  .account-text {
-    display: none;
-  }
-  .bar-text {
-    display: none;
-  }
-  .pass-manage,
-  .personal-info {
-    height: 30px;
-    width: 30px;
-  }
-  .wrapper {
-    padding: 10px;
-    gap: 5px;
-    background-color: #ffbe984d;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  }
-  .right-bar {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  .right2 {
-    max-width: 700px;
-    border-radius: 0 0 9px 9px;
-  }
-  form .user-details .input-box {
-    margin-bottom: 15px;
-    width: 100%;
-  }
-  .container form .user-details {
-    max-height: 300px;
-    overflow-y: scroll;
-  }
-  .user-details::-webkit-scrollbar {
-    width: 0;
-  }
 /* ===== Footer ===== */
 .footer-row {
   padding: 55px 0;

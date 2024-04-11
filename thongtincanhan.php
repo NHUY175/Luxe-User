@@ -19,12 +19,14 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/quanlymatkhau.js"></script>
+    <script src="./js/header.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <?php
-    include "header.php";
-    ?>
+    <header id="header"></header>
+    <script>
+      load("#header", "./template/header.html");
+    </script>
     <!-- BODY -->
     <main class="main-inner">
         <!--left-section -->
@@ -43,7 +45,7 @@
         </a>
         <a href="dangnhap.php">
           <button class="wrapper-1">
-            <img class="personal-info" src="./icon/ttcn-closecircle.svg"/>
+            <img class="sign-out" src="./icon/ttcn-closecircle.svg"/>
             <div class="bar-text">Đăng xuất</div>
         </button>
         </a>
@@ -197,8 +199,9 @@
     </main>
 
     <!-- Footer -->
-    <?php
-    include "footer.php";
-    ?>
+    <footer class="footer" id="footer"></footer>
+    <script>
+      load("#footer", "./template/footer.html");
+    </script>
 </body>
 </html>

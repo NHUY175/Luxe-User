@@ -107,7 +107,7 @@
         <form class="signin-info" method="post">
             <h1 class="signin-title">Đăng nhập</h1>
           <div class="signin-input">
-            <!--Email-->
+            <!--username-->
             <div class="username-container">
               <b>
                 <span class="username-text">Tên đăng nhập</span>
@@ -122,9 +122,6 @@
                   <span class="span"> *</span>
                 </b>
                   <input class="password-box" name="pass" type="password" required/>
-              <div class="forget-pass">
-                <a href="http://">Quên mật khẩu</a>
-            </div>
             </div>
           </div>
           <div class="button">

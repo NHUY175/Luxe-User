@@ -147,7 +147,7 @@
                 </b>
                 <input id="password" name ="password" type="password" minlength="6" required />
               </div>
-              <!--ADDRESS-->
+              <!--username-->
               <div class="input-box">
                 <b>
                   <span class="text">Tên đăng nhập</span>

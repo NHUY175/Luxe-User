@@ -272,7 +272,7 @@
     background-color: var(--background-color);
     border: 2px solid #ffbe984d;
     flex-direction: column;
-    padding: 115px 20px 115px;
+    padding: 125px 20px 121px;
     align-items: center;
     z-index: 1;
     gap: 40px;
@@ -347,20 +347,6 @@
   }
   .password-box {
     margin: 5px 0 3px;
-  }
-  .forget-pass a {
-    position: relative;
-    font-size: 15px;
-    color: #ef9059;
-    text-decoration: none;
-    font-weight: 600;
-    font-family: quicksand;
-    color: #ef9059;
-    text-align: left;
-    display: inline-block;
-  }
-  .forget-pass a:hover {
-    text-decoration: underline;
   }
   
   .button {

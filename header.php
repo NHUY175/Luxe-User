@@ -49,7 +49,7 @@
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn user">
-            <a href="thongtincanhan.php"><img src="./icon/index-user.svg" alt="" /></a>
+            <a href="dangky.php"><img src="./icon/index-user.svg" alt="" /></a>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn mode" onclick='darkFunction()'>
