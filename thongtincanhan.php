@@ -31,7 +31,7 @@
     <main class="main-inner">
         <!--left-section -->
         <div class="side-bar">
-          <a href="index.html">
+          <a href="index.php">
           <div class="arrow">
               <img class="arrow-icon" src="./icon/QLmatkhau-arrowleft.svg"/>
               <div class="account-text">Quản lý tài khoản</div>
