@@ -248,7 +248,7 @@
     position: fixed;
     inset: 0 40% 0 0;
     background: var(--index-background-color-1);
-    z-index: 2;
+    z-index: 99;
     transform: translateX(-100%);
     transition: 0.5s;
   }

@@ -44,11 +44,11 @@
             <h2 class="container__title-page-product">SẢN PHẨM</h2>
             <div class="container__product-wrap">
                 <ul class="product-wrap--nav-links">
-                    <li class="center"><a href="#">TẤT CẢ</a></li>
-                    <li class="center"><a href="#">NHẪN</a></li>
-                    <li class="center"><a href="#">DÂY CHUYỀN</a></li>
-                    <li class="center"><a href="#">VÒNG TAY</a></li>
-                    <li class="center"><a href="#">BÔNG TAI</a></li>
+                    <li class="center"><a href="danhmuc.php?dmsp=tatca">TẤT CẢ</a></li>
+                    <li class="center"><a href="danhmuc.php?dmsp=Nhan">NHẪN</a></li>
+                    <li class="center"><a href="danhmuc.php?dmsp=Day Chuyen">DÂY CHUYỀN</a></li>
+                    <li class="center"><a href="danhmuc.php?dmsp=Vong Tay">VÒNG TAY</a></li>
+                    <li class="center"><a href="danhmuc.php?dmsp=Bong Tai">BÔNG TAI</a></li>
                 </ul>
             </div>
             <div class="prod-second-line"></div>
@@ -294,11 +294,56 @@
                             });
                         });
                     </script>
-                    <!----------------------------- -->
+                    <!------------- Hiện thị số lượng sản phẩm---------------- -->
                     <h3 class="trigger-filter--separator">|</h3>
+                    <!-- Hiển thị sản phẩm -->
+                    <?php
+                    // Kiểm tra xem có tham số danh mục được truyền không
+                    if (isset($_GET['dmsp'])) {
+                        $dmsp = $_GET['dmsp'];
+
+                        // Kiểm tra nếu danh mục là "TẤT CẢ"
+                        if ($dmsp === 'tatca') {
+                            // Hiển thị tất cả sản phẩm
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        } else {
+                            // Hiển thị sản phẩm theo danh mục cụ thể
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ten_danh_muc LIKE '%$dmsp%')
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        }
+                    } else {
+                        // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
+                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        FROM tbl_sanpham sp
+                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        GROUP BY sp.ma_san_pham
+                        ORDER BY RAND()
+                        ";
+                    }
+                    // Thực hiện truy vấn SQL để lấy sản phẩm
+                    $link = null;
+                    taoKetNoi($link);
+                    $result = chayTruyVanTraVeDL($link, $query_list_products);
+                    // Đếm số lượng sản phẩm được trả về                 
+                    $total_products_displayed = mysqli_num_rows($result);
+                    giaiPhongBoNho($link, $result);
+                    ?>
                     <div class="toolbar-amount" id="toolbar-amount">
                         <!-- Hiển thị: -->
-                        <span class="toolbar-number">20</span>
+                        <span class="toolbar-number"><?php echo $total_products_displayed; ?></span>
                         sản phẩm
                     </div>
                 </div>
@@ -368,15 +413,49 @@
                 <div class="prod-list__grid">
                     <!-- Hiển thị sản phẩm -->
                     <?php
+                    // Kiểm tra xem có tham số danh mục được truyền không
+                    if (isset($_GET['dmsp'])) {
+                        $dmsp = $_GET['dmsp'];
+
+                        // Kiểm tra nếu danh mục là "TẤT CẢ"
+                        if ($dmsp === 'tatca') {
+                            // Hiển thị tất cả sản phẩm
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        } else {
+                            // Hiển thị sản phẩm theo danh mục cụ thể
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ten_danh_muc LIKE '%$dmsp%')
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        }
+                    } else {
+                        // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
+                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        FROM tbl_sanpham sp
+                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        GROUP BY sp.ma_san_pham
+                        ORDER BY RAND()
+                        ";
+                    }
+                    // Thực hiện truy vấn SQL để lấy sản phẩm
                     $link = null;
                     taoKetNoi($link);
-                    // Kết nối và lấy dữ liệu từ CSDL
-                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                                    FROM tbl_sanpham sp
-                                    INNER JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                    WHERE sp.ma_danh_muc = dm.ma_danh_muc ORDER BY RAND() LIMIT 12";
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
+
+                    // Đếm số lượng sản phẩm được trả về
+                    $total_products_displayed = mysqli_num_rows($result);
+
                     // Xử lý dữ liệu trả về
                     // Hiển thị danh sách sản phẩm
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -470,91 +549,34 @@
             </div>
             <!-- //pagination sản phẩm -->
             <script>
-                // Lựa chọn các phần tử DOM
-                const pagination_startBtn = document.querySelector(
-                    "#pagination_startBtn"
-                ), // nút "Bắt đầu"
-                    pagination_endBtn = document.querySelector("#pagination_endBtn"), // nút "Kết thúc"
-                    prevNext = document.querySelectorAll(".prevNext"), // mảng chứa nút "Previous" và "Next"
-                    numbers = document.querySelectorAll(".link"); // mảng chứa các liên kết số trang
+                const productsPerPage = 12; // Số lượng sản phẩm trên mỗi trang
+                const totalProducts = <?php echo $total_products_displayed; ?>; // Tổng số lượng sản phẩm
+                const totalPages = Math.ceil(totalProducts / productsPerPage); // Tính tổng số trang
 
-                // Thiết lập bước khởi đầu
-                let currentStep = 0; //Biến currentStep được sử dụng để lưu trạng thái hiện tại của bước.
+                // Ẩn hoặc hiển thị nút phân trang dựa trên số trang thực tế
+                const updatePagination = () => {
+                    const paginationNumbers = document.querySelectorAll(".prod-list__pagination--numbers .link");
 
-                //Hàm cập nhật trạng thái nút
-                const updateBtn = () => {
-                    // Nếu ở bước cuối tức là trang cuối
-                    if (currentStep === 3) {
-                        pagination_endBtn.disabled = true; //nút "End" sẽ bị vô hiệu hóa
-                        prevNext[1].disabled = true; //nút "Next" bị vô hiệu hóa
-                    }
-                    //Nếu currentStep bằng 0, hoặc đang ở trang đầu tiên
-                    else if (currentStep === 0) {
-                        // Nếu ở trang đầu tiên
-                        pagination_startBtn.disabled = true; //nút "Start" sẽ bị vô hiệu hóa
-                        prevNext[0].disabled = true; // nút "Previous" bị vô hiệu hóa
-                    }
-                    //Nếu currentStep không phải là 0 hoặc 3
-                    /*tất cả các nút "Start", "End", "Previous" và "Next" đều được kích hoạt để cho phép người dùng di chuyển qua các trang khác nhau. */
-                    else {
-                        // Tất cả các nút "Bắt đầu", "Kết thúc", "Previous" và "Next" đều được kích hoạt để cho phép người dùng di chuyển qua các trang khác nhau.
-                        pagination_endBtn.disabled = false;
-                        prevNext[1].disabled = false;
-                        pagination_startBtn.disabled = false;
-                        prevNext[0].disabled = false;
-                    }
+                    paginationNumbers.forEach((number, index) => {
+                        if (index < totalPages) {
+                            number.style.display = "inline-block"; // Hiển thị số trang
+                        } else {
+                            number.style.display = "none"; // Ẩn số trang không cần thiết
+                        }
+                    });
                 };
 
-                // Thêm event listeners cho các liên kết số trang
-                numbers.forEach((number, numIndex) => {
-                    number.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        //Đặt bước hiện tại thành số trang được nhấp vào
-                        currentStep = numIndex;
-                        // Xóa lớp "active" từ liên kết số trang trước đó
-                        document.querySelector(".active").classList.remove("active");
-                        // Thêm lớp "active" vào liên kết số trang được nhấp vào
-                        number.classList.add("active");
-                        updateBtn(); // Cập nhật trạng thái các nút
-                    });
-                });
+                updatePagination(); // Cập nhật hiển thị nút phân trang ban đầu
 
-                // Thêm các trình nghe sự kiện cho các nút "Previous" và "Next"
-                prevNext.forEach((button) => {
-                    button.addEventListener("click", (e) => {
-                        // Tăng hoặc giảm bước hiện tại dựa trên nút được nhấp vào
-                        currentStep += e.target.id === "pagination_next" ? 1 : -1;
-                        numbers.forEach((number, numIndex) => {
-                            /// Chuyển đổi lớp "active" trên các liên kết số trang dựa trên bước hiện tại
-                            number.classList.toggle("active", numIndex === currentStep);
-                            updateBtn(); // Cập nhật trạng thái các nút
-                        });
-                    });
-                });
-
-                // Thêm trình nghe sự kiện cho nút "Start"
-                pagination_startBtn.addEventListener("click", () => {
-                    // Xóa lớp "active" từ liên kết số trang trước đó
-                    document.querySelector(".active").classList.remove("active");
-                    // Thêm lớp "active" vào liên kết số trang đầu tiên  numbers[0].classList.add("active");
-                    currentStep = 0;
-                    updateBtn(); // Cập nhật trạng thái các nút
-                    pagination_endBtn.disabled = false;
-                    prevNext[1].disabled = false;
-                });
-
-                // Thêm trình nghe sự kiện cho nút "Kết thúc"
-                pagination_endBtn.addEventListener("click", () => {
-                    // Xóa lớp "active" từ liên kết số trang trước đó
-                    document.querySelector(".active").classList.remove("active");
-                    // Thêm lớp "active" vào liên kết số trang cuối cùng
-                    numbers[3].classList.add("active");
-                    currentStep = 4;
-                    updateBtn(); // Cập nhật trạng thái các nút
-                    pagination_startBtn.disabled = false;
-                    prevNext[0].disabled = false;
-                });
+                // Đặt trạng thái ban đầu cho các nút phân trang
+                document.getElementById('pagination_startBtn').disabled = true; // Nút "Bắt đầu" sẽ bị vô hiệu hóa ban đầu
+                document.getElementById('pagination_prev').disabled = true; // Nút "Trước" sẽ bị vô hiệu hóa ban đầu
+                if (totalPages <= 1) { // Nếu chỉ có 1 trang hoặc ít hơn, ẩn các nút phân trang
+                    document.getElementById('pagination_next').disabled = true; // Nút "Sau" sẽ bị vô hiệu hóa
+                    document.getElementById('pagination_endBtn').disabled = true; // Nút "Kết thúc" sẽ bị vô hiệu hóa
+                }
             </script>
+
             <div class="prod-third-line"></div>
         </article>
 
@@ -566,50 +588,81 @@
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
                     <!-- Hiển thị 10 sp -->
-                    <div class="card swiper-slide">
-                        <div class="prod-list__item__image">
-                            <a href="">
-                                <img class="prod-list__item__img1" loading="lazy" alt="" src="./img/2N5-1.webp" />
-                            </a>
-                            <span class="product-sale-tag">
-                                <span> SALES!</span>
-                            </span>
-                            <!-- Hover heart and cart -->
-                            <div class="button-heart-cart-hover">
-                                <a href="">
-                                    <img src="./icon/heart.svg" alt="" class="prod-list__item__image--heart-hover" />
-                                </a>
-                                <a href="">
-                                    <img src="./icon/cart.svg" alt="" class="prod-list__item__image--cart-hover" />
-                                </a>
-                            </div>
-                        </div>
+                    <?php
+                    $link = null;
+                    taoKetNoi($link);
 
-                        <div class="prod-list__item__inner">
-                            <div class="prod-list__item__inner--child">
-                                <div class="prod-list__item__info">
-                                    <div class="prod-list__item__info--title">
-                                        <a href="">Nhẫn NDINO 2N5</a>
-                                    </div>
-                                    <div class="prod-list__item__info--masp">Nhẫn</div>
+                    // Kết nối và lấy dữ liệu từ CSDL
+                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                    FROM tbl_sanpham sp
+                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc)
+                    GROUP BY sp.ma_san_pham
+                    ORDER BY RAND() Limit 12";
+
+                    $result = chayTruyVanTraVeDL($link, $query_list_products);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Hiển thị sản phẩm
+                        $product_price = $row["gia_giam"];
+                        $product_sale_price = $row["gia_goc"];
+                        $avg_rating = $row["avg_rating"];
+                        ?>
+                        <div class="card swiper-slide">
+                            <!-- <section class="prod-list__item"> -->
+                            <div class="prod-list__item__image">
+                                <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
+                                    <img class="prod-list__item__img1" loading="lazy"
+                                        src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
+                                </a>
+                                <span class="product-sale-tag">
+                                    <span> SALES!</span>
+                                </span>
+                                <!-- Hover heart and cart -->
+                                <div class="button-heart-cart-hover">
+                                    <a href="">
+                                        <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
+                                    </a>
+                                    <a href="">
+                                        <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
+                                    </a>
                                 </div>
-                                <div class="prod-list__item__info--price-fb">
-                                    <div class="prod-list__item--price">
-                                        <span class="prod-list__item__info--price">
-                                            3.150.000đ
-                                        </span>
-                                        <span class="prod-list__item__info--price-sales">
-                                            4.500.000đ
-                                        </span>
+                            </div>
+                            <div class="prod-list__item__inner">
+                                <div class="prod-list__item__inner--child">
+                                    <div class="prod-list__item__info">
+                                        <div class="prod-list__item__info--title">
+                                            <a
+                                                href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                                        </div>
+                                        <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
+                                        </div>
                                     </div>
-                                    <div class="prod-list__item__info--star-icon">
-                                        <img class="info--star-icon" loading="lazy" alt="" src="./icon/star.svg" />
-                                        <div class="prod-list__item__info--fb">4.3</div>
+                                    <div class="prod-list__item__info--price-fb">
+                                        <div class="prod-list__item--price">
+                                            <?php
+                                            if ($product_price != 0) {
+                                                echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
+                                                echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                            } else {
+                                                echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                            }
+                                            ?>
+                                        </div>
+                                        <div class="prod-list__item__info--star-icon">
+                                            <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
+                                            <div class="prod-list__item__info--fb">
+                                                <?php echo number_format($avg_rating, 1, '.'); ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    giaiPhongBoNho($link, $result);
+                    ?>
                 </div>
             </div>
             <div class="swiper-button-next swiper-navBtn"></div>
@@ -740,7 +793,7 @@
     </section>
     <!-- Footer -->
     <?php
-        include "footer.php";
+    include "footer.php";
     ?>
 </body>
 
