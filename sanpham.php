@@ -748,6 +748,7 @@
                   </a>
                 </div>
               </div>
+              <div class="prod-list__item__inner">
               <h3 class="product-card__title">
                 <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>"><?php echo $product_name; ?></a>
               </h3>
@@ -766,6 +767,7 @@
                   <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
                 </div>
               </div>
+                </div>
             </div>
           </div>
           <?php
