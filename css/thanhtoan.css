@@ -138,10 +138,10 @@ td {
 .wrapper {
   display: flex;
   max-width: 816px;
-  margin: 50px auto;
+  margin: 20px auto;
   font-family: Quicksand;
 }
-.wrapper h2, .wrapper h3{
+h2, h3{
   font-size: 1.2em;
   margin: 20px auto;
   font-weight: bold;
@@ -151,12 +151,12 @@ td {
   justify-content: center;
 }
 .thong-tin-hoa-don input {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   width: 90%;
   border-radius: 10px;
   border: 1px solid rgb(75, 74, 74);
   height: 35px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding-left: 20px;
   background-color: #f3f0f0;
 }
@@ -200,6 +200,7 @@ td {
   justify-content: center;
   cursor: pointer;
   color: #f6f6f6;
+  font-weight: bold;
 }
 .hoa-don-cua-ban button:hover {
   background: #f46b1c;
