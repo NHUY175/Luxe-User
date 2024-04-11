@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['email']))
+{
+  header("location:dangnhap.php");
+  exit(); // Đảm bảo kết thúc kịch bản sau khi chuyển hướng
+}
+?>
+
 <!DOCTYPE html>
 <html lang="vn">
   <head>
