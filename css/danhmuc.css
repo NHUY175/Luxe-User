@@ -216,7 +216,7 @@ a:active {
 }
 /* Định dạng khi ấn vào */
 .product-wrap--nav-links a:focus,
-.product-wrap--nav-links a:active {
+.product-wrap--nav-links li a:active {
   color: var(--primary-color);
   font-weight: 700;
 }
@@ -340,7 +340,6 @@ a:active {
   background: #e25050;
 }
 .collection-sidebar .collection-item input[type="radio"] {
-  -webkit-appearance: none;
   width: 15px;
   height: 15px;
   outline: none;
@@ -812,57 +811,34 @@ input:checked + label::before {
 .prod-list__pagination {
   margin-bottom: 35px;
 }
-.pagination--container,
-.pagination--container__button,
-.prod-list__pagination--numbers,
-.link {
+
+.list-number {
   display: flex;
-  align-items: center;
+  gap: 15px;
   justify-content: center;
 }
-.prod-list__pagination--numbers {
-  column-gap: 12px;
-}
-.prod-list__pagination--numbers a {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-color-2);
-}
-.pagination--container__button:hover,
-.link:hover {
-  color: #fff;
-  background: #f98542;
-}
-
-.link.active {
-  color: #fff;
-  background: #f98542;
-}
-/* ======== phần mũi tên ========= */
-.pagination--container {
-  column-gap: 12px;
-}
-.pagination--container__button {
+.list-number button {
   border: none;
-  background-color: var(--background-color-1);
-}
-
-.pagination--container__button i {
-  pointer-events: none;
-}
-.pagination--container__button:disabled {
-  color: #b3b3b3;
-  pointer-events: none;
-}
-.pagination--container__button,
-.link {
-  height: 38px;
-  width: 38px;
-  color: var(--text-color-2);
-  font-size: 20px;
+  background: #ff9f65;
   border-radius: 6px;
   cursor: pointer;
+  height: 38px;
+  width: 38px;
 }
+.list-number a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.list-number button.active {
+  color: #fff;
+  background: #f98542;
+}
+.pagination--container__button:disabled {
+  color: black;
+  background: none;
+}
+
 /* =============END PHẦN PAGINATION============== */
 /* THIRD - LINE */
 
