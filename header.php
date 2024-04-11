@@ -23,7 +23,7 @@
         <ul id="PC_nav">
           <li><a href="./index.php">TRANG CHỦ</a></li>
           <li><a href="#!" onclick="megaFunction()">SẢN PHẨM</a></li>
-          <li><a href="./gioithieu.php">VỀ CHÚNG TÔI</a></li>
+          <li><a href="./vechungtoi.php">VỀ CHÚNG TÔI</a></li>
           <li><a href="./hotro.php">HỖ TRỢ</a></li>
           <li><a href="./lienhe.php">LIÊN HỆ</a></li>
         </ul>
