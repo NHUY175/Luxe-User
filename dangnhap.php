@@ -134,6 +134,10 @@
           <div class="button">
             <button name="login" type="submit" class="button-signin">
               <b class="button-signin-text">Đăng nhập</b>
+            <button name="login" class="button-signin">
+              <a href="./thongtincanhan.php">
+                <b class="button-signin-text">Đăng nhập</b>
+              </a>
             </button>
         </form>
     </div>
