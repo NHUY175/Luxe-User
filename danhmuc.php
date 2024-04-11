@@ -202,18 +202,18 @@
                                 <span class="filter_chosen price" data-value="7-000-000-10-000-000">7.000.000đ :
                                     10.000.000đ <a><span></span></a></span>
 
-                                <span class="filter_chosen" data-value="vang">Vàng<a><span></span></a></span>
+                                <span class="filter_chosen" data-value="vang">Vàng</span>
 
-                                <span class="filter_chosen" data-value="bac">Bạc<a><span></span></a></span>
+                                <span class="filter_chosen" data-value="bac">Bạc</span>
 
                                 <span class="filter_chosen" data-value="da-xa-cu">
-                                    Đá Xà cừ <a><span></span></a></span>
+                                    Đá Xà cừ </span>
 
                                 <span class="filter_chosen" data-value="da-cubic-zirconia">Đá Cubic Zirconia
-                                    <a><span></span></a></span>
+                                </span>
 
                                 <span class="filter_chosen" data-value="da-Zirconia">Đá Zirconia
-                                    <a><span></span></a></span>
+                                </span>
                                 <span class="clear_all"><a href="javascript:void(0)">Bỏ lọc</a></span>
                             </div>
                             <div class="bottom-filter">
@@ -474,44 +474,41 @@
                     <div class="prod-list__grid">
                         <!-- Hiển thị sản phẩm -->
                         <?php
-                        // Thực hiện truy vấn SQL để lấy sản phẩm
-                        $link = null;
-                        taoKetNoi($link);
                         // Kiểm tra xem có tham số danh mục được truyền không
-                        if (isset($_GET['iddm'])) {
-                            $iddm = $_GET['iddm'];
-
-                            // Kiểm tra nếu danh mục là "TẤT CẢ"
-                            if ($iddm === 'tatca') {
-                                // Hiển thị tất cả sản phẩm
-                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                            FROM tbl_sanpham sp
-                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            GROUP BY sp.ma_san_pham
-                            ORDER BY RAND()
-                            ";
-                            } else {
-                                // Hiển thị sản phẩm theo danh mục cụ thể
-                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                            FROM tbl_sanpham sp
-                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                            GROUP BY sp.ma_san_pham
-                            ORDER BY RAND()
-                            ";
-                            }
-                        } else {
-                            // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
-                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                        FROM tbl_sanpham sp
-                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                        GROUP BY sp.ma_san_pham
-                        ORDER BY RAND()
-                        ";
-                        }
+                        // if (isset($_GET['iddm'])) {
+                        //     $iddm = $_GET['iddm'];
+                        
+                        //     // Kiểm tra nếu danh mục là "TẤT CẢ"
+                        //     if ($iddm === 'tatca') {
+                        //         // Hiển thị tất cả sản phẩm
+                        //         $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        //     FROM tbl_sanpham sp
+                        //     LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        //     LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        //     GROUP BY sp.ma_san_pham
+                        //     ORDER BY RAND()
+                        //     ";
+                        //     } else {
+                        //         // Hiển thị sản phẩm theo danh mục cụ thể
+                        //         $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        //     FROM tbl_sanpham sp
+                        //     LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        //     LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        //     WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                        //     GROUP BY sp.ma_san_pham
+                        //     ORDER BY RAND()
+                        //     ";
+                        //     }
+                        // } else {
+                        //     // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
+                        //     $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        // FROM tbl_sanpham sp
+                        // LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        // LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        // GROUP BY sp.ma_san_pham
+                        // ORDER BY RAND()
+                        // ";
+                        // }
                         $link = null;
                         taoKetNoi($link);
                         // Đếm số lượng sản phẩm
