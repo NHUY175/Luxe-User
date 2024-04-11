@@ -63,7 +63,7 @@
               </button>
               <div class="top-act-separate"></div>
               <button class="top-act-btn">
-              <a href="./giohang.php?opt=view_sp"><img src="./icon/sanpham-cart.svg" alt="" /></a>
+                <a href="./giohang.php"><img src="./icon/sanpham-cart.svg" alt="" /></a>
                 <span class="top-act-title"> 03 </span>
               </button>
               <div class="top-act-separate"></div>

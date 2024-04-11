@@ -131,11 +131,12 @@
     <div class="product-container">
       <header style="font-size: 45px; font-weight: bold; padding-top: 25px; ">Giỏ hàng</header>
       <?php
+        function view_gh(){
 
         $link = null;
         taoKetNoi($link); 
         $tong_gia_tri = 0;
-        $query = "SELECT c.ma_san_pham, c.so_luong, c.gia_tri, s.ten_san_pham, d.ten_danh_muc, b.ten_bien_the, COUNT(r.ma_review) AS tong_so_sao, AVG(r.so_sao) AS so_sao_trung_binh
+        $query = "SELECT c.ma_san_pham,s.hinh_anh_1, c.so_luong, c.gia_tri, s.ten_san_pham, d.ten_danh_muc, b.ten_bien_the, COUNT(r.ma_review) AS tong_so_sao, AVG(r.so_sao) AS so_sao_trung_binh
                   FROM tbl_chitiet_giohang AS c
                   INNER JOIN tbl_sanpham AS s ON c.ma_san_pham = s.ma_san_pham
                   INNER JOIN tbl_danhmuc AS d ON s.ma_danh_muc = d.ma_danh_muc
@@ -152,17 +153,18 @@
                 $tong_so_sao = $row["tong_so_sao"];
                 $gia_tri = $row["gia_tri"];
                 $ten_bien_the = $row["ten_bien_the"];
+                $ten_hinh_anh = $row["hinh_anh_1"];
                 $so_luong = $row["so_luong"];
 
                 $tong_gia_tri += $gia_tri;
       ?>
-    <!-- Product 1-->
+    <!-- Product -->
       <div class="product-detail">
         <!-- Product image -->
         <div class="product-inf__image">
-          <img src="./icon/giohang-delete.svg" alt="" />
+          <?php  echo "<a href='?opt=del_gh&id=" . $row["ma_san_pham"] . "' onclick='return confirm(\"Bạn có chắc chắn muốn xoá sản phẩm " . $row["ten_san_pham"] . "?\");'><img src='./icon/giohang-delete.svg' alt='Xóa' /></a>"; ?>
           <div class="frame-img">
-            <img src="img/3H0-1.webp" alt="" class="product-inf__image1" />
+            <?php echo '<img src="img/'.$row["hinh_anh_1"].'" alt="" class="product-inf__image1" />'; ?>
           </div>
         </div>
         <!-- Product information -->
@@ -219,6 +221,43 @@
         <a href="#!" class="btn them">MUA HÀNG</a>
       </div>
     </div>
+    <?php
+      }
+      function delete_gh()
+      {
+
+        $link = null;
+        taoKetNoi($link);
+
+        if (isset($_GET["id"])) {
+
+          $_ma_san_pham = $_GET["id"];
+
+          $sql = "DELETE from tbl_chitiet_giohang where ma_gio_hang = 1 AND ma_san_pham =" . $_ma_san_pham;
+          $result = chayTruyVanKhongTraVeDL($link, $sql);
+          if ($result) {
+            echo "<script>alert('Xoá sản phẩm thành công!');</script>";
+            echo "<script>window.location.href = 'giohang.php?opt=view_gh';</script>";
+          } else {
+            echo "<script>alert('Xoá sản phẩm thất bại!');</script>";
+            echo "<script>window.location.href = 'giohang.php?opt=view_gh';</script>";
+          }
+        }
+        giaiPhongBoNho($link, $result);
+      }
+      if (isset($_GET["opt"])) {
+        $_opt = $_GET["opt"];
+        switch ($_opt) {
+          case "del_gh":
+            delete_gh();
+            break;
+          default:
+            view_gh();
+        }
+      } else {
+        $_opt = view_gh();
+      }
+    ?>
         <!-- Similar products -->
         <div class="similar-container">
           <p class="product-inf__title__1">CÓ THỂ BẠN CŨNG THÍCH</p>
