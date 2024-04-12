@@ -406,7 +406,7 @@
                             // Kiểm tra xem có tham số danh mục được truyền không
                             if (isset($_GET['iddm'])) {
                                 $iddm = $_GET['iddm'];
-                                echo $iddm;
+                                // echo $iddm;
                                 // Kiểm tra nếu danh mục là "TẤT CẢ"
                                 if ($iddm === 'tatca') {
                                     // Hiển thị tất cả sản phẩm
