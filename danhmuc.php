@@ -2,6 +2,8 @@
 <html lang="vn">
 
 
+
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,6 +24,8 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
 
 
+
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/danhmuc.css" />
@@ -29,9 +33,13 @@
     <link rel="stylesheet" href="css/footer.css" />
 
 
+
+
     <!-- Scripts -->
     <script src="./js/danhmuc.js"></script>
 </head>
+
+
 
 
 <body>
@@ -50,13 +58,15 @@
                 <ul class="product-wrap--nav-links">
                     <li class="center"><a href="danhmuc.php?iddm=tatca">TẤT CẢ</a></li>
                     <li class="center"><a href="danhmuc.php?iddm=1">NHẪN</a></li>
-                    <li class="center"><a href="danhmuc.php?iddm=2">D Y CHUYỀN</a></li>
-                    <li class="center"><a href="danhmuc.php?iddm=3">VÒNG TAY</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=3">DÂY CHUYỀN</a></li>
+                    <li class="center"><a href="danhmuc.php?iddm=2">VÒNG TAY</a></li>
                     <li class="center"><a href="danhmuc.php?iddm=4">BÔNG TAI</a></li>
                 </ul>
             </div>
             <div class="prod-second-line"></div>
         </div>
+
+
 
 
         <!---------------------- BỘ LỌC SẢN PHẨM --------------------------------->
@@ -128,6 +138,8 @@
                                 </div>
 
 
+
+
                                 <div class="collection-filter-color collection-item">
                                     <div class="sidebar-sort">
                                         <div class="sort_title">
@@ -144,6 +156,8 @@
                                             </li>
 
 
+
+
                                             <li class="pd-left-0">
                                                 <label data-filter="Bạc" data-filter1="bac"
                                                     class="filter-vendor__item custom-filter-input bac">
@@ -155,6 +169,8 @@
                                         </ul>
                                     </div>
                                 </div>
+
+
 
 
                                 <div class="collection-filter-tag2 collection-item">
@@ -174,6 +190,8 @@
                                             </li>
 
 
+
+
                                             <li
                                                 class="pd-left-0 grid__item large--one-whole medium--one-whole small--one-whole">
                                                 <label data-filter="Đá Cubic Zirconia" data-filter1="da-cubic-zirconia"
@@ -183,6 +201,8 @@
                                                     <span>Đá Cubic Zirconia</span>
                                                 </label>
                                             </li>
+
+
 
 
                                             <li
@@ -212,23 +232,18 @@
                                 <span class="filter_chosen price" data-value="7-000-000-10-000-000">7.000.000đ :
                                     10.000.000đ <a><span></span></a></span>
 
+                                <span class="filter_chosen" data-value="vang">Vàng</span>
 
-                                <span class="filter_chosen" data-value="vang">Vàng<a><span></span></a></span>
-
-
-                                <span class="filter_chosen" data-value="bac">Bạc<a><span></span></a></span>
-
+                                <span class="filter_chosen" data-value="bac">Bạc</span>
 
                                 <span class="filter_chosen" data-value="da-xa-cu">
                                     Đá Xà cừ <a><span></span></a></span>
 
-
                                 <span class="filter_chosen" data-value="da-cubic-zirconia">Đá Cubic Zirconia
                                     <a><span></span></a></span>
 
-
                                 <span class="filter_chosen" data-value="da-Zirconia">Đá Zirconia
-                                    <a><span></span></a></span>
+                                </span>
                                 <span class="clear_all"><a href="javascript:void(0)">Bỏ lọc</a></span>
                             </div>
                             <div class="bottom-filter">
@@ -253,7 +268,6 @@
                                     "]"
                                 ).toggleClass("show_tag");
 
-
                                 var check_filter = false;
                                 $(".filter_chosen").each(function () {
                                     if ($(this).hasClass("show_tag")) {
@@ -267,7 +281,6 @@
                                 }
                             });
 
-
                             $(".clear_all a").click(function () {
                                 $(".filter_chosen.show_tag a").trigger("click");
                             });
@@ -277,13 +290,10 @@
                                 $(this).toggleClass("active");
                             });
 
-
                             $(".header_filter_chosen .filter_chosen > a").click(
                                 function () {
                                     var $parent = $(this).parent();
                                     //      $(this).parent('.filter_chosen').removeClass('show_tag');
-
-
                                     var val = $parent.attr("data-value");
                                     $(".custom-filter-input[data-filter1=" + val + "]")
                                         .find("input")
@@ -319,10 +329,11 @@
                     <!-- Hiển thị sản phẩm -->
                     <?php
                     // Kiểm tra xem có tham số danh mục được truyền không
-                    if (isset($_GET['iddm'])) {
-                        $iddm = $_GET['iddm'];
+                    if (isset($_GET["iddm"])) {
+                        $iddm = $_GET["iddm"];
+
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
-                        if ($iddm === 'tatca') {
+                        if ($iddm === "tatca") {
                             // Hiển thị tất cả sản phẩm
                             $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                             FROM tbl_sanpham sp
@@ -355,7 +366,7 @@
                     $link = null;
                     taoKetNoi($link);
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
-                    // Đếm số lượng sản phẩm được trả về                
+                    // Đếm số lượng sản phẩm được trả về
                     $total_products_displayed = mysqli_num_rows($result);
                     giaiPhongBoNho($link, $result);
                     ?>
@@ -368,48 +379,25 @@
                 <!----------- DROPDOWN ------------>
                 <!-- Phần HTML -->
                 <div class="prod-dropdown">
-                    <label class="prod-dropdown--left" onclick="document.getElementById('sapxep-form').submit();">>
+                    <label class="prod-dropdown--left" onclick="document.getElementById('sapxep-form').submit();">
                         <i class="fa-solid fa-arrow-up-wide-short"></i> Sắp xếp:
                     </label>
                     <div class="prod-dropdown--right">
                         <div>
                             <form id="sapxep-form" action="" method="POST">
-                                <select name="sap-xep" id="">
-                                    <option value="Mặc định">Mặc định</option>
-                                    <option value="ASC">Giá từ thấp tới cao</option>
-                                    <option value="DESC">Giá từ cao tới thấp</option>
+                                <select name="sap-xep" class="prod-dropdown__input-box">
+                                    <option value="Mặc định" <?php if (isset($_POST["sap-xep"]) && $_POST["sap-xep"] == 'mặc định')
+                                        echo 'selected'; ?>>Mặc định</option>
+                                    <option value="ASC" <?php if (isset($_POST["sap-xep"]) && $_POST["sap-xep"] == 'ASC')
+                                        echo 'selected'; ?>> Giá từ thấp tới cao</option>
+                                    <option value="DESC" <?php if (isset($_POST["sap-xep"]) && $_POST["sap-xep"] == 'DESC')
+                                        echo 'selected'; ?>> Giá từ cao tới thấp</option>
                                 </select>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="prod-dropdown">
-                    <label class="prod-dropdown--left">
-                        <i class="fa-solid fa-arrow-up-wide-short"></i> Sắp xếp:
-                    </label>
-                    <div class="prod-dropdown--right">
-                        <div class="prod-dropdown__input-box"></div>
-                        <div class="prod-dropdown__list">
-                            <input type="radio" name="drop1" id="id1" class="radio" />
-                            <label for="id1">
-                                <span class="name">Mặc định</span>
-                            </label>
-
-
-                            <input type="radio" name="drop1" id="id2" class="radio" />
-                            <label for="id2">
-                                <span class="name">Giá từ thấp tới cao</span>
-                            </label>
-
-
-                            <input type="radio" name="drop1" id="id3" class="radio" />
-                            <label for="id3">
-                                <span class="name">Giá từ cao tới thấp</span>
-                            </label>
-                        </div>
-                    </div>
-                </div> -->
             <!-- jvs DROPDOWN -->
             <script>
                 var input = document.querySelector(".prod-dropdown__input-box");
@@ -425,8 +413,6 @@
                             "0 1px 2px 0 rgba(0, 0, 0, 0.15),0 1px 3px 1px rgba(0, 0, 0, 0.1)";
                     }
                 };
-
-
                 var rad = document.querySelectorAll(".radio");
                 rad.forEach((item) => {
                     item.addEventListener("change", () => {
@@ -437,36 +423,38 @@
             </script>
 
 
+
+
             <!--------------- Tổng hợp các sản phẩm-------------->
             <div>
                 <div class="prod-list">
-                    <div class="prod-list__grid">
-                        <!-- Hiển thị sản phẩm -->
-                        <?php
-                        // Thực hiện truy vấn SQL để lấy sản phẩm
-                        $link = null;
-                        taoKetNoi($link);
-                        // Kiểm tra xem có tham số danh mục được truyền không
-                        if (isset($_GET['iddm'])) {
-                            $iddm = $_GET['iddm'];
-
-                            // Kiểm tra nếu danh mục là "TẤT CẢ"
-                            if ($iddm === 'tatca') {
-                                // Hiển thị tất cả sản phẩm
-                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                    <div class="prod-list">
+                        <div class="prod-list__grid">
+                            <!-- Hiển thị sản phẩm -->
+                            <?php
+                            // Thực hiện truy vấn SQL để lấy sản phẩm
+                            $link = null;
+                            taoKetNoi($link);
+                            // Kiểm tra xem có tham số danh mục được truyền không
+                            if (isset($_GET['iddm'])) {
+                                $iddm = $_GET['iddm'];
+                                echo $iddm;
+                                // Kiểm tra nếu danh mục là "TẤT CẢ"
+                                if ($iddm === 'tatca') {
+                                    // Hiển thị tất cả sản phẩm
+                                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                                         FROM tbl_sanpham sp
                                                         LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                         LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                                         GROUP BY sp.ma_san_pham";
 
-                                // Kiểm tra giá trị của mục select
-                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                    if (isset($_POST['sap-xep'])) {
-                                        // Lấy dữ liệu từ biểu mẫu
-                                        $sapxep = $_POST['sap-xep'];
-
-                                        if ($sapxep === 'ASC') {
-                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                    // Kiểm tra giá trị của mục select
+                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                        if (isset($_POST['sap-xep'])) {
+                                            // Lấy dữ liệu từ biểu mẫu
+                                            $sapxep = $_POST['sap-xep'];
+                                            if ($sapxep === 'ASC') {
+                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
                                                                     CASE
                                                                         WHEN sp.gia_giam = 0 THEN sp.gia_goc
                                                                         ELSE sp.gia_giam
@@ -474,11 +462,11 @@
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY a ASC";
-                                        } elseif ($sapxep === 'DESC') {
-                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                            } elseif ($sapxep === 'DESC') {
+                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
                                                                     CASE
                                                                         WHEN sp.gia_giam = 0 THEN sp.gia_goc
                                                                         ELSE sp.gia_giam
@@ -486,35 +474,36 @@
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY a DESC";
-                                        } elseif ($sapxep === 'Mặc định') {
-                                            $query_list_products .= "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                            } elseif ($sapxep === 'Mặc định') {
+                                                $query_list_products .= "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY sp.ma_san_pham ASC";
+                                            }
                                         }
                                     }
-                                }
-                            } else {
-                                // Hiển thị sản phẩm theo danh mục cụ thể
-                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                } else {
+                                    // Hiển thị sản phẩm theo danh mục cụ thể
+                                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                                         FROM tbl_sanpham sp
                                                         LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                         LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                        WHERE dm.ma_danh_muc = $iddm
                                                         GROUP BY sp.ma_san_pham";
 
-                                // Kiểm tra giá trị của mục select
-                                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                    if (isset($_POST['sap-xep'])) {
-                                        // Lấy dữ liệu từ biểu mẫu
-                                        $sapxep = $_POST['sap-xep'];
+                                    // Kiểm tra giá trị của mục select
+                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                        if (isset($_POST['sap-xep'])) {
+                                            // Lấy dữ liệu từ biểu mẫu
+                                            $sapxep = $_POST['sap-xep'];
 
-                                        if ($sapxep === 'ASC') {
-                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                            if ($sapxep === 'ASC') {
+                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
                                                                     CASE
                                                                         WHEN sp.gia_giam = 0 THEN sp.gia_goc
                                                                         ELSE sp.gia_giam
@@ -522,11 +511,11 @@
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY a ASC";
-                                        } elseif ($sapxep === 'DESC') {
-                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                            } elseif ($sapxep === 'DESC') {
+                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
                                                                     CASE
                                                                         WHEN sp.gia_giam = 0 THEN sp.gia_goc
                                                                         ELSE sp.gia_giam
@@ -534,139 +523,153 @@
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = 1)
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY a DESC ";
-                                        } elseif ($sapxep === 'Mặc định') {
-                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                                        FROM tbl_sanpham sp
-                                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                        WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                                        GROUP BY sp.ma_san_pham
-                                        ORDER BY sp.ma_san_pham ASC";
+                                            } elseif ($sapxep === 'Mặc định') {
+                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                                FROM tbl_sanpham sp
+                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                                                GROUP BY sp.ma_san_pham
+                                                                ORDER BY sp.ma_san_pham ASC";
+                                            }
                                         }
                                     }
                                 }
-                            }
 
-                            // Đếm số lượng sản phẩm
-                            $result = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery");
-                            if ($result) {
-                                $row = mysqli_fetch_assoc($result);
+
+
+
+
+                                // Đếm số lượng sản phẩm
+                                $result = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery");
+                                if ($result) {
+                                    $row = mysqli_fetch_assoc($result);
+                                    $so_luong_san_pham = $row["so_luong_san_pham"];
+                                } else {
+                                    // In thông báo lỗi
+                                    echo "Lỗi truy vấn MySQL: " . mysqli_error($link);
+                                }
                                 $so_luong_san_pham = $row["so_luong_san_pham"];
-                            } else {
-                                // In thông báo lỗi
-                                echo "Lỗi truy vấn MySQL: " . mysqli_error($link);
-                            }
-                            $so_luong_san_pham = $row["so_luong_san_pham"];
-                            // Xác định trang hiện tại
-                            $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
-                            $productsPerPage = 12;
+                                // Xác định trang hiện tại
+                                $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
+                                $productsPerPage = 12;
+
+                                // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
+                                $start = ($trang_hien_tai - 1) * $productsPerPage;
+
+                                // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
+                                $query_list_products .= " LIMIT $start, $productsPerPage";
 
 
-                            // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
-                            $start = ($trang_hien_tai - 1) * $productsPerPage;
+                                // Thực hiện truy vấn SQL để lấy sản phẩm
+                                $result = chayTruyVanTraVeDL($link, $query_list_products);
 
 
-                            // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
-                            $query_list_products .= " LIMIT $start, $productsPerPage";
+                                // Tính số trang
+                                $so_trang = ceil($so_luong_san_pham / $productsPerPage);
 
-
-                            // Thực hiện truy vấn SQL để lấy sản phẩm
-                            $result = chayTruyVanTraVeDL($link, $query_list_products);
-
-
-                            // Tính số trang
-                            $so_trang = ceil($so_luong_san_pham / $productsPerPage);
-
-
-                            // Xử lý dữ liệu trả về
-                            // Hiển thị danh sách sản phẩm
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $product_price = $row["gia_giam"];
-                                $product_sale_price = $row["gia_goc"];
-                                $avg_rating = $row["avg_rating"];
-                                ?>
-                                <section class="prod-list__item">
-                                    <div class="prod-list__item__image">
-                                        <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
-                                            <img class="prod-list__item__img1" loading="lazy"
-                                                src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
-                                        </a>
-                                        <!-- Hover heart and cart -->
-                                        <div class="button-heart-cart-hover">
-                                            <a href="">
-                                                <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
+                                // Xử lý dữ liệu trả về
+                                // Hiển thị danh sách sản phẩm
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $product_price = $row["gia_giam"];
+                                    $product_sale_price = $row["gia_goc"];
+                                    $avg_rating = $row["avg_rating"];
+                                    ?>
+                                    <section class="prod-list__item">
+                                        <div class="prod-list__item__image">
+                                            <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
+                                                <img class="prod-list__item__img1" loading="lazy"
+                                                    src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
                                             </a>
-                                            <a href="">
-                                                <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="prod-list__item__inner">
-                                        <div class="prod-list__item__inner--child">
-                                            <div class="prod-list__item__info">
-                                                <div class="prod-list__item__info--title">
-                                                    <a
-                                                        href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
-                                                </div>
-                                                <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
-                                                </div>
+                                            <!-- Hover heart and cart -->
+                                            <div class="button-heart-cart-hover">
+                                                <a href="">
+                                                    <img src="./icon/index-heart.svg"
+                                                        class="prod-list__item__image--heart-hover" />
+                                                </a>
+                                                <a href="">
+                                                    <img src="./icon/index-cart.svg"
+                                                        class="prod-list__item__image--cart-hover" />
+                                                </a>
                                             </div>
-                                            <div class="prod-list__item__info--price-fb">
-                                                <div class="prod-list__item--price">
-                                                    <?php
-                                                    if ($product_price != 0) {
-                                                        echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
-                                                        echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                                    } else {
-                                                        echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                                    }
-                                                    ?>
+                                        </div>
+                                        <div class="prod-list__item__inner">
+                                            <div class="prod-list__item__inner--child">
+                                                <div class="prod-list__item__info">
+                                                    <div class="prod-list__item__info--title">
+                                                        <a
+                                                            href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                                                    </div>
+                                                    <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
+                                                    </div>
                                                 </div>
-                                                <div class="prod-list__item__info--star-icon">
-                                                    <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
-                                                    <div class="prod-list__item__info--fb">
-                                                        <?php echo number_format($avg_rating, 1, '.'); ?>
+                                                <div class="prod-list__item__info--price-fb">
+                                                    <div class="prod-list__item--price">
+                                                        <?php
+                                                        if ($product_price != 0) {
+                                                            echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
+                                                            echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                                        } else {
+                                                            echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="prod-list__item__info--star-icon">
+                                                        <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
+                                                        <div class="prod-list__item__info--fb">
+                                                            <?php echo number_format($avg_rating, 1, '.'); ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </section>
-                                <?php
+                                    </section>
+                                    <?php
+                                }
                             }
-                        }
-                        giaiPhongBoNho($link, $result);
-                        ?>
+                            giaiPhongBoNho($link, $result);
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <!---------------------- PAGINATION PHÍA DƯỚI CÁC SẢN PHẨM --------------------------------->
                 <!-- Phân trang -->
                 <div class="prod-list__pagination">
-                    <div class="list-number"> <?php $trang_truoc = 0;
+                    <div class="list-number"> <?php
+                    $trang_truoc = 0;
                     $trang_sau = 0;
                     $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
                     if ($trang_hien_tai == 1) {
                         $trang_truoc = 1;
-                    } else
-                        ($trang_truoc = $trang_hien_tai - 1);
+                    } else {
+                        $trang_truoc = $trang_hien_tai - 1;
+                    }
                     if ($trang_hien_tai == $so_trang) {
                         $trang_sau = $so_trang;
-                    } else
-                        ($trang_sau = $trang_hien_tai + 1); ?>
-                        <button> <?php echo "<a href='./danhmuc.php?trang=" . $trang_truoc . "'>&lt &lt</a>" ?>
+                    } else {
+                        $trang_sau = $trang_hien_tai + 1;
+                    }
+                    ?>
+                        <button> <?php echo "<a href='./danhmuc.php?trang=" .
+                            $trang_truoc .
+                            "'>&lt &lt</a>"; ?>
                         </button>
                         <?php for ($i = 1; $i <= $so_trang; $i = $i + 1) {
-                            echo "<button><a href='./danhmuc.php?trang=" . $i . "'>$i</a></button>";
+                            echo "<button><a href='./danhmuc.php?trang=" .
+                                $i .
+                                "'>$i</a></button>";
                         } ?>
-                        <button> <?php echo "<a href='./danhmuc.php?trang=" . $trang_sau . "'>&gt &gt</a>" ?>
+                        <button> <?php echo "<a href='./danhmuc.php?trang=" .
+                            $trang_sau .
+                            "'>&gt &gt</a>"; ?>
                         </button>
                     </div>
                 </div>
+                <div class="prod-third-line"></div>
             </div>
-            <div class="prod-third-line"></div>
         </article>
         <!------------------ GỢI Ý SẢN PHẨM----------------------->
         <div class="suggest-prod">
@@ -680,7 +683,6 @@
                     $link = null;
                     taoKetNoi($link);
 
-
                     // Kết nối và lấy dữ liệu từ CSDL
                     $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                     FROM tbl_sanpham sp
@@ -690,9 +692,9 @@
                     GROUP BY sp.ma_san_pham
                     ORDER BY RAND() Limit 12";
 
-
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
                     while ($row = mysqli_fetch_assoc($result)) {
+
                         // Hiển thị sản phẩm
                         $product_price = $row["gia_giam"];
                         $product_sale_price = $row["gia_goc"];
@@ -701,9 +703,12 @@
                         <div class="card swiper-slide">
                             <!-- <section class="prod-list__item"> -->
                             <div class="prod-list__item__image">
-                                <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
-                                    <img class="prod-list__item__img1" loading="lazy"
-                                        src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
+                                <a href='./sanpham.php?id=<?php echo $row[
+                                    "ma_san_pham"
+                                ]; ?>'>
+                                    <img class="prod-list__item__img1" loading="lazy" src="./img/<?php echo $row[
+                                        "hinh_anh_1"
+                                    ]; ?>" />
                                 </a>
                                 <span class="product-sale-tag">
                                     <span> HOT!</span>
@@ -722,27 +727,55 @@
                                 <div class="prod-list__item__inner--child">
                                     <div class="prod-list__item__info">
                                         <div class="prod-list__item__info--title">
-                                            <a
-                                                href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
+                                            <a href='./sanpham.php?id=<?php echo $row[
+                                                "ma_san_pham"
+                                            ]; ?>'><?php echo $row[
+                                                 "ten_san_pham"
+                                             ]; ?></a>
                                         </div>
-                                        <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
+                                        <div class="prod-list__item__info--masp"><?php echo $row[
+                                            "ten_danh_muc"
+                                        ]; ?>
                                         </div>
                                     </div>
                                     <div class="prod-list__item__info--price-fb">
                                         <div class="prod-list__item--price">
-                                            <?php
-                                            if ($product_price != 0) {
-                                                echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
-                                                echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
+                                            <?php if ($product_price != 0) {
+                                                echo '<span class="prod-list__item__info--price">' .
+                                                    number_format(
+                                                        $product_price,
+                                                        0,
+                                                        ",",
+                                                        "."
+                                                    ) .
+                                                    " VNĐ </span>";
+                                                echo '<span class="prod-list__item__info--price-sales">' .
+                                                    number_format(
+                                                        $product_sale_price,
+                                                        0,
+                                                        ",",
+                                                        "."
+                                                    ) .
+                                                    " VNĐ </span>";
                                             } else {
-                                                echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                            }
-                                            ?>
+                                                echo '<span class="prod-list__item__info--price">' .
+                                                    number_format(
+                                                        $product_sale_price,
+                                                        0,
+                                                        ",",
+                                                        "."
+                                                    ) .
+                                                    " VNĐ </span>";
+                                            } ?>
                                         </div>
                                         <div class="prod-list__item__info--star-icon">
                                             <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
                                             <div class="prod-list__item__info--fb">
-                                                <?php echo number_format($avg_rating, 1, '.'); ?>
+                                                <?php echo number_format(
+                                                    $avg_rating,
+                                                    1,
+                                                    "."
+                                                ); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -781,6 +814,8 @@
                 },
 
 
+
+
                 breakpoints: {
                     0: {
                         slidesPerView: 1,
@@ -811,7 +846,7 @@
             <div class="container-listing">
                 <!-- ALL -->
                 <div class="listing-title">
-                    <a href="" class="listing-tile__link">
+                    <a href="danhmuc.php?iddm=tatca" class="listing-tile__link">
                         <figure class="listing-tile__image">
                             <img class="" src="./img/danhmuc-ShopAll1.jpeg" />
                         </figure>
@@ -822,7 +857,7 @@
                 </div>
                 <!-- Day chuyen -->
                 <div class="listing-title">
-                    <a href="" class="listing-tile__link">
+                    <a href="danhmuc.php?iddm=3" class="listing-tile__link">
                         <figure class="listing-tile__image">
                             <img class="" src="./img/day-chuyen.webp" />
                         </figure>
@@ -833,7 +868,7 @@
                 </div>
                 <!-- Bong tai -->
                 <div class="listing-title">
-                    <a href="" class="listing-tile__link">
+                    <a href="danhmuc.php?iddm=4" class="listing-tile__link">
                         <figure class="listing-tile__image">
                             <img class="" src="./img/bong-tai.jpg" />
                         </figure>
@@ -844,7 +879,7 @@
                 </div>
                 <!-- nhan -->
                 <div class="listing-title">
-                    <a href="" class="listing-tile__link">
+                    <a href="danhmuc.php?iddm=1" class="listing-tile__link">
                         <figure class="listing-tile__image">
                             <img class="" src="./img/nhan.webp" />
                         </figure>
@@ -855,7 +890,7 @@
                 </div>
                 <!-- lắc tay -->
                 <div class="listing-title">
-                    <a href="" class="listing-tile__link">
+                    <a href="danhmuc.php?iddm=2" class="listing-tile__link">
                         <figure class="listing-tile__image">
                             <img class="" src="./img/lac-tay.webp" />
                         </figure>
@@ -883,10 +918,7 @@
         </div>
     </section>
     <!-- Footer -->
-    <?php
-    include "footer.php";
-    ?>
+    <?php include "footer.php"; ?>
 </body>
-
 
 </html>

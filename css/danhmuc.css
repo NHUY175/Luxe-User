@@ -528,31 +528,13 @@ input[type="radio"] {
   border-radius: 2mm;
   padding: 0px 10px;
   font-family: Quicksand;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
-}
-.prod-dropdown__input-box::before {
-  content: "expand_more";
-  font-family: "Material Icons";
-  position: absolute;
-  font-size: 18px;
-  top: 50%;
-  right: 8px;
-  transform: translate(0, -50%);
-  width: fit-content;
-  height: fit-content;
-}
-.prod-dropdown__input-box.open::before {
-  content: "expand_less";
-}
-.prod-dropdown__input-box:empty::after {
-  content: "Mặc định";
-  font-family: Quicksand;
 }
 
 .prod-dropdown__list {
@@ -572,41 +554,7 @@ input[type="radio"] {
   transition: 0.25s ease-out; /* thêm hiệu ứng khi mở list */
   z-index: 99;
 }
-.prod-dropdown__list input {
-  display: none;
-}
-.prod-dropdown__list label {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 14px;
-  padding: 10px 15px;
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-}
-.prod-dropdown__list label .material-icons-outlined,
-.prod-dropdown__input-box .material-icons-outlined {
-  margin-right: 5px;
-  font-size: 22px;
-}
-.prod-dropdown__list label:hover {
-  background: rgba(0, 0, 0, 0.08);
-}
-input:checked + label {
-  color: rgb(20, 117, 213);
-  background: rgb(238, 245, 252);
-}
-input:checked + label::before {
-  content: "done";
-  font-family: "Material Icons";
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translate(0, -50%);
-  font-size: 18px;
-}
+
 .open {
   /* outline: 0.5mm solid #ffbe98; */
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px,
@@ -819,26 +767,26 @@ input:checked + label::before {
 }
 .list-number button {
   border: none;
-  background: #ff9f65;
+  background: var(--background-color-3);
   border-radius: 6px;
   cursor: pointer;
   height: 38px;
   width: 38px;
 }
 .list-number a {
-  color: #fff;
+  color: var(--text-color-2);
   font-size: 15px;
   font-weight: 600;
 }
-.list-number button.active {
-  color: #fff;
+.list-number button:active,
+.list-number button:hover {
   background: #f98542;
+  color: #fff;
 }
-.pagination--container__button:disabled {
-  color: black;
-  background: none;
+.list-number a:active,
+.list-number a:hover {
+  color: #fff;
 }
-
 /* =============END PHẦN PAGINATION============== */
 /* THIRD - LINE */
 
@@ -1377,6 +1325,7 @@ input:checked + label::before {
   .prod-dropdown__input-box {
     font-size: 14px;
   }
+
   /* ================ LIST SẢN PHẨM HIỂN THỊ ======================*/
   .prod-list__grid {
     gap: 20px 28px;
