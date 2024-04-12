@@ -238,10 +238,6 @@
                                     value +
                                     "]"
                                 ).toggleClass("show_tag");
-
-
-
-
                                 var check_filter = false;
                                 $(".filter_chosen").each(function () {
                                     if ($(this).hasClass("show_tag")) {
