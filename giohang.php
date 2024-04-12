@@ -160,7 +160,7 @@
       }
     ?>
         <!-- Similar products -->
-        <div class="container">
+      <div class="container" style ="background-color: var(--background-color), max-width: calc(100%);">      
       <p class="product-inf__title__1">CÓ THỂ BẠN CŨNG THÍCH</p>
       <div class="product-home">
         <?php
