@@ -22,25 +22,14 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <!-- swiper css -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
-
-
-
-
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/danhmuc.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
-
-
-
-
     <!-- Scripts -->
     <script src="./js/danhmuc.js"></script>
 </head>
-
-
-
 
 <body>
     <!-- Header -->
@@ -65,9 +54,6 @@
             </div>
             <div class="prod-second-line"></div>
         </div>
-
-
-
 
         <!---------------------- BỘ LỌC SẢN PHẨM --------------------------------->
         <article id="article-products">
@@ -155,9 +141,6 @@
                                                 </label>
                                             </li>
 
-
-
-
                                             <li class="pd-left-0">
                                                 <label data-filter="Bạc" data-filter1="bac"
                                                     class="filter-vendor__item custom-filter-input bac">
@@ -169,9 +152,6 @@
                                         </ul>
                                     </div>
                                 </div>
-
-
-
 
                                 <div class="collection-filter-tag2 collection-item">
                                     <div class="sidebar-sort">
@@ -189,9 +169,6 @@
                                                 </label>
                                             </li>
 
-
-
-
                                             <li
                                                 class="pd-left-0 grid__item large--one-whole medium--one-whole small--one-whole">
                                                 <label data-filter="Đá Cubic Zirconia" data-filter1="da-cubic-zirconia"
@@ -201,9 +178,6 @@
                                                     <span>Đá Cubic Zirconia</span>
                                                 </label>
                                             </li>
-
-
-
 
                                             <li
                                                 class="pd-left-0 grid__item large--one-whole medium--one-whole small--one-whole">
@@ -232,18 +206,24 @@
                                 <span class="filter_chosen price" data-value="7-000-000-10-000-000">7.000.000đ :
                                     10.000.000đ <a><span></span></a></span>
 
-                                <span class="filter_chosen" data-value="vang">Vàng</span>
+                                <span class="filter_chosen" data-value="vang">Vàng<a><span></span></a></span>
 
-                                <span class="filter_chosen" data-value="bac">Bạc</span>
+                                <span class="filter_chosen" data-value="bac">Bạc<a><span></span></a></span>
 
                                 <span class="filter_chosen" data-value="da-xa-cu">
                                     Đá Xà cừ <a><span></span></a></span>
 
+
+
+
                                 <span class="filter_chosen" data-value="da-cubic-zirconia">Đá Cubic Zirconia
                                     <a><span></span></a></span>
 
+
+
+
                                 <span class="filter_chosen" data-value="da-Zirconia">Đá Zirconia
-                                </span>
+                                    <a><span></span></a></span>
                                 <span class="clear_all"><a href="javascript:void(0)">Bỏ lọc</a></span>
                             </div>
                             <div class="bottom-filter">
@@ -268,6 +248,9 @@
                                     "]"
                                 ).toggleClass("show_tag");
 
+
+
+
                                 var check_filter = false;
                                 $(".filter_chosen").each(function () {
                                     if ($(this).hasClass("show_tag")) {
@@ -281,19 +264,31 @@
                                 }
                             });
 
+
+
+
                             $(".clear_all a").click(function () {
                                 $(".filter_chosen.show_tag a").trigger("click");
                             });
+
+
 
 
                             $(".filter-color label").click(function () {
                                 $(this).toggleClass("active");
                             });
 
+
+
+
                             $(".header_filter_chosen .filter_chosen > a").click(
                                 function () {
                                     var $parent = $(this).parent();
                                     //      $(this).parent('.filter_chosen').removeClass('show_tag');
+
+
+
+
                                     var val = $parent.attr("data-value");
                                     $(".custom-filter-input[data-filter1=" + val + "]")
                                         .find("input")
@@ -557,19 +552,36 @@
                                 $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
                                 $productsPerPage = 12;
 
+
+
+
                                 // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
                                 $start = ($trang_hien_tai - 1) * $productsPerPage;
 
+
+
+
                                 // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
                                 $query_list_products .= " LIMIT $start, $productsPerPage";
+
+
 
 
                                 // Thực hiện truy vấn SQL để lấy sản phẩm
                                 $result = chayTruyVanTraVeDL($link, $query_list_products);
 
 
+
+
                                 // Tính số trang
                                 $so_trang = ceil($so_luong_san_pham / $productsPerPage);
+
+
+
+
+
+
+
 
                                 // Xử lý dữ liệu trả về
                                 // Hiển thị danh sách sản phẩm

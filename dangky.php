@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <!-- Chỉnh biểu tượng web -->
     <link href="./icon/Logo.svg" rel="shortcut icon" />
     <title>Luxe - Trang sức cao cấp</title>
@@ -17,11 +16,12 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- JS -->
     <script src="./js/header.js"></script>
+    <script src="./js/dangky.js"></script>
   </head>
   <body>
     <header class="header">
       <!--Logo-left-->
-      <a href="index.html">
+      <a href="index.php">
         <div class="logo-left">
           <img class="logo1" alt="" src="./icon/Logo.svg"/>
           <h1 class="logo1-text">Luxe</h1>    
@@ -30,7 +30,7 @@
       <!--Info-Right-->
       <div class="frame-right">
         <div class="asking">Bạn đã có tài khoản?</div>
-        <a href="dangnhap.html">
+        <a href="dangnhap.php">
           <button class="btn-signin">
             <b class="btn-signin-text">Đăng nhập</b>
           </button>
@@ -44,6 +44,42 @@
     <div class="line1"></div>
 
     <!--BODY-->
+    <!-- Bắt PT POST khi đăng ký -->
+    <?php
+            require_once "db_module.php";
+            $link = null;
+            taoKetNoi($link);
+            if(isset($_POST["submit"])){
+              $_ho_ten = mysqli_real_escape_string($link, $_POST["name"]);
+              $_email = mysqli_real_escape_string($link, $_POST["email"]);
+              $_gioi_tinh = mysqli_real_escape_string($link, $_POST["gender"]);
+              $_so_dien_thoai = mysqli_real_escape_string($link, $_POST["tele-number"]);
+              $_ngay_sinh = mysqli_real_escape_string($link, $_POST["date"]);
+              $_mat_khau = mysqli_real_escape_string($link, ($_POST["password"]));
+              $_ten_dang_nhap = mysqli_real_escape_string($link, $_POST["username"]);
+              $c_mat_khau = mysqli_real_escape_string($link, ($_POST["c-password"]));
+            
+            /*$sql_dangky = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE ho_ten = '$_ho_ten' AND gioi_tinh = '$_gioi_tinh' AND ngay_sinh = '$_ngay_sinh' AND email = '$_email' 
+                                                        AND so_dien_thoai = '$_so_dien_thoai' AND ten_dang_nhap = '$_ten_dang_nhap' AND mat_khau = '$_mat_khau'") or die('query failed');
+            if(mysqli_num_rows($sql_dangky) > 0){
+              echo "<script>alert('Người dùng đã tồn tại!');</script>";
+            }*/
+            $sql_check_email = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE email = '$_email'") or die('query failed');
+            $sql_check_username = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE ten_dang_nhap = '$_ten_dang_nhap'") or die('query failed');
+
+            if(mysqli_num_rows($sql_check_email) > 0){
+                echo "<script>alert('Email đã tồn tại!');</script>";
+            } elseif(mysqli_num_rows($sql_check_username) > 0) {
+                echo "<script>alert('Tên đăng nhập đã tồn tại!');</script>";
+            } else {
+              mysqli_query($link, "INSERT INTO tbl_khachhang (ho_ten, gioi_tinh, ngay_sinh, email, so_dien_thoai, ten_dang_nhap, mat_khau) 
+                                  VALUES('$_ho_ten', '$_gioi_tinh', '$_ngay_sinh', '$_email', '$_so_dien_thoai', '$_ten_dang_nhap', '$_mat_khau')") or die('query failed');
+              echo '<script>alert("Đăng ký thành công"); 
+              window.location.href = "dangnhap.php";</script>';
+                exit(); // Kết thúc kịch bản sau khi chuyển hướng    
+            }
+            }
+          ?>
     <main class="main">
       <div class="main-inner">
         <!--left-->
@@ -51,7 +87,7 @@
         <!--Right-->
         <div class="container-right">
           <div class="title">Đăng ký</div>
-          <form action="#">
+          <form action="#" method="post">
             <div class="user-details">
               <!--NAME-->
               <div class="input-box">
@@ -75,7 +111,7 @@
                   <span class="text">Giới tính</span>
                   <span class="span"> *</span>
                 </b>
-                <select class="box" name ="gioitinh" required>
+                <select class="box" name ="gender" required>
                   <option value="Nam">Nam</option>
                   <option value="Nữ">Nữ</option>
                 </select>
@@ -89,7 +125,7 @@
                 <input
                   class="box"
                   type="text"
-                  name ="sodienthoai"
+                  name ="tele-number"
                   pattern="[0-9]{10}"
                   title="Vui lòng nhập đủ 10 số"
                   required
@@ -111,12 +147,13 @@
                 </b>
                 <input id="password" name ="password" type="password" minlength="6" required />
               </div>
-              <!--ADDRESS-->
+              <!--username-->
               <div class="input-box">
                 <b>
-                  <span class="text">Địa chỉ</span>
+                  <span class="text">Tên đăng nhập</span>
+                  <span class="span"> *</span>
                 </b>
-                <input type="text" name ="diachi"/>
+                <input type="text" name ="username" required/>
               </div>
               <!--PASS-CONFIRM-->
               <div class="input-box">
@@ -127,6 +164,7 @@
                 <input
                   id="confirmPassword"
                   type="password"
+                  name="c-password"
                   minlength="6"
                   required
                 />
@@ -175,42 +213,14 @@
               </div>
             </div>
           </form>
-          <!-- Bắt PT POST khi đăng ký -->
-          <?php
-            require_once "db_module.php";
-            $link = null;
-            taoKetNoi($link);
-            if(isset($_POST["submit"])){
-              $_ho_ten = $_POST["name"];
-              $_gioi_tinh = $_POST["gioitinh"];
-              $_ngay_sinh = $_POST["date"];
-              $_so_dien_thoai = $_POST["sodienthoai"];
-              $_email = $_POST["email"];
-              $_dia_chi = $_POST["diachi"];
-              $_mat_khau = $_POST["password"];
-            //Tạo câu lệnh SQL thêm vào bảng tbl_khachhang
-            $sql_dangky = "INSERT INTO tbl_khachhang (ho_ten, gioi_tinh, ngay_sinh, email, so_dien_thoai,  dia_chi, mat_khau) VALUES ('$_ho_ten','$_gioi_tinh', '$_ngay_sinh', '$_email', '$_so_dien_thoai',  '$_dia_chi', '$_mat_khau')";
-            //Kiểm tra biến có dữ liệu hay không
-            if($_ho_ten !== ""){
-              $rs_dangky = chayTruyVanKhongTraVeDL($link, $sql_dangky);
-              // Kiểm tra insert
-              if($rs_dangky){
-                  echo "<script>alert('Đăng ký thành công');</script>";
-              } else {
-                  echo "<script>alert('Đăng ký thất bại');</script>";
-              }
-              giaiPhongBoNho($link,$rs_dangky);
-              }          
-            }
-          ?>
+          
         </div>
       </div>
     </main>
     <div class="line2"></div>
     <!-- Footer -->
-    <footer class="footer" id="footer"></footer>
-    <script>
-      load("#footer", "./template/footer.html");
-    </script>
+    <?php
+      include "footer.php";
+    ?>
   </body>
 </html>

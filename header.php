@@ -23,7 +23,7 @@
         <ul id="PC_nav">
           <li><a href="./index.php">TRANG CHỦ</a></li>
           <li><a href="#!" onclick="megaFunction()">SẢN PHẨM</a></li>
-          <li><a href="./gioithieu.php">VỀ CHÚNG TÔI</a></li>
+          <li><a href="./vechungtoi.php">VỀ CHÚNG TÔI</a></li>
           <li><a href="./hotro.php">HỖ TRỢ</a></li>
           <li><a href="./lienhe.php">LIÊN HỆ</a></li>
         </ul>
@@ -40,16 +40,16 @@
         <div class="top-act-group">
           <button class="top-act-btn">
             <a href="./yeuthich.php"><img src="./icon/index-heart.svg" alt="" /></a>
-            <span class="top-act-title"> 03 </span>
+            <span class="top-act-title" id="wishlist"> 0 </span>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn">
             <a href="./giohang.php"><img src="./icon/index-cart.svg" alt="" /></a>
-            <span class="top-act-title"> 03 </span>
+            <span class="top-act-title"> 0 </span>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn user">
-            <a href="#"><img src="./icon/index-user.svg" alt="" /></a>
+            <a href="dangky.php"><img src="./icon/index-user.svg" alt="" /></a>
           </button>
           <div class="top-act-separate"></div>
           <button class="top-act-btn mode" onclick='darkFunction()'>

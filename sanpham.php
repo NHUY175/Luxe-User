@@ -16,69 +16,17 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/sanpham.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
+    <script src="./js/header.js"></script>
     <script src="./js/sanpham.js"></script>
   </head>
 <body>
   <?php
     require_once "db_module.php";
+    include "header.php"
   ?>
-    <!-- PC Header -->
-    <header class="fixed-header">
-      <div class="container">
-        <div class="top-bar">
-          <!-- Mobile menu -->
-          <button class="hamburger-menu" onclick="burgerFunction()">
-            <img src="./icon/sanpham-burger.svg" alt="" />
-          </button>
-          <script src="./js/sanpham.js"></script>
-          <!-- Logo -->
-          <a href="./" class="logo-nav">
-            <img src="./icon/sanpham-logo.svg" alt="Luxe" />
-            <h1 class="logo-title">Luxe</h1>
-          </a>
-          <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
-          <!-- Navigation -->
-          <nav class="navbar">
-            <ul>
-              <li><a href="#!">Trang chủ</a></li>
-              <li><a href="#!">Sản phẩm</a></li>
-              <li><a href="#!">Về chúng tôi</a></li>
-              <li><a href="#!">Hỗ trợ</a></li>
-              <li><a href="#!">Liên hệ</a></li>
-            </ul>
-          </nav>
-
-          <!-- Action -->
-          <div class="top-act">
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-search.svg" alt="" />
-              </button>
-            </div>
-            <div class="top-act-group">
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-heart.svg" alt="" />
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-              <a href="./giohang.php?opt=view_sp"><img src="./icon/sanpham-cart.svg" alt="" /></a>
-                <span class="top-act-title"> 03 </span>
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn">
-                <img src="./icon/sanpham-user.svg" alt="" />
-              </button>
-              <div class="top-act-separate"></div>
-              <button class="top-act-btn" onclick="darkFunction()">
-                <img src="./icon/sanpham-moon.svg" alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <div class="cross-bar"></div>
     <?php
      $link = null;
@@ -235,12 +183,6 @@
                         $result = chayTruyVanTraVeDL($link, $query);
                         $rows = mysqli_fetch_assoc($result);
 
-                        $query_soluong = "SELECT gh.so_luong, b.so_luong - COALESCE(gh.so_luong, 0) AS so_luong_last
-                                          FROM tbl_bienthe AS b
-                                          LEFT JOIN tbl_chitiet_giohang AS gh ON gh.ma_bien_the = b.ma_bien_the
-                                          WHERE b.ten_bien_the = '".$size."' AND gh.ma_gio_hang = 2 AND gh.ma_san_pham = " .$_GET['id'];
-                        $result_soluong = chayTruyVanTraVeDL($link, $query_soluong);
-                        $rows_soluong = mysqli_fetch_assoc($result_soluong);
                       }
                   } else if ($_POST['formType'] == 'review-form') {
 
@@ -255,7 +197,7 @@
 
                             $link = null;
                             taoKetNoi($link);
-                            $sql = "INSERT INTO tbl_review (so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES ('$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
+                            $sql = "INSERT INTO tbl_review (.a_khach_hang, so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES (1,'$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
                             $abc = chayTruyVanTraVeDL($link, $sql);
                         }
                       }
@@ -329,8 +271,7 @@
               var giatri = 0;
               var finalCount = 0;
               var size = '<?php echo $size; ?>';
-              var so_luong = <?php echo $rows_soluong['so_luong_last'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
-              var soluonghienco = <?php echo $rows_soluong['so_luong'] ?>; 
+              var so_luong = <?php echo $rows['so_luong'] ?>;    // Lấy so_luong để ràng buộc dữ liệu tăng giảm
 
                // Function tăng giảm số lượng 
                 function updateCount(action) {
@@ -340,11 +281,8 @@
                     count--;
                   } else if (action === "increase" && count < so_luong) {
                     count++;
-                  } else {
-                    if (action === "increase") {
-                      alert("Bạn đã chọn vượt quá số lượng tối đa! Số lượng sản phẩm này trong giỏ hàng hiện tại là " + soluonghienco);
-                    }
-                    return;
+                  } else if (action === "increase") {
+                      alert("Bạn đã chọn vượt quá số lượng tối đa!");
                   }
                   document.getElementById("count").innerHTML = count;
                   finalCount = count;  // Lấy biến finalCount để truyền vào fucntion Themgiohang()
@@ -571,7 +509,12 @@
             </div>
 
             <!-- Nút gửi -->
-            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit">Gửi</button>  
+            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit">Gửi</button> 
+            <script>
+              document.querySelector('.btn.submit').addEventListener('click', function() {
+              alert('Đã gửi thành công!');
+            });
+            </script> 
           </form>  
         </div>
       </div>
@@ -711,19 +654,20 @@
         <div class="product-item">
           <div class="product-card">
             <div class="product-card__img-wrap">
-              <a href="./product-detail.html">
+              <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                 <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
               </a>
               <!-- Hover tim và thêm vào giỏ hàng -->
               <div class="button-heart-cart-hover">
-                <a href="">
+                <a href="#!">
                   <img
                     src="./icon/sanpham-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
+                    onclick="heart(this)"
                   />
                 </a>
-                <a href="">
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                   <img
                     src="./icon/sanpham-cart.svg"
                     alt=""
@@ -734,7 +678,7 @@
             </div>
             <div class="prod-list__item__inner">
               <h3 class="product-card__title">
-                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>"><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection"><?php echo $product_category; ?></p>
               <div class="product-card__row">
@@ -786,18 +730,19 @@
               <div class="product-item1">
               <div class="product-card">
               <div class="product-card__img-wrap">
-                <a href="./product-detail.html">
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                   <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
                 </a>
                 <div class="button-heart-cart-hover">
-                  <a href="">
+                  <a href="#!">
                     <img
                       src="./icon/sanpham-heart.svg"
                       alt=""
                       class="prod-list__item__image--heart-hover"
+                      onclick="heart(this)"
                     />
                   </a>
-                  <a href="">
+                  <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
                     <img
                       src="./icon/sanpham-cart.svg"
                       alt=""
@@ -806,8 +751,9 @@
                   </a>
                 </div>
               </div>
+              <div class="prod-list__item__inner">
               <h3 class="product-card__title">
-                <a href="./product-detail.html"><?php echo $product_name; ?></a>
+                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>"><?php echo $product_name; ?></a>
               </h3>
               <p class="product-card__collection"><?php echo $product_category; ?></p>
               <div class="product-card__row">
@@ -824,6 +770,7 @@
                   <span class="product-card__score"><?php echo number_format($avg_rating, 1,'.'); ?></span>
                 </div>
               </div>
+                </div>
             </div>
           </div>
           <?php
@@ -859,103 +806,8 @@
         </script>
     </div>
   <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-row">
-        <div class="container">
-          <div class="footer-column">
-
-            <!-- Logo -->
-            <a href="./" class="logo-foot">
-              <img src="./icon/sanpham-logo.svg" alt="Luxe" />
-              <h1 class="logo-title">Luxe</h1>
-            </a>
-            
-            <!-- Download app -->
-            <div class="download-container">
-              <p class="download-title">
-                Tải ngay Luxe app
-              </p>
-              <div class="download-method">
-                <a href="https://play.google.com/store/apps" class="ch-store">
-                <img src="./icon/sanpham-ggplay.svg" alt="" />
-              </a>
-              <a href="https://www.apple.com/vn/app-store" class="app-store">
-                <img src="./icon/sanpham-appstore.svg" alt="" />
-              </a>
-              </div>
-            </div>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Danh mục</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Trang chủ
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Sản phẩm
-                    </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link"> Về chúng tôi </a>
-                </li>
-                <li class="footer__item">
-                    <a href="#!" class="footer__link">
-                      Hỗ trợ
-                    </a>
-                </li>
-                <li class="footer__item">
-                  <a href="#!" class="footer__link">
-                    Liên hệ
-                  </a>
-              </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Thông tin liên hệ</h3>
-            <ul class="footer__list">
-                <li class="footer__item">
-                  279 Nguyễn Tri Phương, Phường 5, Quận 10, TP.HCM
-                </li>
-                <li class="footer__item">
-                  (+84) 046 990 809
-                </li>
-                <li class="footer__item">
-                  info@example.com
-                </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer__heading">Theo dõi</h3>
-            <div class="footer__social">
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-facebook.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-insta.svg" alt="">
-                </a>
-                <a href="#!" class="footer__social-btn">
-                    <img src="./icon/sanpham-twitter.svg" alt="">
-                </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <div class="footer-copyright">
-        <div class="container">
-          <div class="payment-method">
-            <img src="./icon/sanpham-paypal.svg" alt="">
-            <img src="./icon/sanpham-visa.svg" alt="">
-            <img src="./icon/sanpham-master-card.svg" alt="">
-          </div>
-          <p class="footer__copyright-text">
-            Copyright © 2023 UIHUT All Rights Reserved
-          </p>
-        </div>
-    </div>
-    </footer>
+  <?php
+      include "footer.php";
+    ?>
 </body>
 

@@ -1,3 +1,23 @@
+:root {
+  --index-text-color-1: hsl(0, 0%, 44%);
+  --index-text-color-2: #1a162e;
+  --index-primary-color: #ef9059;
+  --index-background-color-1: #fff;
+  --index-background-color-2: #fff;
+  --index-background-color-3: #f0f0f0;
+  --index-second-color: #fff5f0;
+}
+
+.dark-mode {
+  --index-text-color-1: #eeeeee;
+  --index-text-color-2: #ffffff;
+  --index-primary-color: #ef9059;
+  --index-background-color-1: #171c28;
+  --index-background-color-2: #292e39;
+  --index-background-color-3: #171c28;
+  --index-second-color: #e6c299;
+}
+
 .container {
   max-width: calc(100% - 50px);
   margin-left: auto;
@@ -143,7 +163,7 @@
 /* Mega menu */
 .mega-menu {
   position: absolute;
-  z-index: 1;
+  z-index: 9999;
   width: 100%; /* Chiều rộng menu */
   background-color: var(--index-background-color-2); /* Màu nền menu */
   left: -100%;
@@ -248,7 +268,7 @@
     position: fixed;
     inset: 0 40% 0 0;
     background: var(--index-background-color-1);
-    z-index: 99;
+    z-index: 2;
     transform: translateX(-100%);
     transition: 0.5s;
   }
