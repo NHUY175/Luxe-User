@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
-    <script src="./js/header.js"></script>
     <script src="./js/sanpham.js"></script>
   </head>
 <body>
@@ -607,7 +606,7 @@
               // Lấy nút "Xem thêm"
               const toggleButton = document.querySelector('.btn.home-product__Load');
 
-              // Lấy tất cả các sản phẩm
+              // Lấy tất cả các đánh giá
               const products = document.querySelectorAll('.customer1');
 
               // Thêm sự kiện click cho nút "Xem thêm"
@@ -664,15 +663,14 @@
               </a>
               <!-- Hover tim và thêm vào giỏ hàng -->
               <div class="button-heart-cart-hover">
-                <a href="#!">
+                <a href="">
                   <img
                     src="./icon/sanpham-heart.svg"
                     alt=""
                     class="prod-list__item__image--heart-hover"
-                    onclick="heart(this)"
                   />
                 </a>
-                <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
+                <a href="">
                   <img
                     src="./icon/sanpham-cart.svg"
                     alt=""
@@ -739,15 +737,14 @@
                   <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
                 </a>
                 <div class="button-heart-cart-hover">
-                  <a href="#!">
+                  <a href="">
                     <img
                       src="./icon/sanpham-heart.svg"
                       alt=""
                       class="prod-list__item__image--heart-hover"
-                      onclick="heart(this)"
                     />
                   </a>
-                  <a href="./sanpham.php?id=<?php echo $row_product["ma_san_pham"]; ?>">
+                  <a href="">
                     <img
                       src="./icon/sanpham-cart.svg"
                       alt=""
