@@ -200,7 +200,7 @@
                 <?php echo '<img src="img/'.$product_image.'" alt="" class="product-card__thumb" />'; ?>
               </a>
               <button class="like-btn">
-                <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" onclick="heart(this)"/>
+                <img src="./icon/sanpham-heart.svg" alt="" class="like-icon icon" />
               </button>
             </div>
             <h3 class="product-card__title">
@@ -225,7 +225,7 @@
           }
         ?>
       </div>
-      <!-- <div class="product-home1">
+      <div class="product-home1">
         <?php
         $link = null;
         taoKetNoi($link);
@@ -287,7 +287,7 @@
         <?php
           }
         ?>
-      </div> -->
+      </div>
       <!-- Button xem thêm -->
         <a href="#!" class="btn home-product">Xem thêm</a> 
         <script>
