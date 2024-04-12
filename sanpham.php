@@ -39,7 +39,6 @@
     <!-- Product detail -->
     <div class="product-detail">
       <div class="product-inf">
-
         <!-- Show hình ảnh sản phẩm -->
         <div class="product-inf__image">
         <div class="frame-img">
@@ -194,9 +193,11 @@
                             $reviewTitle = $_POST['reviewTitle'];
                             $reviewDetails = $_POST['reviewDetails'];
 
+                            $ngay_tao = date('Y-m-d H:i:s');
                             $link = null;
                             taoKetNoi($link);
-                            $sql = "INSERT INTO tbl_review (.a_khach_hang, so_sao, tieu_de_review, noi_dung, ma_san_pham) VALUES (1,'$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
+                            $sql = "INSERT INTO tbl_review (ma_khach_hang, ngay_tao, so_sao, tieu_de_review, noi_dung, ma_san_pham) 
+                                    VALUES (1, '$ngay_tao','$reviewStar', '$reviewTitle', '$reviewDetails'," .$_GET['id'].")";
                             $abc = chayTruyVanTraVeDL($link, $sql);
                         }
                       }
@@ -221,14 +222,16 @@
 
                               $link = null;
                               taoKetNoi($link);
-                              // Nếu có bản ghi trong cơ sở dữ liệu, thực hiện câu lệnh UPDATE
-                              $query_update = "UPDATE tbl_chitiet_giohang SET so_luong = so_luong + $soluong, gia_tri = gia_tri + $giatri WHERE ma_gio_hang = 1 AND ma_san_pham = $ma_san_pham";
+                              // Nếu mã sản phẩm đã có trong cơ sở dữ liệu, thực hiện câu lệnh UPDATE
+                              $query_update = "UPDATE tbl_chitiet_giohang SET so_luong = so_luong + $soluong, gia_tri = gia_tri + $giatri 
+                                               WHERE ma_gio_hang = 1 AND ma_san_pham = $ma_san_pham";
                               chayTruyVanTraVeDL($link, $query_update);
                             } else {
                               $link = null;
                               taoKetNoi($link);
-                              // Nếu không có bản ghi trong cơ sở dữ liệu, thực hiện câu lệnh INSERT
-                              $query_insert = "INSERT INTO tbl_chitiet_giohang (ma_san_pham, so_luong, gia_tri, ma_bien_the, ma_gio_hang) VALUES ('$ma_san_pham', $soluong, $giatri, $ma_san_pham, 1)";
+                              // Nếu mã sản phẩm chưa có trong cơ sở dữ liệu, thực hiện câu lệnh INSERT
+                              $query_insert = "INSERT INTO tbl_chitiet_giohang (ma_san_pham, so_luong, gia_tri, ma_bien_the, ma_gio_hang) 
+                                               VALUES ('$ma_san_pham', $soluong, $giatri, $ma_san_pham, 1)";
                               chayTruyVanTraVeDL($link, $query_insert);
                             }
                         }
@@ -508,12 +511,14 @@
             </div>
 
             <!-- Nút gửi -->
-            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit">Gửi</button> 
+            <button style="border: none; margin-top: 15px;" class="btn submit" type="submit" onclick="Guireview()">Gửi</button>
             <script>
-              document.querySelector('.btn.submit').addEventListener('click', function() {
-              alert('Đã gửi thành công!');
-            });
-            </script> 
+              function Guireview(){
+              document.getElementById("reviewForm").submit();
+
+              alert("Cảm ơn bạn đã đánh giá sản phẩm!");
+              }
+            </script>
           </form>  
         </div>
       </div>
