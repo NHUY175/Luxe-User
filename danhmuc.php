@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="vn">
 
-
-
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -194,36 +191,30 @@
                             </div>
                             <!-- Các phần tử filter -->
                             <div class="header_filter_chosen">
-                                <span class="filter_chosen price" data-value="0:max">0 : max <a><span></span></a></span>
+                                <span class="filter_chosen price" data-value="0:max">0 : max </span>
                                 <span class="filter_chosen price" data-value="0-1-000-000">0 : 1.000.000đ
-                                    <a><span></span></a></span>
+                                </span>
                                 <span class="filter_chosen price" data-value="1-000-000-3-000-000">1.000.000đ :
-                                    3.000.000đ <a><span></span></a></span>
+                                    3.000.000đ </span>
                                 <span class="filter_chosen price" data-value="3-000-000-5-000-000">3,000.000đ :
-                                    5.000.000đ <a><span></span></a></span>
+                                    5.000.000đ </span>
                                 <span class="filter_chosen price" data-value="5-000-000-7-000-000">5.000.000đ :
-                                    7.000.000đ <a><span></span></a></span>
+                                    7.000.000đ </span>
                                 <span class="filter_chosen price" data-value="7-000-000-10-000-000">7.000.000đ :
-                                    10.000.000đ <a><span></span></a></span>
+                                    10.000.000đ </span>
 
-                                <span class="filter_chosen" data-value="vang">Vàng<a><span></span></a></span>
+                                <span class="filter_chosen" data-value="vang">Vàng</span>
 
-                                <span class="filter_chosen" data-value="bac">Bạc<a><span></span></a></span>
+                                <span class="filter_chosen" data-value="bac">Bạc</span>
 
                                 <span class="filter_chosen" data-value="da-xa-cu">
-                                    Đá Xà cừ <a><span></span></a></span>
-
-
-
+                                    Đá Xà cừ </span>
 
                                 <span class="filter_chosen" data-value="da-cubic-zirconia">Đá Cubic Zirconia
-                                    <a><span></span></a></span>
-
-
-
+                                </span>
 
                                 <span class="filter_chosen" data-value="da-Zirconia">Đá Zirconia
-                                    <a><span></span></a></span>
+                                </span>
                                 <span class="clear_all"><a href="javascript:void(0)">Bỏ lọc</a></span>
                             </div>
                             <div class="bottom-filter">
@@ -263,32 +254,18 @@
                                     $(".clear_all").removeClass("show_btn");
                                 }
                             });
-
-
-
-
                             $(".clear_all a").click(function () {
                                 $(".filter_chosen.show_tag a").trigger("click");
                             });
-
-
-
 
                             $(".filter-color label").click(function () {
                                 $(this).toggleClass("active");
                             });
 
-
-
-
                             $(".header_filter_chosen .filter_chosen > a").click(
                                 function () {
                                     var $parent = $(this).parent();
                                     //      $(this).parent('.filter_chosen').removeClass('show_tag');
-
-
-
-
                                     var val = $parent.attr("data-value");
                                     $(".custom-filter-input[data-filter1=" + val + "]")
                                         .find("input")
@@ -416,10 +393,6 @@
                     });
                 });
             </script>
-
-
-
-
             <!--------------- Tổng hợp các sản phẩm-------------->
             <div>
                 <div class="prod-list">
@@ -533,11 +506,6 @@
                                         }
                                     }
                                 }
-
-
-
-
-
                                 // Đếm số lượng sản phẩm
                                 $result = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery");
                                 if ($result) {
@@ -552,36 +520,17 @@
                                 $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
                                 $productsPerPage = 12;
 
-
-
-
                                 // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
                                 $start = ($trang_hien_tai - 1) * $productsPerPage;
-
-
-
 
                                 // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
                                 $query_list_products .= " LIMIT $start, $productsPerPage";
 
-
-
-
                                 // Thực hiện truy vấn SQL để lấy sản phẩm
                                 $result = chayTruyVanTraVeDL($link, $query_list_products);
 
-
-
-
                                 // Tính số trang
                                 $so_trang = ceil($so_luong_san_pham / $productsPerPage);
-
-
-
-
-
-
-
 
                                 // Xử lý dữ liệu trả về
                                 // Hiển thị danh sách sản phẩm
@@ -824,9 +773,6 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
-
-
-
 
                 breakpoints: {
                     0: {
