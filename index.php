@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
     <script src="./js/index.js"></script>
+    <script src="./js/header.js"></script>
   </head>
   <body>
     <?php
@@ -84,13 +85,14 @@
                     </span>
                     <!-- Hover heart and cart -->
                     <div class="button-heart-cart-hover">
-                      <a href="">
+                      <a href="#!">
                         <img
                           src="./icon/index-heart.svg"
                           class="prod-list__item__image--heart-hover"
+                          onclick="heart(this)"
                         />
                       </a>
-                      <a href="">
+                      <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
                         <img
                           src="./icon/index-cart.svg"
                           class="prod-list__item__image--cart-hover"
@@ -112,14 +114,19 @@
                           <?php echo '<span class="prod-list__item__info--price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ </span>'; ?>
                         </div>
                         <div class="prod-list__item__info--star-icon">
-                          <img
-                            class="info--star-icon"
-                            loading="lazy"
-                            src="./icon/index-star.svg"
-                          />
-                          <div class="prod-list__item__info--fb">4.3</div>
+                          <?php
+                            $link = null;
+                            taoKetNoi($link);
+                            $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
+                            WHERE sp.ma_san_pham = " .$row["ma_san_pham"];
+                            $rs = chayTruyVanTraVeDL($link, $query);
+                            $row_star = mysqli_fetch_assoc($rs);
+                          ?>
+                          <img src="./icon/index-star.svg" alt="" />
+                          <?php  echo '<div class="prod-list__item__info--fb">'.number_format($row_star['average_rating'], 1).'</div>'; ?>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </section>
@@ -182,13 +189,14 @@
                     </span>
                     <!-- Hover heart and cart -->
                     <div class="button-heart-cart-hover">
-                      <a href="">
+                      <a href="#!">
                         <img
                           src="./icon/index-heart.svg"
                           class="prod-list__item__image--heart-hover"
+                          onclick="heart(this)"
                         />
                       </a>
-                      <a href="">
+                      <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
                         <img
                           src="./icon/index-cart.svg"
                           class="prod-list__item__image--cart-hover"
@@ -210,12 +218,18 @@
                           <?php echo '<span class="prod-list__item__info--price-sales">' .number_format($row['gia_goc'], 0, ',', '.'). ' VNĐ </span>'; ?>
                         </div>
                         <div class="prod-list__item__info--star-icon">
-                          <img
-                            class="info--star-icon"
-                            loading="lazy"
-                            src="./icon/index-star.svg"
-                          />
-                          <div class="prod-list__item__info--fb">4.3</div>
+                          <?php
+                            $link = null;
+                            taoKetNoi($link);
+                            $query = "SELECT COUNT(ma_review) AS total_reviews, AVG(so_sao) AS average_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review dg ON sp.ma_san_pham = dg.ma_san_pham
+                            WHERE sp.ma_san_pham = " .$row["ma_san_pham"];
+                            $rs = chayTruyVanTraVeDL($link, $query);
+                            $row_star = mysqli_fetch_assoc($rs);
+                          ?>
+                          <img src="./icon/index-star.svg" alt="" />
+                          <?php  echo '<div class="prod-list__item__info--fb">'.number_format($row_star['average_rating'], 1).'</div>'; ?>
                         </div>
                       </div>
                     </div>

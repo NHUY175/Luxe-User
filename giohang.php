@@ -16,7 +16,10 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/giohang.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
+    <script src="./js/header.js"></script>
     <script src="./js/giohang.js"></script>
   </head>
   <body>
@@ -26,7 +29,7 @@
     ?>
     <!-- Product detail -->
     <div class="product-container">
-      <header style="font-size: 45px; font-weight: bold; padding-top: 25px; ">Giỏ hàng</header>
+      <header style="font-size: 45px; font-weight: bold; padding-top: 25px; color: #f86624;">Giỏ hàng</header>
       <?php
         function view_gh(){
 
@@ -67,7 +70,7 @@
         <!-- Product information -->
         <div class="product-inf__word">
           <p class="product-card__collection" style="color: var(--text-color-3);"><?php echo $ten_danh_muc; ?></p>
-          <p class="product-inf__title"><?php echo $ten_san_pham; ?></p>
+          <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>"><p class="product-inf__title"><?php echo $ten_san_pham; ?></p></a>
           <div class="product-inf__star">
             <img src="./icon/giohang-star.svg" alt="" />
             <?php  echo '<p style="color: var(--text-color-dark);">' . number_format($so_sao_trung_binh, 1) . ' (' . $tong_so_sao . ')</p>'; ?>
@@ -116,7 +119,7 @@
         </div>
         <p style="color: var(--text-color-dark);">(Đã bao gồm thuế VAT)</p>
         <!-- Button MUA HÀNG -->
-        <a href="#!" class="btn them">MUA HÀNG</a>
+        <a href="thanhtoan.php" class="btn them">MUA HÀNG</a>
       </div>
     </div>
     <?php
@@ -157,7 +160,7 @@
       }
     ?>
         <!-- Similar products -->
-        <div class="container">
+      <div class="container" style ="background-color: var(--background-color); max-width: calc(100%);">      
       <p class="product-inf__title__1">CÓ THỂ BẠN CŨNG THÍCH</p>
       <div class="product-home">
         <?php

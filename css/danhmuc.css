@@ -232,11 +232,8 @@ a:active {
   transform: translateX(-50%);
 }
 /* Định dạng khi ấn vào */
-.product-wrap--nav-links a:focus {
-  color: var(--primary-color);
-  font-weight: 700;
-}
-.product-wrap--nav-links a:visited {
+.product-wrap--nav-links a:focus,
+.product-wrap--nav-links li a:active {
   color: var(--primary-color);
   font-weight: 700;
 }
@@ -360,7 +357,6 @@ a:active {
   background: #e25050;
 }
 .collection-sidebar .collection-item input[type="radio"] {
-  -webkit-appearance: none;
   width: 15px;
   height: 15px;
   outline: none;
@@ -549,31 +545,13 @@ input[type="radio"] {
   border-radius: 2mm;
   padding: 0px 10px;
   font-family: Quicksand;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
-}
-.prod-dropdown__input-box::before {
-  content: "expand_more";
-  font-family: "Material Icons";
-  position: absolute;
-  font-size: 18px;
-  top: 50%;
-  right: 8px;
-  transform: translate(0, -50%);
-  width: fit-content;
-  height: fit-content;
-}
-.prod-dropdown__input-box.open::before {
-  content: "expand_less";
-}
-.prod-dropdown__input-box:empty::after {
-  content: "Mặc định";
-  font-family: Quicksand;
 }
 
 .prod-dropdown__list {
@@ -593,41 +571,7 @@ input[type="radio"] {
   transition: 0.25s ease-out; /* thêm hiệu ứng khi mở list */
   z-index: 99;
 }
-.prod-dropdown__list input {
-  display: none;
-}
-.prod-dropdown__list label {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 14px;
-  padding: 10px 15px;
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-}
-.prod-dropdown__list label .material-icons-outlined,
-.prod-dropdown__input-box .material-icons-outlined {
-  margin-right: 5px;
-  font-size: 22px;
-}
-.prod-dropdown__list label:hover {
-  background: rgba(0, 0, 0, 0.08);
-}
-input:checked + label {
-  color: rgb(20, 117, 213);
-  background: rgb(238, 245, 252);
-}
-input:checked + label::before {
-  content: "done";
-  font-family: "Material Icons";
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translate(0, -50%);
-  font-size: 18px;
-}
+
 .open {
   /* outline: 0.5mm solid #ffbe98; */
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px,
@@ -643,7 +587,7 @@ input:checked + label::before {
 .prod-list {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 }
 .prod-list__grid {
   display: flex;
@@ -832,54 +776,33 @@ input:checked + label::before {
 .prod-list__pagination {
   margin-bottom: 35px;
 }
-.pagination--container,
-.pagination--container__button,
-.prod-list__pagination--numbers,
-.link {
+
+.list-number {
   display: flex;
-  align-items: center;
+  gap: 15px;
   justify-content: center;
 }
-.prod-list__pagination--numbers {
-  column-gap: 12px;
-}
-.prod-list__pagination--numbers a {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-color-2);
-}
-.pagination--container__button:hover,
-.link:hover {
-  color: #fff;
-  background: #f98542;
-}
-.link.active {
-  color: #fff;
-  background: #f98542;
-}
-/* ======== phần mũi tên ========= */
-.pagination--container {
-  column-gap: 12px;
-}
-.pagination--container__button {
+.list-number button {
   border: none;
-  background-color: var(--background-color-1);
-}
-.pagination--container__button i {
-  pointer-events: none;
-}
-.pagination--container__button:disabled {
-  color: #b3b3b3;
-  pointer-events: none;
-}
-.pagination--container__button,
-.link {
-  height: 38px;
-  width: 38px;
-  color: var(--text-color-2);
-  font-size: 20px;
+  background: var(--background-color-3);
   border-radius: 6px;
   cursor: pointer;
+  height: 38px;
+  width: 38px;
+}
+.list-number a {
+  color: var(--text-color-2);
+  font-size: 15px;
+  font-weight: 600;
+}
+.list-number button:active,
+.list-number button:hover {
+  background: #f98542;
+  color: #fff;
+}
+.list-number a:active,
+.list-number a:hover {
+  color: #fff;
 }
 /* =============END PHẦN PAGINATION============== */
 /* THIRD - LINE */
@@ -1419,6 +1342,7 @@ input:checked + label::before {
   .prod-dropdown__input-box {
     font-size: 14px;
   }
+
   /* ================ LIST SẢN PHẨM HIỂN THỊ ======================*/
   .prod-list__grid {
     gap: 20px 28px;

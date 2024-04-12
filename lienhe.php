@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
+    <script src="./js/header.js"></script>
     <script src="./js/hotro.js"></script>
   </head>
   <body>

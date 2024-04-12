@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- Scripts -->
+    <script src="./js/header.js"></script>
     <script src="./js/hotro.js"></script>
   </head>
   <body>
@@ -38,7 +39,7 @@
             </div>
             <div class="faq-answer">
               <p>Để nhận được mã giảm giá từ Luxe, hãy thực hiện các bước sau:</p>
-              <p><strong>1. Trở thành thành viên của Luxe:</strong> Điền thông tin của bạn tại mục "Đăng kí thành viên" ở cuối trang, sau đó nhấn nút "Đăng kí".</p>
+              <p><strong>1. Trở thành thành viên của Luxe:</strong> Điền thông tin của bạn tại mục "Đăng ký" <a href="dangky.php" style="font-style:italic;">tại đây</a>, sau đó nhấn nút "Đăng ký".</p>
               <p><strong>2. Chờ đợi thông báo từ chúng tôi:</strong> Mã giảm giá sẽ được đính kèm tại các sự kiện giảm giá tiếp theo và Luxe sẽ email thông báo đến bạn.</p>
             </div>
         </div>
@@ -50,7 +51,7 @@
             <img src="./icon/hotro-add.svg" alt="" class="faq-icon"/>
           </div>
           <div class="faq-answer">
-            Bạn có thể đưa thiết kế theo ý tưởng thiết kế cho nhân viên của chúng tôi tại cửa hàng hoặc liên hệ qua phần liên hệ của cửa hàng!
+            Bạn có thể đưa thiết kế theo ý tưởng thiết kế cho nhân viên của chúng tôi tại cửa hàng hoặc liên hệ qua phần liên hệ của cửa hàng <a href="lienhe.php" style="font-style:italic;">tại đây</a> !
           </div>
         </div>
         <!-- Câu hỏi 3 -->

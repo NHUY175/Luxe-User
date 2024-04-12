@@ -355,21 +355,25 @@ td {
   display: flex;
 }
 /* ======= Similar products ====== */
-.similar-container {
+.similar-container{
   background-color: var(--background-color);
 }
-.product-home {
+.product-home, .product-home1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 0 76px;
 }
 
-.product-item {
+.product-item, .product-item1 {
   flex: 1 0;
   margin: 5px;
 }
 
-.product-card {
+.product-item1{
+  display: none;
+}
+
+.product-card, .product-card1 {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -379,14 +383,14 @@ td {
   box-shadow: 0px 60px 20px 0px rgba(237, 237, 246, 0.2);
 }
 
-.product-card__img-wrap {
+.product-card__img-wrap, .product-card__img-wrap1 {
   position: relative;
   padding-top: 100%;
   background-color: var(--background-color-1);
   border-radius: 20px;
 }
 
-.product-card__thumb {
+.product-card__thumb, .product-card__thumb1 {
   position: absolute;
   top: 0;
   left: 0;
@@ -395,7 +399,7 @@ td {
   object-fit: contain;
 }
 
-.product-card__thumb:hover {
+.product-card__thumb:hover, .product-card__thumb1:hover {
   transform: scale(1.2);
 }
 .like-btn {
@@ -406,7 +410,7 @@ td {
   margin: -50px 0 0 75%;
 }
 
-.product-card__title a {
+.product-card__title a, .product-card__title1 a {
   display: inline-block;
   margin-top: 16px;
   color: var(--text-color-2);
@@ -417,36 +421,38 @@ td {
 
 .product-card__price,
 .product-card__price-sales,
-.product-card__score {
+.product-card__score, .product-card__price1,
+.product-card__price-sales1,
+.product-card__score1 {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.product-card__price {
+.product-card__price, .product-card__price1 {
   color: #f98542;
   font-weight: 700;
 }
 
-.product-card__price-sales {
+.product-card__price-sales, .product-card__price-sales1 {
   margin-left: 10px;
   text-decoration: line-through;
   font-weight: 700;
   color: #f98542;
 }
 
-.product-card__collection {
+.product-card__collection, .product-card__collection1 {
   margin: 16px 0;
   color: #9e9da8;
   font-size: 1.7rem;
 }
 
-.product-card__row {
+.product-card__row, .product-card__row1 {
   display: flex;
   align-items: center;
   margin-top: auto;
 }
 
-.product-card__star {
+.product-card__star, .product-card__star1 {
   margin: 0 6px 0 auto;
 }
 
