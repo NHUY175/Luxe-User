@@ -191,6 +191,7 @@
 .mega-menu ul li a {
   text-decoration: none; /* Bỏ gạch chân liên kết */
   color: var(--index-text-color-2); /* Màu sắc liên kết */
+  font-size: 20px;
 }
 
 .mega-menu ul li a img {

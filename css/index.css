@@ -143,13 +143,6 @@ a {
   justify-content: center;
   gap: 30px 30px;
   padding: 0 10px;
-  /* min-height: 1758px; ko cần */
-
-  /* display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Mỗi dòng có 4 cột */
-  /*gap: 26px;  Khoảng cách giữa các sản phẩm
-    justify-content: center;
-    width: 1434px; */
 }
 .prod-list__item {
   background-color: var(--index-background-color-1);

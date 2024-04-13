@@ -17,7 +17,6 @@
           <img src="./icon/index-search.svg" name="search-btn" class="searchBtn" onclick="search()" />
         </button>
       </div>
-      <!-- nav = navigation giống div nhưng có ngữ nghĩa -->
       <!-- Navigation -->
       <nav class="navbar">
         <ul id="PC_nav">
@@ -28,8 +27,6 @@
           <li><a href="./lienhe.php">LIÊN HỆ</a></li>
         </ul>
       </nav>
-
-
       <!-- Action -->
       <div class="top-act">
         <div class="top-act-group">
