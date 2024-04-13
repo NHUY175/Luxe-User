@@ -95,7 +95,7 @@
               <p class="product-DM">Dây chuyền</p>
               <div class="product-info">
                 <span class="product-price">1,533,000 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.0/div>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.0</div>
               </div>
             </div>
             <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
