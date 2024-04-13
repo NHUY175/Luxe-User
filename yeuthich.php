@@ -75,7 +75,7 @@
               <p class="product-DM">Nhẫn</p>
               <div class="product-info">
                 <span class="product-price">3,150,000 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.5</div>
               </div>
             </div>
             <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
@@ -95,7 +95,7 @@
               <p class="product-DM">Dây chuyền</p>
               <div class="product-info">
                 <span class="product-price">1,533,000 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.0/div>
               </div>
             </div>
             <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
@@ -109,13 +109,13 @@
           <div class="product-card">
             <div class="product-image-wrapper">
               <figure class="product-image">
-                <img src="./img/3H0-1.webp" alt="Product image" />
+                <img src="./img/BCD 555-3.webp" alt="Product image" />
               </figure>
               <h3 class="product-name">Bông tai DTBCD 555</h3>
               <p class="product-DM">Bông tai</p>
               <div class="product-info">
                 <span class="product-price">2,799,300 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.2</div>
               </div>
             </div>
             <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
