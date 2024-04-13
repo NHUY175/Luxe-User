@@ -33,66 +33,25 @@
       <div class="thong-tin-hoa-don">
         <h2>Thông tin hóa đơn</h2>
         <div class="info">
-          <input
-            type="text"
-            placeholder="Email"
-            class="email"
-            disabled="disabled"
-            readonly="readonly"
-          />
-          <input
-            type="text"
-            placeholder="Họ tên"
-            class="hoten"
-            disabled="disabled"
-            readonly="readonly"
-          />
-          <input
-            type="text"
-            placeholder="SĐT"
-            class="sdt"
-            disabled="disabled"
-            readonly="readonly"
-          />
+          <input type="text" placeholder="Email" class="email" disabled="disabled" readonly="readonly"/>
+          <input type="text" placeholder="Họ tên" class="hoten" disabled="disabled" readonly="readonly"/>
+          <input type="text" placeholder="SĐT" class="sdt" disabled="disabled" readonly="readonly"/>
         </div>
         <h3>Giao đến</h3>
         <input type="text" placeholder="Địa chỉ bạn muốn giao đến" />
         <h3>Ghi chú:<i style="font-size: smaller">(nếu có)</i></h3>
         <div class="ghichu">
-          <input
-            type="text"
-            placeholder="Nói cho chúng tôi biết bạn đang nghĩ gì!"
+          <input type="text" placeholder="Nói cho chúng tôi biết bạn đang nghĩ gì!"
           />
         </div>
       </div>
       <div class="hoa-don-cua-ban">
         <h2>Hóa đơn của bạn</h2>
         <div class="hd">
-          <div>
-            Tổng giá
-            <span
-              ><b>1,500,000<sup>đ</sup></b></span
-            >
-          </div>
-          <div>
-            Mã khuyến mãi
-            <input
-              type="text"
-              placeholder="Nhập mã khuyến mãi"
-              class="coupon"
-            />
-          </div>
-          <div>
-            Giảm giá
-            <span>
-              <b>0<sup>đ</sup></b></span
-            >
-          </div>
-        </div>
-        <div>
-          Tổng thanh toán<span>
-            <b>1,500,000<sup>đ</sup></b></span
-          >
+          <div> Tổng giá <span><b>1,500,000<sup>đ</sup></b></span></div>
+          <div> Mã khuyến mãi <input type="text" placeholder="Nhập mã khuyến mãi" class="coupon"/></div>
+          <div>Giảm giá <span><b>0<sup>đ</sup></b></span></div></div>
+        <div>Tổng thanh toán<span><b>1,500,000<sup>đ</sup></b></span>
         </div>
         <h3>Thanh toán bằng</h3>
         <div class="phuong-thuc-thanh-toan">
@@ -108,10 +67,7 @@
         </div>
         <button type="submit" onclick="alert('Thanh toán thành công!')">
           <b>Thanh toán</b>
-        </button>
-        <a href="/giohang.html"
-          ><button type="reset"><b>Về giỏ hàng</b></button></a
-        >
+        </button><a href="giohang.php"><button type="reset"><b>Về giỏ hàng</b></button></a>
       </div>
     </div>
     <!-- Footer -->
