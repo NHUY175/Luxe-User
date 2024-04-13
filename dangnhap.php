@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="css/footer.css" />
      <!-- JS -->
      <script src="./js/header.js"></script>
-     <script src="./js/dangnhap.js"></script>
 </head>
 <body>
     <!-- Kết nối vào CSDL -->
@@ -75,7 +74,7 @@
     <div class="main-inner">
     <!--ads-left--> 
     <!--  Slider section -->
-      <div class="ads-left">
+    <div class="ads-left">
         <div class="slider">
           <div class="list">
               <div class="item">
@@ -100,9 +99,9 @@
               <li class="active"></li>
           </ul>
       </div>
-       <!-- Scripts -->
-       <script src="./js/dangnhap.js"></script>
-      </div>        
+      <!-- Scripts -->
+      <script src="./js/dangnhap.js"></script>
+      </div>         
     <!--signin-right-->
         <form class="signin-info" method="post">
             <h1 class="signin-title">Đăng nhập</h1>
@@ -113,7 +112,7 @@
                 <span class="username-text">Tên đăng nhập</span>
                 <span class="span"> *</span>
               </b>
-              <input class="username-box" name="username" type="text" required/>
+              <input class="username-box" name="username" type="text" required"/>
             </div>
             <!--Pass-->
             <div class="password-container">
