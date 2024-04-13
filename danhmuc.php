@@ -121,8 +121,6 @@
                                 </div>
 
 
-
-
                                 <div class="collection-filter-color collection-item">
                                     <div class="sidebar-sort">
                                         <div class="sort_title">
@@ -639,15 +637,40 @@
                     <?php
                     $link = null;
                     taoKetNoi($link);
+                    if (isset($_GET["iddm"])) {
+                        $iddm = $_GET["iddm"];
 
-                    // Kết nối và lấy dữ liệu từ CSDL
-                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                    FROM tbl_sanpham sp
-                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc)
-                    GROUP BY sp.ma_san_pham
-                    ORDER BY RAND() Limit 12";
+                        // Kiểm tra nếu danh mục là "TẤT CẢ"
+                        if ($iddm === "tatca") {
+                            // Hiển thị tất cả sản phẩm
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        } else {
+                            // Hiển thị sản phẩm thuộc danh mục khác với danh mục người dùng chọn phía trên để gợi ý thêm các sản phẩm thuộc loại khác cho người dùng
+                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                            FROM tbl_sanpham sp
+                            LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                            LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                            WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc != $iddm)
+                            GROUP BY sp.ma_san_pham
+                            ORDER BY RAND()
+                            ";
+                        }
+                    } else {
+                        // Hiển thị tất cả sản phẩm nếu không có tham số danh mục
+                        $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        FROM tbl_sanpham sp
+                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        GROUP BY sp.ma_san_pham
+                        ORDER BY RAND() Limit 12
+                        ";
+                    }
 
                     $result = chayTruyVanTraVeDL($link, $query_list_products);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -786,8 +809,9 @@
                 },
             });
         </script>
-        <!-------------- DANH MỤC ƯA CHUỘNG -------------->
+
         <div class="third-line"></div>
+        <!-------------- DANH MỤC ƯA CHUỘNG -------------->
         <div class="explore-dm">
             <h2 class="explore-dm--text">DANH MỤC ƯA CHUỘNG</h2>
             <div class="explore-dm--content" style="width: 70%; display: inline-block">
