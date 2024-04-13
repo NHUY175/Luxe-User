@@ -58,12 +58,7 @@
               $_mat_khau = mysqli_real_escape_string($link, ($_POST["password"]));
               $_ten_dang_nhap = mysqli_real_escape_string($link, $_POST["username"]);
               $c_mat_khau = mysqli_real_escape_string($link, ($_POST["c-password"]));
-            
-            /*$sql_dangky = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE ho_ten = '$_ho_ten' AND gioi_tinh = '$_gioi_tinh' AND ngay_sinh = '$_ngay_sinh' AND email = '$_email' 
-                                                        AND so_dien_thoai = '$_so_dien_thoai' AND ten_dang_nhap = '$_ten_dang_nhap' AND mat_khau = '$_mat_khau'") or die('query failed');
-            if(mysqli_num_rows($sql_dangky) > 0){
-              echo "<script>alert('Người dùng đã tồn tại!');</script>";
-            }*/
+
             $sql_check_email = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE email = '$_email'") or die('query failed');
             $sql_check_username = mysqli_query($link, "SELECT * FROM tbl_khachhang WHERE ten_dang_nhap = '$_ten_dang_nhap'") or die('query failed');
 
