@@ -21,32 +21,41 @@
 <body>
     <!-- Kết nối vào CSDL -->
     <?php
-        require_once "db_module.php";
+    require_once "db_module.php";
 
-        if ($_SERVER["REQUEST_METHOD"]=="POST") {
-            $username = $_POST['username'];
-            $pass = $_POST['pass'];
-            $link = null;
-            taoKetNoi($link);
-            if ($link === false) {
-                die("connection error");
-            }
+    if ($_SERVER["REQUEST_METHOD"]=="POST") {
+        $username = $_POST['username'];
+        $pass = $_POST['pass'];
+        $link = null;
+        taoKetNoi($link);
+        if ($link === false) {
+            die("connection error");
+        }
 
-            $sql="select * from tbl_khachhang where ten_dang_nhap='".$username."' AND mat_khau='".$pass."' ";
-            $result=mysqli_query($link,$sql);
-            $rows = mysqli_fetch_assoc($result); 
-            // Kiểm tra số dòng kết quả trả về
-            $num_rows = mysqli_num_rows($result);
-            if ($num_rows == 1) 
+        $sql="select * from tbl_khachhang where ten_dang_nhap='".$username."'";
+        $result=mysqli_query($link,$sql);
+
+        // Kiểm tra số dòng kết quả trả về
+        $num_rows = mysqli_num_rows($result);
+        if ($num_rows == 1) {
+            $row = mysqli_fetch_assoc($result);
+
+            if($row["mat_khau"] == $pass) 
             {
-              echo '<script>alert("Đăng nhập thành công"); 
-              window.location.href = "thongtincanhan.php?id=' .$rows['ma_khach_hang']. '";</script>';
+                echo '<script>alert("Đăng nhập thành công"); 
+                      window.location.href = "thongtincanhan.php?id=' .$row['ma_khach_hang']. '";</script>';
                 exit(); // Kết thúc kịch bản sau khi chuyển hướng
             } else {
-                echo '<script>alert("Tên đăng nhập hoặc mật khẩu không đúng");</script>';
+                echo '<script>alert("Sai mật khẩu!");</script>';
             }
+        } else {
+            echo '<script>alert("Sai tên đăng nhập!");</script>';
         }
+        // Giải phóng tài nguyên
+        mysqli_close($link);
+      }
     ?>
+
   <header class="header">
     <!--Logo-left-->
     <a href="index.php">
