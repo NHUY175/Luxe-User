@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="vn">
 
+
+
+
+
+
+
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,14 +26,37 @@
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <!-- swiper css -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+
+
+
+
+
+
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/danhmuc.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
+
+
+
+
+
+
+
+
     <!-- Scripts -->
     <script src="./js/danhmuc.js"></script>
 </head>
+
+
+
+
+
+
+
 
 <body>
     <!-- Header -->
@@ -236,6 +266,7 @@
                                     value +
                                     "]"
                                 ).toggleClass("show_tag");
+
                                 var check_filter = false;
                                 $(".filter_chosen").each(function () {
                                     if ($(this).hasClass("show_tag")) {
@@ -248,6 +279,7 @@
                                     $(".clear_all").removeClass("show_btn");
                                 }
                             });
+
                             $(".clear_all a").click(function () {
                                 $(".filter_chosen.show_tag a").trigger("click");
                             });
@@ -297,6 +329,7 @@
                     // Kiểm tra xem có tham số danh mục được truyền không
                     if (isset($_GET["iddm"])) {
                         $iddm = $_GET["iddm"];
+
 
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
                         if ($iddm === "tatca") {
@@ -387,48 +420,49 @@
                     });
                 });
             </script>
+
             <!--------------- Tổng hợp các sản phẩm-------------->
             <div>
                 <div class="prod-list">
-                    <div class="prod-list">
-                        <div class="prod-list__grid">
-                            <!-- Hiển thị sản phẩm -->
-                            <?php
-                            // Thực hiện truy vấn SQL để lấy sản phẩm
-                            $link = null;
-                            taoKetNoi($link);
-                            // Kiểm tra xem có tham số danh mục được truyền không
-                            if (isset($_GET['iddm'])) {
-                                $iddm = $_GET['iddm'];
-                                // echo $iddm;
-                                // Kiểm tra nếu danh mục là "TẤT CẢ"
-                                if ($iddm === 'tatca') {
-                                    // Hiển thị tất cả sản phẩm
-                                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                    <div class="prod-list__grid">
+                        <!-- Hiển thị sản phẩm -->
+                        <?php
+                        // Thực hiện truy vấn SQL để lấy sản phẩm
+                        $link = null;
+                        taoKetNoi($link);
+                        // Kiểm tra xem có tham số danh mục được truyền không
+                        if (isset($_GET["iddm"])) {
+                            $iddm = $_GET["iddm"];
+                            // echo $iddm;
+                            // Kiểm tra nếu danh mục là "TẤT CẢ"
+                            if ($iddm === "tatca") {
+                                // Hiển thị tất cả sản phẩm
+                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                                         FROM tbl_sanpham sp
                                                         LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                         LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                                         GROUP BY sp.ma_san_pham";
 
-                                    // Kiểm tra giá trị của mục select
-                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                        if (isset($_POST['sap-xep'])) {
-                                            // Lấy dữ liệu từ biểu mẫu
-                                            $sapxep = $_POST['sap-xep'];
-                                            if ($sapxep === 'ASC') {
-                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
-                                                                    CASE
-                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
-                                                                        ELSE sp.gia_giam
-                                                                    END AS a
-                                                                FROM tbl_sanpham sp
-                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                                                                GROUP BY sp.ma_san_pham
-                                                                ORDER BY a ASC";
-                                            } elseif ($sapxep === 'DESC') {
-                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+
+                                // Kiểm tra giá trị của mục select
+                                if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                                    if (isset($_GET["sap-xep"])) {
+                                        // Lấy dữ liệu từ biểu mẫu
+                                        $sapxep = $_GET["sap-xep"];
+                                        if ($sapxep === "ASC") {
+                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                        CASE
+                                            WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                            ELSE sp.gia_giam
+                                        END AS a
+                                    FROM tbl_sanpham sp
+                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                    GROUP BY sp.ma_san_pham
+                                    ORDER BY a ASC";
+                                        } elseif ($sapxep === "DESC") {
+                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
                                                                     CASE
                                                                         WHEN sp.gia_giam = 0 THEN sp.gia_goc
                                                                         ELSE sp.gia_giam
@@ -439,155 +473,198 @@
                                                                 WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY a DESC";
-                                            } elseif ($sapxep === 'Mặc định') {
-                                                $query_list_products .= "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                        } elseif ($sapxep === "Mặc định") {
+                                            $query_list_products .= "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
                                                                 FROM tbl_sanpham sp
                                                                 LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
                                                                 LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
                                                                 GROUP BY sp.ma_san_pham
                                                                 ORDER BY sp.ma_san_pham ASC";
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    // Hiển thị sản phẩm theo danh mục cụ thể
-                                    $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                                                        FROM tbl_sanpham sp
-                                                        LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                                        LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                        WHERE dm.ma_danh_muc = $iddm
-                                                        GROUP BY sp.ma_san_pham";
-
-                                    // Kiểm tra giá trị của mục select
-                                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                                        if (isset($_POST['sap-xep'])) {
-                                            // Lấy dữ liệu từ biểu mẫu
-                                            $sapxep = $_POST['sap-xep'];
-
-                                            if ($sapxep === 'ASC') {
-                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
-                                                                    CASE
-                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
-                                                                        ELSE sp.gia_giam
-                                                                    END AS a
-                                                                FROM tbl_sanpham sp
-                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                                                                GROUP BY sp.ma_san_pham
-                                                                ORDER BY a ASC";
-                                            } elseif ($sapxep === 'DESC') {
-                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
-                                                                    CASE
-                                                                        WHEN sp.gia_giam = 0 THEN sp.gia_goc
-                                                                        ELSE sp.gia_giam
-                                                                    END AS a
-                                                                FROM tbl_sanpham sp
-                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                                                                GROUP BY sp.ma_san_pham
-                                                                ORDER BY a DESC ";
-                                            } elseif ($sapxep === 'Mặc định') {
-                                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
-                                                                FROM tbl_sanpham sp
-                                                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
-                                                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-                                                                WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
-                                                                GROUP BY sp.ma_san_pham
-                                                                ORDER BY sp.ma_san_pham ASC";
-                                            }
                                         }
                                     }
                                 }
-                                // Đếm số lượng sản phẩm
-                                $result = chayTruyVanTraVeDL($link, "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery");
-                                if ($result) {
-                                    $row = mysqli_fetch_assoc($result);
-                                    $so_luong_san_pham = $row["so_luong_san_pham"];
-                                } else {
-                                    // In thông báo lỗi
-                                    echo "Lỗi truy vấn MySQL: " . mysqli_error($link);
-                                }
-                                $so_luong_san_pham = $row["so_luong_san_pham"];
-                                // Xác định trang hiện tại
-                                $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
-                                $productsPerPage = 12;
+                            } else {
+                                // Hiển thị sản phẩm theo danh mục cụ thể
+                                $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                FROM tbl_sanpham sp
+                                LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                WHERE dm.ma_danh_muc = $iddm
+                                GROUP BY sp.ma_san_pham";
 
-                                // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
-                                $start = ($trang_hien_tai - 1) * $productsPerPage;
 
-                                // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
-                                $query_list_products .= " LIMIT $start, $productsPerPage";
+                                // Kiểm tra giá trị của mục select
+                                if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                                    if (isset($_GET["sap-xep"])) {
+                                        // Lấy dữ liệu từ biểu mẫu
+                                        $sapxep = $_GET["sap-xep"];
 
-                                // Thực hiện truy vấn SQL để lấy sản phẩm
-                                $result = chayTruyVanTraVeDL($link, $query_list_products);
 
-                                // Tính số trang
-                                $so_trang = ceil($so_luong_san_pham / $productsPerPage);
-
-                                // Xử lý dữ liệu trả về
-                                // Hiển thị danh sách sản phẩm
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $product_price = $row["gia_giam"];
-                                    $product_sale_price = $row["gia_goc"];
-                                    $avg_rating = $row["avg_rating"];
-                                    ?>
-                                    <section class="prod-list__item">
-                                        <div class="prod-list__item__image">
-                                            <a href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'>
-                                                <img class="prod-list__item__img1" loading="lazy"
-                                                    src="./img/<?php echo $row["hinh_anh_1"]; ?>" />
-                                            </a>
-                                            <!-- Hover heart and cart -->
-                                            <div class="button-heart-cart-hover">
-                                                <a href="">
-                                                    <img src="./icon/index-heart.svg"
-                                                        class="prod-list__item__image--heart-hover" />
-                                                </a>
-                                                <a href="">
-                                                    <img src="./icon/index-cart.svg"
-                                                        class="prod-list__item__image--cart-hover" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="prod-list__item__inner">
-                                            <div class="prod-list__item__inner--child">
-                                                <div class="prod-list__item__info">
-                                                    <div class="prod-list__item__info--title">
-                                                        <a
-                                                            href='./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>'><?php echo $row["ten_san_pham"]; ?></a>
-                                                    </div>
-                                                    <div class="prod-list__item__info--masp"><?php echo $row["ten_danh_muc"]; ?>
-                                                    </div>
-                                                </div>
-                                                <div class="prod-list__item__info--price-fb">
-                                                    <div class="prod-list__item--price">
-                                                        <?php
-                                                        if ($product_price != 0) {
-                                                            echo '<span class="prod-list__item__info--price">' . number_format($product_price, 0, ',', '.') . ' VNĐ </span>';
-                                                            echo '<span class="prod-list__item__info--price-sales">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                                        } else {
-                                                            echo '<span class="prod-list__item__info--price">' . number_format($product_sale_price, 0, ',', '.') . ' VNĐ </span>';
-                                                        }
-                                                        ?>
-                                                    </div>
-                                                    <div class="prod-list__item__info--star-icon">
-                                                        <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
-                                                        <div class="prod-list__item__info--fb">
-                                                            <?php echo number_format($avg_rating, 1, '.'); ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <?php
+                                        if ($sapxep === "ASC") {
+                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                        CASE
+                                                                            WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                            ELSE sp.gia_giam
+                                                                        END AS a
+                                                                    FROM tbl_sanpham sp
+                                                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                                                    GROUP BY sp.ma_san_pham
+                                                                    ORDER BY a ASC";
+                                        } elseif ($sapxep === "DESC") {
+                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating,
+                                                                        CASE
+                                                                            WHEN sp.gia_giam = 0 THEN sp.gia_goc
+                                                                            ELSE sp.gia_giam
+                                                                        END AS a
+                                                                    FROM tbl_sanpham sp
+                                                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                                                    GROUP BY sp.ma_san_pham
+                                                                    ORDER BY a DESC ";
+                                        } elseif ($sapxep === "Mặc định") {
+                                            $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                                                                    FROM tbl_sanpham sp
+                                                                    LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                                                                    LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                                                    WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc WHERE ma_danh_muc = $iddm)
+                                                                    GROUP BY sp.ma_san_pham
+                                                                    ORDER BY sp.ma_san_pham ASC";
+                                        }
+                                    }
                                 }
                             }
-                            giaiPhongBoNho($link, $result);
+                        }
+
+
+                        // Đếm số lượng sản phẩm
+                        $result = chayTruyVanTraVeDL(
+                            $link,
+                            "SELECT COUNT(*) AS so_luong_san_pham FROM ($query_list_products) AS subquery"
+                        );
+                        if ($result) {
+                            $row = mysqli_fetch_assoc($result);
+                            $so_luong_san_pham = $row["so_luong_san_pham"];
+                        } else {
+                            // In thông báo lỗi
+                            echo "Lỗi truy vấn MySQL: " . mysqli_error($link);
+                        }
+                        $so_luong_san_pham = $row["so_luong_san_pham"];
+                        // Xác định trang hiện tại
+                        $trang_hien_tai = isset($_GET["trang"]) ? $_GET["trang"] : 1;
+                        $productsPerPage = 12;
+
+
+                        // Tính vị trí bắt đầu của sản phẩm trên trang hiện tại
+                        $start = ($trang_hien_tai - 1) * $productsPerPage;
+
+
+                        // Thêm điều kiện LIMIT vào câu truy vấn để chỉ lấy số lượng sản phẩm mong muốn
+                        $query_list_products .= " LIMIT $start, $productsPerPage";
+
+
+                        // Thực hiện truy vấn SQL để lấy sản phẩm
+                        $result = chayTruyVanTraVeDL($link, $query_list_products);
+
+
+                        // Tính số trang
+                        $so_trang = ceil($so_luong_san_pham / $productsPerPage);
+
+
+                        // Xử lý dữ liệu trả về
+                        // Hiển thị danh sách sản phẩm
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+
+                            $product_price = $row["gia_giam"];
+                            $product_sale_price = $row["gia_goc"];
+                            $avg_rating = $row["avg_rating"];
                             ?>
-                        </div>
+                            <section class="prod-list__item">
+                                <div class="prod-list__item__image">
+                                    <a href='./sanpham.php?id=<?php echo $row[
+                                        "ma_san_pham"
+                                    ]; ?>'>
+                                        <img class="prod-list__item__img1" loading="lazy" src="./img/<?php echo $row[
+                                            "hinh_anh_1"
+                                        ]; ?>" />
+                                    </a>
+                                    <!-- Hover heart and cart -->
+                                    <div class="button-heart-cart-hover">
+                                        <a href="#!">
+                                            <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover"
+                                                onclick="heart(this)" />
+                                        </a>
+                                        <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
+                                            <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="prod-list__item__inner">
+                                    <div class="prod-list__item__inner--child">
+                                        <div class="prod-list__item__info">
+                                            <div class="prod-list__item__info--title">
+                                                <a href='./sanpham.php?id=<?php echo $row[
+                                                    "ma_san_pham"
+                                                ]; ?>'><?php echo $row[
+                                                     "ten_san_pham"
+                                                 ]; ?></a>
+                                            </div>
+                                            <div class="prod-list__item__info--masp"><?php echo $row[
+                                                "ten_danh_muc"
+                                            ]; ?>
+                                            </div>
+                                        </div>
+                                        <div class="prod-list__item__info--price-fb">
+                                            <div class="prod-list__item--price">
+                                                <?php if ($product_price != 0) {
+                                                    echo '<span class="prod-list__item__info--price">' .
+                                                        number_format(
+                                                            $product_price,
+                                                            0,
+                                                            ",",
+                                                            "."
+                                                        ) .
+                                                        " VNĐ </span>";
+                                                    echo '<span class="prod-list__item__info--price-sales">' .
+                                                        number_format(
+                                                            $product_sale_price,
+                                                            0,
+                                                            ",",
+                                                            "."
+                                                        ) .
+                                                        " VNĐ </span>";
+                                                } else {
+                                                    echo '<span class="prod-list__item__info--price">' .
+                                                        number_format(
+                                                            $product_sale_price,
+                                                            0,
+                                                            ",",
+                                                            "."
+                                                        ) .
+                                                        " VNĐ </span>";
+                                                } ?>
+                                            </div>
+                                            <div class="prod-list__item__info--star-icon">
+                                                <img src="./icon/index-star.svg" alt="" class="info--star-icon" />
+                                                <div class="prod-list__item__info--fb">
+                                                    <?php echo number_format(
+                                                        $avg_rating,
+                                                        1,
+                                                        "."
+                                                    ); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <?php
+                        }
+                        // giaiPhongBoNho($link, $result);
+                        ?>
                     </div>
                 </div>
                 <!---------------------- PAGINATION PHÍA DƯỚI CÁC SẢN PHẨM --------------------------------->
@@ -637,9 +714,18 @@
                     <?php
                     $link = null;
                     taoKetNoi($link);
+
                     if (isset($_GET["iddm"])) {
                         $iddm = $_GET["iddm"];
-
+                        //     // Kết nối và lấy dữ liệu từ CSDL
+                        //     $query_list_products = "SELECT sp.*, dm.ten_danh_muc, AVG(rv.so_sao) AS avg_rating
+                        // FROM tbl_sanpham sp
+                        // LEFT JOIN tbl_review rv ON sp.ma_san_pham = rv.ma_san_pham
+                        // LEFT JOIN tbl_danhmuc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                        // WHERE sp.ma_danh_muc IN (SELECT ma_danh_muc FROM tbl_danhmuc)
+                        // GROUP BY sp.ma_san_pham
+                        // ORDER BY RAND() Limit 12";
+                        // }
                         // Kiểm tra nếu danh mục là "TẤT CẢ"
                         if ($iddm === "tatca") {
                             // Hiển thị tất cả sản phẩm
@@ -698,7 +784,7 @@
                                     <a href="">
                                         <img src="./icon/index-heart.svg" class="prod-list__item__image--heart-hover" />
                                     </a>
-                                    <a href="">
+                                    <a href="./sanpham.php?id=<?php echo $row["ma_san_pham"]; ?>">
                                         <img src="./icon/index-cart.svg" class="prod-list__item__image--cart-hover" />
                                     </a>
                                 </div>
@@ -809,9 +895,8 @@
                 },
             });
         </script>
-
-        <div class="third-line"></div>
         <!-------------- DANH MỤC ƯA CHUỘNG -------------->
+        <div class="third-line"></div>
         <div class="explore-dm">
             <h2 class="explore-dm--text">DANH MỤC ƯA CHUỘNG</h2>
             <div class="explore-dm--content" style="width: 70%; display: inline-block">
@@ -898,5 +983,6 @@
     <!-- Footer -->
     <?php include "footer.php"; ?>
 </body>
+
 
 </html>
