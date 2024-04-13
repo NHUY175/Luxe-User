@@ -31,7 +31,7 @@
     <section class="favorites-list"> 
       <header class="favorites-header">
         <h1 class="favorites-title">Danh sách yêu thích</h1>
-        <p class="favorites-count">0 sản phẩm trong danh sách yêu thích của bạn</p>
+        <p class="favorites-count">4 sản phẩm trong danh sách yêu thích của bạn</p>
       </header>
       <div class="add-to-cart-container">
         <button class="add-to-cart-button" onclick="addToCart()">Thêm tất cả vào giỏ hàng</button> 
@@ -51,8 +51,8 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
-              <p class="product-DM">NLF 415</p>
+              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
+              <p class="product-DM">Nhẫn cưới</p>
               <div class="product-info">
                 <span class="product-price">2,090,000 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
@@ -71,8 +71,8 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
-              <p class="product-DM">NLF 415</p>
+              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
+              <p class="product-DM">Nhẫn cưới</p>
               <div class="product-info">
                 <span class="product-price">2,090,000 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
@@ -91,8 +91,8 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
-              <p class="product-DM">NLF 415</p>
+              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
+              <p class="product-DM">Nhẫn cưới</p>
               <div class="product-info">
                 <span class="product-price">2,090,000 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
@@ -111,8 +111,8 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Đá Cubic Zirconia cccccccccccccccccc</h3>
-              <p class="product-DM">NLF 415</p>
+              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
+              <p class="product-DM">Nhẫn cưới</p>
               <div class="product-info">
                 <span class="product-price">2,090,000 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
