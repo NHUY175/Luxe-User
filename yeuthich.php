@@ -51,10 +51,50 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
-              <p class="product-DM">Nhẫn cưới</p>
+              <h3 class="product-name">Nhẫn NDINO 3H0</h3>
+              <p class="product-DM">Nhẫn</p>
               <div class="product-info">
-                <span class="product-price">2,090,000 VNĐ</span>
+                <span class="product-price">1,400,000 VNĐ</span>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
+              </div>
+            </div>
+            <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+          </div>
+        </article>
+        <article class="product-column">
+          <div class="delete-icon">
+            <img src="./icon/yeuthich-delete.svg" alt="Delete icon" />
+            <span>Xóa</span>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <figure class="product-image">
+                <img src="./img/2N5-2.webp" alt="Product image" />
+              </figure>
+              <h3 class="product-name">Nhẫn NDINO 2N5</h3>
+              <p class="product-DM">Nhẫn</p>
+              <div class="product-info">
+                <span class="product-price">3,150,000 VNĐ</span>
+                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
+              </div>
+            </div>
+            <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+          </div>
+        </article>
+        <article class="product-column">
+          <div class="delete-icon">
+            <img src="./icon/yeuthich-delete.svg" alt="Delete icon" />
+            <span>Xóa</span>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <figure class="product-image">
+                <img src="./img/AND 01-1.webp" alt="Product image" />
+              </figure>
+              <h3 class="product-name">Dây chuyền LUXEMAND 01</h3>
+              <p class="product-DM">Dây chuyền</p>
+              <div class="product-info">
+                <span class="product-price">1,533,000 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
               </div>
             </div>
@@ -71,50 +111,10 @@
               <figure class="product-image">
                 <img src="./img/3H0-1.webp" alt="Product image" />
               </figure>
-              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
-              <p class="product-DM">Nhẫn cưới</p>
+              <h3 class="product-name">Bông tai DTBCD 555</h3>
+              <p class="product-DM">Bông tai</p>
               <div class="product-info">
-                <span class="product-price">2,090,000 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
-              </div>
-            </div>
-            <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-          </div>
-        </article>
-        <article class="product-column">
-          <div class="delete-icon">
-            <img src="./icon/yeuthich-delete.svg" alt="Delete icon" />
-            <span>Xóa</span>
-          </div>
-          <div class="product-card">
-            <div class="product-image-wrapper">
-              <figure class="product-image">
-                <img src="./img/3H0-1.webp" alt="Product image" />
-              </figure>
-              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
-              <p class="product-DM">Nhẫn cưới</p>
-              <div class="product-info">
-                <span class="product-price">2,090,000 VNĐ</span>
-                <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
-              </div>
-            </div>
-            <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-          </div>
-        </article>
-        <article class="product-column">
-          <div class="delete-icon">
-            <img src="./icon/yeuthich-delete.svg" alt="Delete icon" />
-            <span>Xóa</span>
-          </div>
-          <div class="product-card">
-            <div class="product-image-wrapper">
-              <figure class="product-image">
-                <img src="./img/3H0-1.webp" alt="Product image" />
-              </figure>
-              <h3 class="product-name">Nhẫn Vàng Đá Trang Sức NLF 453</h3>
-              <p class="product-DM">Nhẫn cưới</p>
-              <div class="product-info">
-                <span class="product-price">2,090,000 VNĐ</span>
+                <span class="product-price">2,799,300 VNĐ</span>
                 <div class="product-rating"> <span class="star-icon">★</span> 4.3</div>
               </div>
             </div>
