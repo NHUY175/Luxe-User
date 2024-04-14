@@ -141,6 +141,11 @@ td {
   margin: 20px auto;
   font-family: Quicksand;
 }
+@media (max-width:790px){
+  .wrapper{
+    flex-wrap: wrap;
+  }
+}
 h2, h3{
   font-size: 1.2em;
   margin: 20px auto;
