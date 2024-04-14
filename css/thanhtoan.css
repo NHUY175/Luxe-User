@@ -201,6 +201,7 @@ h2, h3{
   cursor: pointer;
   color: #f6f6f6;
   font-weight: bold;
+  margin-right: 20px;
 }
 .hoa-don-cua-ban button:hover {
   background: #f46b1c;
